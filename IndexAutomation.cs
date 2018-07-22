@@ -2260,10 +2260,72 @@ namespace Steps.NET
                     Point1.y = 140; //Point1 точка начала отрезка
                     Point2.x = 265;
                     Point2.y = par1.height-140; //Point2 точка конца отрезка                
+                    
+                    model1.x = 265 + 40; //отступы рисунка на заготовке
+                    model1.y = 140;
+                    model1.height = (par1.height - 280) / 4 - 30;
+                    model1.width = (par1.height - 280) / 4 - 30;
+                    model1.style = 1;
+                    doc.ksRectangle(model1);
+
+                    model2.x = model1.x; //отступы рисунка на заготовке
+                    model2.y = model1.y + model1.height + 40;
+                    model2.height = (par1.height - 280) / 4 - 30;
+                    model2.width = (par1.height - 280) / 4 - 30;
+                    model2.style = 1;
+                    doc.ksRectangle(model2);
+
+                    model3.x = model1.x; //отступы рисунка на заготовке
+                    model3.y = model2.y + model2.height + 40;
+                    model3.height = (par1.height - 280) / 4 - 30;
+                    model3.width = (par1.height - 280) / 4 - 30;
+                    model3.style = 1;
+                    doc.ksRectangle(model3);
+
+                    model4.x = model1.x; //отступы рисунка на заготовке
+                    model4.y = model3.y + model3.height + 40;
+                    model4.height = (par1.height - 280) / 4 - 30;
+                    model4.width = (par1.height - 280) / 4 - 30;
+                    model4.style = 1;
+                    doc.ksRectangle(model4);
+
+                    model5.x = par1.width - 140 -40 - model1.width; //отступы рисунка на заготовке
+                    model5.y = 140;
+                    model5.height = (par1.height - 280) / 4 - 30;
+                    model5.width = (par1.height - 280) / 4 - 30;
+                    model5.style = 1;
+                    doc.ksRectangle(model5);
+
+                    model6.x = par1.width - 140 - 40 - model1.width; //отступы рисунка на заготовке
+                    model6.y = model5.y + model5.height + 40;
+                    model6.height = (par1.height - 280) / 4 - 30;
+                    model6.width = (par1.height - 280) / 4 - 30;
+                    model6.style = 1;
+                    doc.ksRectangle(model6);
+
+                    model7.x = par1.width - 140 - 40 - model1.width; //отступы рисунка на заготовке
+                    model7.y = model6.y + model6.height + 40;
+                    model7.height = (par1.height - 280) / 4 - 30;
+                    model7.width = (par1.height - 280) / 4 - 30;
+                    model7.style = 1;
+                    doc.ksRectangle(model7);
+
+                    model8.x = par1.width - 140 - 40 - model1.width; //отступы рисунка на заготовке
+                    model8.y = model7.y + model7.height + 40;
+                    model8.height = (par1.height - 280) / 4 - 30;
+                    model8.width = (par1.height - 280) / 4 - 30;
+                    model8.style = 1;
+                    doc.ksRectangle(model8);
                     doc.ksLineSeg(Point1.x, Point1.y, Point2.x, Point2.y, 1);
-                    doc.ksLineSeg(Point1.x + 140, Point1.y, Point2.x + 140, Point2.y, 1);
+                    doc.ksLineSeg(Point1.x + model1.width + 80, Point1.y, Point2.x + model1.width + 80, Point2.y, 1);
                     doc.ksLineSeg(par1.width - 140, Point1.y, par1.width - 140, Point2.y, 1);
-                    doc.ksLineSeg(par1.width - 280, Point1.y, par1.width - 280, Point2.y, 1);
+                    doc.ksLineSeg(par1.width - model1.width -140 -80, Point1.y, par1.width - model1.width - 140 - 80, Point2.y, 1);
+                    doc.ksLineSeg(Point1.x + model1.width + 80 +40, Point1.y, par1.width - 140 - 80 - model5.width -40, Point1.y, 1);
+                    doc.ksLineSeg(Point1.x + model1.width + 80 + 40, Point1.y + (model1.width * 2)/3, par1.width - 140 - 80 - model5.width - 40, Point1.y+ (model1.width * 2) / 3, 1);
+                    doc.ksLineSeg(Point1.x + model1.width + 80 + 40, Point1.y+ ((model1.width * 2) / 3)*2, par1.width - 140 - 80 - model5.width - 40, Point1.y+ ((model1.width * 2) / 3) * 2, 1);
+                    doc.ksLineSeg(Point1.x + model1.width + 80 + 40, par1.height - 140, par1.width - 140 - 80 - model5.width - 40, par1.height - 140, 1);
+                    doc.ksLineSeg(Point1.x + model1.width + 80 + 40, par1.height - ((model1.width * 2) / 3) - 140, par1.width - 140 - 80 - model5.width - 40, par1.height - ((model1.width * 2) / 3) -140, 1);
+                    doc.ksLineSeg(Point1.x + model1.width + 80 + 40, par1.height - ((model1.width * 2) / 3) * 2 - 140, par1.width - 140 - 80 - model5.width - 40, par1.height - ((model1.width * 2) / 3) * 2 -140, 1);
                 }
             }
         }
