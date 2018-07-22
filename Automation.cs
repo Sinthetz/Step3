@@ -40,6 +40,8 @@ namespace Steps.NET
                 Step3.Econom13, Step3.Econom14, Step3.Econom15, Step3.Econom16, Step3.Econom17, Step3.Econom18,
                 Step3.Econom19, Step3.Econom20, Step3.Econom21, Step3.Econom22, Step3.Econom23, Step3.Econom24,
                 Step3.Econom25, Step3.Econom26, Step3.Econom27, Step3.Econom28, Step3.Econom29, Step3.Econom30,
+                Step3.Econom31, Step3.Econom32, Step3.Econom33, Step3.Econom34, Step3.Econom35, Step3.Econom36,
+                Step3.Econom37, Step3.Econom38, Step3.Econom39,
                 Step3.Econom40, Step3.Econom41, Step3.Econom42, Step3.Econom43, Step3.Econom44, Step3.Econom45,
                 Step3.Econom46, Step3.Econom47, Step3.Econom48, Step3.Econom49, Step3.Econom50, Step3.Econom51,
                 Step3.Econom52, Step3.Econom53, Step3.Econom54, Step3.Econom55, Step3.Econom56, Step3.Econom57,
