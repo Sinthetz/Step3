@@ -2239,7 +2239,35 @@ namespace Steps.NET
 
         public static void Econom61()
         {
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    Point1.x = 265;
+                    Point1.y = 140; //Point1 точка начала отрезка
+                    Point2.x = 265;
+                    Point2.y = par1.height-140; //Point2 точка конца отрезка                
+                    doc.ksLineSeg(Point1.x, Point1.y, Point2.x, Point2.y, 1);
+                    doc.ksLineSeg(Point1.x + 140, Point1.y, Point2.x + 140, Point2.y, 1);
+                    doc.ksLineSeg(par1.width - 140, Point1.y, par1.width - 140, Point2.y, 1);
+                    doc.ksLineSeg(par1.width - 280, Point1.y, par1.width - 280, Point2.y, 1);
+                }
+            }
         }
+    
 
         public static void Econom62()
         {
@@ -2276,7 +2304,7 @@ namespace Steps.NET
                 doc.ksCreateDocument(docPar);
                 {
                     Zagotovka(par1);
-                    //создание заготовки
+                    
                     model1.x = 140; //отступы рисунка на заготовке
                     model1.y = 140;
                     model1.height = par1.height - 280;
