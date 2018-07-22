@@ -2923,37 +2923,14 @@ namespace Steps.NET
         {
             string result = string.Empty;
             itemType = 1; // "MENUITEM"
-            if (number >= 1 && number <= 83)
-            {
-                result = "Ёконом " + number;
-                command = number;
-                return result;
-            }
-            if (number >= 87 && number <= 209)
-            {
-                result = "V  лассика " + number;
-                command = number;
-                return result;
-            }
+            
             switch (number)
             {
-                case 84:
-                    result = "==============================";
-                    command = 0;
-                    break;
-                case 85:
-                    result = "V  лассика";
-                    command = 0;
-                    break;
-                case 86:
-                    result = "==============================";
-                    command = 0;
-                    break;
-                case 210:
+                case 1:
                     result = "√лавный запуск приложени€";
                     command = 210;
                     break;
-                case 211:
+                case 2:
                     command = -1;
                     itemType = 212; // "ENDMENU"
                     break;
@@ -2962,8 +2939,6 @@ namespace Steps.NET
         }
 
         #endregion
-
-        public delegate void FuncDel();
 
         public void ExternalRunCommand([In]short command, [In] short mode, [In, MarshalAs(UnmanagedType.IDispatch)]object kompas_)
         {
@@ -2975,34 +2950,6 @@ namespace Steps.NET
             else
                 doc = (Document2D) kompas.ActiveDocument2D();
             if (doc == null) return;
-            
-            var funcdel = new FuncDel[]
-            {
-                WorkDocument, Econom2, Econom3, Econom4, Econom5, Econom6, Econom7, Econom8, Econom9, Econom10, Econom11,
-                Econom12,Econom13,Econom14,Econom15,Econom16,Econom17,Econom18,Econom19,Econom20,Econom21,Econom22,Econom23,
-                Econom24,Econom25,Econom26,Econom27,Econom28,Econom29,Econom30,Econom40,Econom41,Econom42,Econom43,Econom44,
-                Econom45,Econom46,Econom47,Econom48,Econom49,Econom50,Econom51,Econom52,Econom53,Econom54,Econom55,Econom56,
-                Econom57,Econom58,Econom59,Econom60,Econom61,Econom62,Econom63,Econom64,Econom65,Econom66,Econom67,Econom68,
-                Econom69,Econom70,Econom71,Econom72,Econom73,Econom74,Econom75,Econom76,Econom77,Econom78,Econom79,Econom80,
-                Econom81,Econom82,Econom83,Vclassic1,Vclassic2,Vclassic3,Vclassic4,Vclassic5,Vclassic6,Vclassic7,Vclassic8,
-                Vclassic9,Vclassic10,Vclassic11,Vclassic12,Vclassic13,Vclassic14,Vclassic15,Vclassic16,Vclassic17,Vclassic18,
-                Vclassic19,Vclassic20,Vclassic21,Vclassic22,Vclassic23,Vclassic24,Vclassic25,Vclassic26,Vclassic27,Vclassic28,
-                Vclassic29,Vclassic30,Vclassic31,Vclassic32,Vclassic33,Vclassic34,Vclassic35,Vclassic36,Vclassic37,Vclassic38,
-                Vclassic39,Vclassic40,Vclassic41,Vclassic42,Vclassic43,Vclassic44,Vclassic45,Vclassic46,Vclassic47,Vclassic48,
-                Vclassic49,Vclassic50,Vclassic51,Vclassic52,Vclassic53,Vclassic54,Vclassic55,Vclassic56,Vclassic57,Vclassic58,
-                Vclassic59,Vclassic60,Vclassic61,Vclassic62,Vclassic63,Vclassic64,Vclassic65,Vclassic66,Vclassic67,Vclassic68,
-                Vclassic69,Vclassic70,Vclassic71,Vclassic72,Vclassic73,Vclassic74,Vclassic75,Vclassic76,Vclassic77,Vclassic78,
-                Vclassic79,Vclassic80,Vclassic81,Vclassic82,Vclassic83,Vclassic84,Vclassic85,Vclassic86,Vclassic87,Vclassic88,
-                Vclassic89,Vclassic90,Vclassic91,Vclassic92,Vclassic93,Vclassic94,Vclassic95,Vclassic96,Vclassic97,Vclassic98,
-                Vclassic99,Vclassic100,Vclassic101,Vclassic102,Vclassic103,Vclassic104,Vclassic105,Vclassic106,Vclassic107,
-                Vclassic108,Vclassic109,Vclassic110,Vclassic111,Vclassic112,Vclassic113,Vclassic114,Vclassic115,Vclassic116,
-                Vclassic117,Vclassic118,Vclassic119,Vclassic120,Vclassic121,Vclassic122,Vclassic123
-            };
-            if (command >= 1 && command <= 209 && command != 84 && command != 85 && command != 86)
-            {
-                Instance.ShowDialog();
-                funcdel[command-1]();
-            }
             
             switch (command)
             {
