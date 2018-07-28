@@ -2212,7 +2212,6 @@ namespace Steps.NET
                 docPar.regime = 0;
                 docPar.type = (short) DocType.lt_DocFragment;
                 doc.ksCreateDocument(docPar);
-                //создание фрагмента
                 ksRectangleParam par1 =
                     (ksRectangleParam) kompas.GetParamStruct((short) StructType2DEnum.ko_RectangleParam);
                 {
@@ -2222,11 +2221,6 @@ namespace Steps.NET
                     doc.ksArcBy3Points(par1.width / 2, 180, (par1.width / 4) * 3, 140 + 80, par1.width, 180, 1);
                     doc.ksEndGroup();
                     doc.ksSymmetryObj(grpEco59, par1.width / 2, par1.height / 2, par1.width / 2, par1.height / 2, "1");
-
-                    //x1, y1 -координаты начальной точки на дуге
-                    //x2, y2 - координаты средней точки на дуге,
-                    //x3, y3 -координаты конечной точки на дуге
-                    //style-стиль линии.
                 }
             }
         }
@@ -2417,16 +2411,17 @@ namespace Steps.NET
                         model1.width / 2 + 140, model1.height / 2 - 65 + 140, 1);
                     doc.ksArcBy3Points(140, model1.height / 2 + 65 + 140, model1.width / 4, 226 + 140 + 130,
                         model1.width / 2 + 140, model1.height / 2 + 65 + 140, 1);
+                    //x1, y1 -координаты начальной точки на дуге
+                    //x2, y2 - координаты средней точки на дуге,
+                    //x3, y3 -координаты конечной точки на дуге
+                    //style-стиль линии.
                     doc.ksEndGroup();
                     reference grpEco662 = doc.ksNewGroup(1);
                     doc.ksSymmetryObj(grpEco66, par1.width / 2, par1.height / 2, par1.width / 2, par1.height / 2 + 1,
                         "1");
                     doc.ksEndGroup();
                     doc.ksSymmetryObj(grpEco662, par1.width / 2, par1.height / 2, par1.width / 2, par1.height / 2, "1");
-                    //x1, y1 -координаты начальной точки на дуге
-                    //x2, y2 - координаты средней точки на дуге,
-                    //x3, y3 -координаты конечной точки на дуге
-                    //style-стиль линии.
+                    
                 }
             }
         } //Arcby3points пример дуги по 3м точкам
@@ -2534,6 +2529,55 @@ namespace Steps.NET
 
         public static void Econom82()
         {
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    model1.x = 265; 
+                    model1.y = 140;
+                    model1.height = (par1.height - 280);
+                    model1.width = (par1.width -265*2-80*4)/5;
+                    model1.style = 1;
+                    doc.ksRectangle(model1);
+                    model2.x = (model1.width + 80 + 265);
+                    model2.y = 140;
+                    model2.height = (par1.height - 280);
+                    model2.width = (par1.width - 265 * 2 - 80 * 4) / 5; ;
+                    model2.style = 1;
+                    doc.ksRectangle(model2);
+                    model3.x = (model1.width*2 + 80*2 + 265);
+                    model3.y = 140;
+                    model3.height = (par1.height - 280);
+                    model3.width = (par1.width - 265 * 2 - 80 * 4) / 5; ;
+                    model3.style = 1;
+                    doc.ksRectangle(model3);
+                    model4.x = (model1.width*3 + 80*3 + 265);
+                    model4.y = 140;
+                    model4.height = (par1.height - 280);
+                    model4.width = (par1.width - 265 * 2 - 80 * 4) / 5; ;
+                    model4.style = 1;
+                    doc.ksRectangle(model4);
+                    model5.x = (model1.width*4 + 80*4 + 265);
+                    model5.y = 140;
+                    model5.height = (par1.height - 280);
+                    model5.width = (par1.width - 265 * 2 - 80 * 4) / 5; ;
+                    model5.style = 1;
+                    doc.ksRectangle(model5);
+                }
+            }
         }
 
         public static void Econom83()
