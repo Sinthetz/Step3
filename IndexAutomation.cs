@@ -2583,6 +2583,46 @@ namespace Steps.NET
 
         public static void Econom78()
         {
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    model1.x = 265+24.85;//24.85 подстройка при развороте куба(высота треугольника выходящего за периметр)
+                    model1.y = 140+24.85;
+                    model1.height = 120;
+                    model1.width = 120;
+                    model1.style = 1;
+                    reference _cube1 = doc.ksRectangle(model1);
+                    doc.ksRotateObj(_cube1,265+60+ 24.85, 140+60+ 24.85, 45);
+                    doc.ksCopyObj(_cube1, 265, 140 + 80.71, 169.71 + 80+265, 140 + 80.71, 1,0);
+                    doc.ksCopyObj(_cube1, 265, 140 + 80.71, 169.71*2 + 80*2 + 265, 140 + 80.71, 1, 0);
+                    doc.ksCopyObj(_cube1, 265+169.71, 140 + 80.71, par1.width-140, 140 + 80.71, 1, 0);
+                    doc.ksCopyObj(_cube1, 265 + 169.71, 140 + 80.71, par1.width - 140-169.71-80, 140 + 80.71, 1, 0);
+                    reference grpEco78 = doc.ksNewGroup(0);
+                    doc.ksLineSeg(0, par1.height - 200, par1.width / 2 - 210, par1.height - 200, 1);
+                    doc.ksLineSeg(par1.width/2-150, par1.height-260,par1.width/2, par1.height - 260,1);
+                    doc.ksLineSeg(par1.width / 2 - 210, par1.height - 200, par1.width / 2 - 150, par1.height - 260,1);
+                    doc.ksLineSeg(0, par1.height - 140, par1.width / 2 - 185.15, par1.height - 140,1);
+                    doc.ksLineSeg(par1.width/2-125.15,par1.height-200,par1.width/2, par1.height - 200,1);
+                    doc.ksLineSeg(par1.width / 2 - 185.15, par1.height - 140, par1.width / 2 - 125.15, par1.height - 200,1);
+                    doc.ksEndGroup();
+                    doc.ksSymmetryObj(grpEco78, par1.width / 2, par1.height / 2, par1.width / 2, par1.height / 2 + 1,
+                        "1");
+                }
+            }
         }
 
         public static void Econom79()
