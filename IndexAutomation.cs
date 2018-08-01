@@ -153,7 +153,7 @@ namespace Steps.NET
             }
         }
 
-        public static void Econom3() //bug заменить процентное соотношение на формулу!!!
+        public static void Econom3()
         {
             doc = (ksDocument2D) kompas.Document2D();
             DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
@@ -173,7 +173,6 @@ namespace Steps.NET
                 //создание фрагмента
                 {
                     Zagotovka(par1); //создание заготовки
-                    //создание заготовки
                     model1.x = 265; //отступы рисунка на заготовке
                     model1.y = 140;
                     model1.height = (par1.height / 2 - 205);

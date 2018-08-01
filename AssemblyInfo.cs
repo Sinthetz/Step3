@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Step3")]
 [assembly: AssemblyDescription("Step3")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Ascon")]
+[assembly: AssemblyCompany("DoT Team")]
 [assembly: AssemblyProduct("Step3")]
-[assembly: AssemblyCopyright("Copyright © ASCON 2011")]
+[assembly: AssemblyCopyright("Sinthet")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
