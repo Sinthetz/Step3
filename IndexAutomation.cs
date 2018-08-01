@@ -2024,6 +2024,43 @@ namespace Steps.NET
 
         public static void Econom48()
         {
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    doc.ksLineSeg(0, par1.height / 2 - 80, 500, par1.height / 2 - 80, 1);
+                    doc.ksLineSeg(0, par1.height / 2 , 466.86, par1.height / 2 , 1);
+                    doc.ksLineSeg(0, par1.height / 2 + 80, 433.73, par1.height / 2 + 80, 1);
+                    doc.ksLineSeg(500, par1.height / 2 - 80, 683.79, par1.height / 2+103.79, 1);
+                    doc.ksLineSeg(466.86, par1.height / 2 , 603.79, par1.height / 2 +136.92, 1);
+                    doc.ksLineSeg(433.73, par1.height / 2 + 80, 523.79, par1.height / 2+170.06, 1);
+                    doc.ksLineSeg(683.79, par1.height / 2 + 103.79, 683.79, par1.height, 1);
+                    doc.ksLineSeg(603.79, par1.height / 2 + 136.92, 603.79, par1.height, 1);
+                    doc.ksLineSeg(523.79, par1.height / 2 + 170.06, 523.79, par1.height, 1);
+                    doc.ksLineSeg(556.57, 0, 556.57, par1.height/2 - 136.57, 1);
+                    doc.ksLineSeg(636.57, 0, 636.57, par1.height/2 - 169.71, 1);
+                    doc.ksLineSeg(716.57, 0, 716.57, par1.height/2 - 202.84, 1);
+                    doc.ksLineSeg(556.57, par1.height / 2 - 136.57, 773.14, par1.height / 2 + 80, 1);
+                    doc.ksLineSeg(636.57, par1.height / 2 - 169.71, 806.27, par1.height / 2, 1);
+                    doc.ksLineSeg(716.57, par1.height / 2 - 202.84, 839.41, par1.height / 2-80, 1);
+                    doc.ksLineSeg(773.14, par1.height / 2 + 80, par1.width, par1.height / 2 + 80, 1);
+                    doc.ksLineSeg(806.27, par1.height / 2, par1.width, par1.height / 2, 1);
+                    doc.ksLineSeg(839.41, par1.height / 2 - 80, par1.width, par1.height / 2 - 80, 1);
+                }
+            }
         }
 
         public static void Econom49()
