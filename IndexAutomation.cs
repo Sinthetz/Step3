@@ -2258,6 +2258,66 @@ namespace Steps.NET
 
         public static void Econom56()
         {
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    model1.x = 200;
+                    model1.y = 200;
+                    model1.height = (par1.height - 400);
+                    model1.width = (par1.width - 400 - 80 * 4) / 5;
+                    model1.style = 1;
+                    doc.ksRectangle(model1);
+                    model2.x = (model1.width + 80 + 200);
+                    model2.y = 200;
+                    model2.height = (par1.height - 400);
+                    model2.width = (par1.width - 400 - 80 * 4) / 5;
+                    model2.style = 1;
+                    doc.ksRectangle(model2);
+                    model3.x = (model1.width*2 + 80*2 + 200);
+                    model3.y = 200;
+                    model3.height = (par1.height - 400);
+                    model3.width = (par1.width - 400 - 80 * 4) / 5;
+                    model3.style = 1;
+                    doc.ksRectangle(model3);
+                    model4.x = (model1.width*3 + 80*3 + 200);
+                    model4.y = 200;
+                    model4.height = (par1.height - 400);
+                    model4.width = (par1.width - 400 - 80 * 4) / 5;
+                    model4.style = 1;
+                    doc.ksRectangle(model4);
+                    model5.x = (model1.width*4 + 80*4 + 200);
+                    model5.y = 200;
+                    model5.height = (par1.height - 400);
+                    model5.width = (par1.width - 400 - 80 * 4) / 5;
+                    model5.style = 1;
+                    doc.ksRectangle(model5);
+                    doc.ksArcBy3Points(160,par1.height/2,200+model1.width/2,par1.height/2-40,200+model1.width+40,par1.height/2,1);
+                    doc.ksArcBy3Points(200 + model1.width + 40, par1.height / 2, 200 + model1.width*1.5 + 80,par1.height/2+40, 200 + model1.width * 2 + 80+40,par1.height/2,1);
+                    doc.ksArcBy3Points(200 + model1.width * 2 + 80 + 40, par1.height / 2, 200 + model1.width * 2.5 + 80*2, par1.height / 2 - 40, 200 + model1.width * 3 + 80 * 2+40, par1.height / 2,1);
+                    doc.ksArcBy3Points(200 + model1.width * 3 + 80 * 2 + 40, par1.height / 2, 200 + model1.width * 3.5 + 80 * 3, par1.height / 2 + 40, 200 + model1.width * 4 + 80 * 3+40, par1.height / 2, 1);
+                    doc.ksArcBy3Points(200 + model1.width * 4 + 80 * 3 + 40, par1.height / 2, 200 + model1.width * 4.5 + 80 * 4, par1.height / 2 - 40, 200 + model1.width * 5 + 80 * 4+40, par1.height / 2, 1);
+                    doc.ksCircle(model1.x+50,model1.y+60,20,1);
+                    doc.ksCircle(model1.x+model1.width+80+50, par1.height-model1.y-60,20,1);
+                    doc.ksCircle(model1.x + model1.width*2 + 80*2 + 50, model1.y + 60, 20, 1);
+                    doc.ksCircle(model1.x + model1.width*3 + 80*3 + 50, par1.height - model1.y - 60, 20, 1);
+                    doc.ksCircle(model1.x + model1.width * 4 + 80 * 4 + 50, model1.y + 60, 20, 1);
+
+                }
+            }
         }
 
         public static void Econom57()
@@ -2420,7 +2480,6 @@ namespace Steps.NET
                     doc.ksRotateObj(_line2, (par1.height) / 4 + 300, par1.height / 2, 120);
                     reference _cir = doc.ksCircle((par1.height) / 4 + 300, par1.height / 2, (par1.height) / 4, 1);
                     doc.ksLine((par1.height) / 4 + 300, par1.height / 2, 50);
-                    
                     
                     //doc.ksArcByPoint((par1.height) / 4 + 300, par1.height / 2, (par1.height) / 4, 300, (par1.height) / 2,
                     //    ((par1.height) / 4)*Math.Cos(_radian1), ((par1.height) / 4) * Math.Sin(_radian1), 1, 1);
