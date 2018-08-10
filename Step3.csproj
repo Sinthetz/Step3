@@ -11,7 +11,8 @@
     <AssemblyKeyContainerName>
     </AssemblyKeyContainerName>
     <AssemblyName>Step3</AssemblyName>
-    <AssemblyOriginatorKeyFile>kapikey.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
     <DefaultClientScript>JScript</DefaultClientScript>
     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
@@ -75,9 +76,10 @@
     <WarningLevel>4</WarningLevel>
     <DebugType>none</DebugType>
     <ErrorReport>prompt</ErrorReport>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Kompas6API2D5COM">
@@ -116,11 +118,6 @@
     <Reference Include="System.Xml">
       <Name>System.XML</Name>
     </Reference>
-    <ProjectReference Include="..\..\Common\KAPITypes\KAPITypes.csproj">
-      <Name>KAPITypes</Name>
-      <Project>{3B02F815-F2E7-45A2-B828-8AA4DA54D54F}</Project>
-      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Automation.cs">
@@ -132,6 +129,7 @@
     <Compile Include="Global.cs" />
     <Compile Include="IndexAutomation.cs" />
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="ldefin2d.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -150,7 +148,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="gnome-fs-loading-icon_9815.ico" />
-    <None Include="kapikey.pfx" />
     <None Include="Resources\Hd0AJ.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

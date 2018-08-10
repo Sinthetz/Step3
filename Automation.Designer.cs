@@ -63,18 +63,18 @@ namespace Steps.NET
                 document2d = value;
             }
         }
-        private _Application kompasApp;
-        public _Application KompasApp
-        {
-            get
-            {
-                return kompasApp;
-            }
-            set
-            {
-                kompasApp = value;
-            }
-        }
+        //private _Application kompasApp;
+        //public _Application KompasApp
+        //{
+        //    get
+        //    {
+        //        return kompasApp;
+        //    }
+        //    set
+        //    {
+        //        kompasApp = value;
+        //    }
+        //}
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))

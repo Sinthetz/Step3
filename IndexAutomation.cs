@@ -2496,6 +2496,40 @@ namespace Steps.NET
 
         public static void Econom63()
         {
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    model1.x = 265; 
+                    model1.y = 140;
+                    model1.height = (par1.height - 280);
+                    model1.width = (par1.width / 5);
+                    model1.style = 1;
+                    doc.ksRectangle(model1);
+                    doc.ksLineSeg(265 + model1.width + 130, 140, par1.width - 140 - 80, 140,1);
+                    doc.ksLineSeg(265 + model1.width + 130, 140, 265 + model1.width + 130, par1.height-140, 1);
+                    doc.ksLineSeg(265 + model1.width + 130, par1.height - 140, par1.width-140 - 80, par1.height - 140, 1);
+                    double _rad1 = (par1.height - 280) / 2 - 65;
+                    doc.ksLineSeg(265 + model1.width + 130,par1.height/2+65,par1.width-140-80-_rad1, par1.height / 2 + 65,1);
+                    doc.ksLineSeg(265 + model1.width + 130, par1.height / 2 - 65, par1.width - 140-80 - _rad1, par1.height / 2 - 65, 1);
+                    doc.ksArcBy3Points(par1.width - 140 - 80,140,par1.width-140,par1.height/2, par1.width - 140 - 80,par1.height-140,1);
+                    doc.ksArcByPoint(par1.width - 140 - 80 - _rad1,par1.height-140,_rad1, par1.width - 140 - 80, par1.height - 140, par1.width - 140 - 80 - _rad1, par1.height / 2 + 65,-1,1);
+                    doc.ksArcByPoint(par1.width - 140 - 80 - _rad1,140, _rad1, par1.width - 140 - 80,140, par1.width - 140 - 80 - _rad1, par1.height / 2 - 65,1,1);
+                }
+            }
         }
 
         public static void Econom64()
