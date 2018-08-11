@@ -76,7 +76,7 @@ namespace Steps.NET
         {
             par1.x = 0; //начальные точки ...заготовка в 0( изменять только из за отступов +32/+16 и тд)
             par1.y = 0;
-            par1.height = Visota; //создать установку пользователем !!!!!!!!!!!!!!!!!
+            par1.height = Visota; 
             par1.width = Shirina; //Важно!!! рисунок масштабируется от размера заговки которую задает пользователь
             par1.style = 6;
             doc.ksRectangle(par1);
@@ -135,7 +135,7 @@ namespace Steps.NET
                 {
                     Zagotovka(par1);
                     //создание заготовки
-                    model1.x = 265; //место положние элемента( отступы)
+                    model1.x = 265;
                     model1.y = 140;
                     model1.height = (par1.height - 280); // размер элемента
                     model1.width = (par1.width / 5);
@@ -191,7 +191,6 @@ namespace Steps.NET
                     model3.width = (par1.width - ((model2.width * 2) + 665));
                     model3.style = 1;
                     doc.ksRectangle(model3);
-                    //отступы рисунка на заготовке
                     model4.x = model2.width + 130 + 265;
                     model4.y = (par1.height / 2 + 65);
                     model4.height = (par1.height / 2 - 205);
@@ -204,7 +203,6 @@ namespace Steps.NET
                     model5.width = (par1.width - 405) / 5.4067;
                     model5.style = 1;
                     doc.ksRectangle(model5);
-                    //отступы рисунка на заготовке
                     model6.x = par1.width - 140 - model2.width;
                     model6.y = (par1.height / 2 + 65);
                     model6.height = (par1.height / 2 - 205);
@@ -295,12 +293,12 @@ namespace Steps.NET
                 //создание фрагмента
                 {
                     Zagotovka(par1); //создание заготовки
-                    model1.x = 265; 
+                    model1.x = 265; //отступы рисунка относительно заготовки
                     model1.y = 140;
                     model1.height = (par1.height / 2 - 205);
                     model1.width = (par1.width - 405);
                     model1.style = 1;
-                    doc.ksRectangle(model1);
+                    doc.ksRectangle(model1);// команда на отрисовку объекта в КОМПАС-3D
                     model2.x = 265; 
                     model2.y = (par1.height / 2 + 65);
                     model2.height = (par1.height / 2 - 205);
@@ -328,17 +326,15 @@ namespace Steps.NET
                 docPar.regime = 0;
                 docPar.type = (short) DocType.lt_DocFragment;
                 doc.ksCreateDocument(docPar);
-                //создание фрагмента
                 ksRectParam par = (ksRectParam) kompas.GetParamStruct((short) StructType2DEnum.ko_RectParam);
-                // параметры прямоугольника
-                ksDynamicArray arr = (ksDynamicArray) kompas.GetDynamicArray(ldefin2d.RECT_ARR); // создать массив
+                ksDynamicArray arr = (ksDynamicArray) kompas.GetDynamicArray(ldefin2d.RECT_ARR); 
                 ksMathPointParam pBot =
                     (ksMathPointParam) kompas.GetParamStruct((short) StructType2DEnum.ko_MathPointParam);
                 ksMathPointParam pTop =
                     (ksMathPointParam) kompas.GetParamStruct((short) StructType2DEnum.ko_MathPointParam);
                 if (arr != null && par != null && pBot != null && pTop != null)
                 {
-                    Zagotovka(par1); //создание заготовки
+                    Zagotovka(par1);
                     model1.x = 265; 
                     model1.y = 140;
                     model1.height = (par1.height / 2 - 180);
@@ -1666,7 +1662,49 @@ namespace Steps.NET
 
         public static void Econom28()
         {
-        }
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    doc.ksLineSeg(265, 140, par1.width / 5 + 265, 140, 1);
+                    doc.ksLineSeg(265, 140, 265, par1.height - 140, 1);
+                    doc.ksLineSeg(265, par1.height - 140, par1.width / 5 + 265, par1.height - 140, 1);
+                    doc.ksLineSeg(par1.width / 5 + 240 + 265, 140, par1.width - 140, 140, 1);
+                    doc.ksLineSeg(par1.width - 140, 140, par1.width - 140, par1.height - 140, 1);
+                    doc.ksLineSeg(par1.width / 5 + 240 + 265, par1.height - 140, par1.width - 140, par1.height - 140,1);
+                    doc.ksArcBy3Points(par1.width / 5 + 265, 140, par1.width / 5 + 265 + 120 - 70 - (par1.width / 50) * 3, par1.height / 2,
+                        par1.width / 5 + 265, par1.height - 140, 1);
+                    doc.ksArcBy3Points(par1.width / 5 + 240 + 265, 140, par1.width / 5 + 265 + 120 + 70 + (par1.width / 50) * 3,
+                        par1.height / 2, par1.width / 5 + 240 + 265, par1.height - 140, 1);
+                    ksEllipseParam Epar =
+                        (ksEllipseParam) kompas.GetParamStruct((short) StructType2DEnum.ko_EllipseParam);      
+                        Epar.xc = par1.width / 5 + 265 + 120;//координаты центра
+                        Epar.yc = par1.height/2;
+                        Epar.A = (par1.width / 50) * 3;//длина эллипса по Х
+                        Epar.B = par1.height / 2 - 140;// длина эллипса по Y
+                        Epar.style = 1;
+                    reference _ell1 = doc.ksEllipse(Epar);
+                    doc.ksEllipse(_ell1);
+                    //double xc, yc координаты центра эллипса
+                    //double a, b длина полуосей эллипса
+                    //double ang угол наклона оси а эллипса к оси X
+                    //style стиль линии
+                }
+            }
+        }// ksEllipce построение эллипса tutor
 
         public static void Econom29()
         {
@@ -1687,10 +1725,10 @@ namespace Steps.NET
                 doc.ksCreateDocument(docPar);
                 {
                     Zagotovka(par1);
-                    Point1.x = 265; //
-                    Point1.y = 140; //Point1 точка начала отрезка
-                    Point2.x = par1.width - 80 - 140; //
-                    Point2.y = 140; //Point2 точка конца отрезка                
+                    Point1.x = 265;
+                    Point1.y = 140;
+                    Point2.x = par1.width - 80 - 140;
+                    Point2.y = 140;                
                     doc.ksLineSeg(Point1.x, Point1.y, Point2.x, Point2.y, 1);
                     doc.ksLineSeg(Point1.x, par1.height - 140, Point2.x, par1.height - 140, 1);
                     doc.ksLineSeg(Point1.x, Point1.y, Point1.x, par1.height - 140, 1);
@@ -1720,19 +1758,16 @@ namespace Steps.NET
                 doc.ksCreateDocument(docPar);
                 {
                     Zagotovka(par1);
-                    model1.x = 265; //местоположение элемента (отступы)
+                    model1.x = 265;
                     model1.y = 140;
-                    model1.height =
-                        (par1.height -
-                         280
-                        ); //размер элемента ((высота|ширина заготовки - сумма отступов с двух сторон - сумма отступов между элементами)/ количество строк|столбцов)
-                    model1.width = ((par1.width - 405) - 480) / 5; // 
+                    model1.height =(par1.height -280);
+                    model1.width = ((par1.width - 405) - 480) / 5;
                     model1.style = 1;
                     doc.ksRectangle(model1);
-                    Point1.x = model1.width + 80 + 265; //
-                    Point1.y = 140; //Point1 точка начала отрезка
-                    Point2.x = par1.width - 80 - 140; //
-                    Point2.y = 140; //Point2 точка конца отрезка                
+                    Point1.x = model1.width + 80 + 265;
+                    Point1.y = 140;
+                    Point2.x = par1.width - 80 - 140;
+                    Point2.y = 140;               
                     doc.ksLineSeg(Point1.x, Point1.y, Point2.x, Point2.y, 1);
                     doc.ksLineSeg(Point1.x, par1.height - 140, Point2.x, par1.height - 140, 1);
                     doc.ksLineSeg(Point1.x, Point1.y, Point1.x, par1.height - 140, 1);
@@ -1934,11 +1969,87 @@ namespace Steps.NET
 
         public static void Econom42()
         {
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    doc.ksArcByPoint(265, 140, 80, 265 + 80, 140, 265, 140 + 80, 1, 1);
+                    doc.ksArcByPoint(265, par1.height - 140, 80, 265 + 80, par1.height - 140, 265,
+                        par1.height - 140 - 80, -1, 1);
+                    doc.ksArcByPoint(par1.width - 190, 140, 80, par1.width - 190 - 80, 140, par1.width - 190, 140 + 80,
+                        -1, 1);
+                    doc.ksArcByPoint(par1.width - 190, par1.height - 140, 80, par1.width - 190 - 80, par1.height - 140,
+                        par1.width - 190, par1.height - 140 - 80, 1, 1);
+                    doc.ksArcBy3Points(par1.width - 190, 140 + 80, par1.width - 140, par1.height / 2, par1.width - 190,
+                        par1.height - 140 - 80, 1);
+                    doc.ksLineSeg(265 + 80, 140, par1.width - 190 - 80, 140, 1);
+                    doc.ksLineSeg(265, 140 + 80, 265, par1.height - 140 - 80, 1);
+                    doc.ksLineSeg(265 + 80, par1.height - 140, par1.width - 190 - 80, par1.height - 140, 1);
+                }
+            }
         }
 
         public static void Econom43()
         {
-        }
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    doc.ksLineSeg(par1.width - 400, par1.height / 2 - 200, par1.width - 400, par1.height / 2 - 30, 1);
+                    doc.ksLineSeg(par1.width - 600, par1.height / 2 - 30, par1.width - 400, par1.height / 2 - 30, 1);
+                    doc.ksLineSeg(par1.width - 340, par1.height / 2 - 200, par1.width - 340, par1.height / 2 - 30, 1);
+                    doc.ksLineSeg(par1.width - 340, par1.height / 2 - 30, par1.width - 140, par1.height / 2 - 30, 1);
+                    doc.ksLineSeg(par1.width - 340, par1.height / 2 + 30, par1.width - 140, par1.height / 2 + 30, 1);
+                    doc.ksLineSeg(par1.width - 340, par1.height / 2 + 30, par1.width - 340, par1.height / 2 + 200, 1);
+                    doc.ksLineSeg(par1.width - 400, par1.height / 2 + 30, par1.width - 400, par1.height / 2 + 200, 1);
+                    doc.ksLineSeg(par1.width - 600, par1.height / 2 + 30, par1.width - 400, par1.height / 2 + 30, 1);
+                    doc.ksArcBy3Points(par1.width - 600, par1.height / 2 - 30, par1.width - 560, par1.height / 2 - 115, par1.width - 400,
+                        par1.height / 2 - 200, 1);
+                    doc.ksArcBy3Points(par1.width - 340, par1.height / 2 - 200, par1.width - 180, par1.height / 2 - 115, par1.width - 140,
+                        par1.height / 2 - 30, 1);
+                    doc.ksArcBy3Points(par1.width - 600, par1.height / 2 + 30, par1.width - 560, par1.height / 2 + 115,
+                        par1.width - 400, par1.height / 2 + 200, 1);
+                    doc.ksArcBy3Points(par1.width - 340, par1.height / 2 + 200, par1.width - 180, par1.height / 2 + 115,
+                        par1.width - 140, par1.height / 2 + 30, 1);
+                    doc.ksLineSeg(265, par1.height / 2 - 200, 265, par1.height / 2 - 30, 1);
+                    doc.ksLineSeg(265, par1.height / 2 + 30, 265, par1.height / 2 + 200, 1);
+                    doc.ksLineSeg(265, par1.height / 2 - 30, par1.width - 680, par1.height / 2 - 30, 1);
+                    doc.ksLineSeg(265, par1.height / 2 - 200, par1.width - 589, par1.height / 2 - 200, 1);
+                    doc.ksLineSeg(265, par1.height / 2 + 30, par1.width - 680, par1.height / 2 + 30, 1);
+                    doc.ksLineSeg(265, par1.height / 2 + 200, par1.width - 589, par1.height / 2 + 200, 1);
+                    doc.ksArcBy3Points(par1.width - 680, par1.height / 2 - 30, par1.width - 652, par1.height / 2 - 115, par1.width - 589,
+                        par1.height / 2 - 200, 1);
+                    doc.ksArcBy3Points(par1.width - 680, par1.height / 2 + 30, par1.width - 652, par1.height / 2 + 115,
+                        par1.width - 589, par1.height / 2 + 200, 1);
+                }
+            }
+        }//Bug статичная(оставить)?
 
         public static void Econom44()
         {
