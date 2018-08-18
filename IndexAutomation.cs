@@ -30,6 +30,7 @@ namespace Steps.NET
     {
         public static KompasObject kompas;
         public static ksDocument2D doc;
+        public static ksMathematic2D mat;
         public static float Visota { get; set; }
         public static float Shirina { get; set; }
         
@@ -1455,7 +1456,7 @@ namespace Steps.NET
                 // ksIntersectionResult
                 // doc.ksTrimmCurve(_cur2); // усекатель
             }
-        } // с комментами по дугам и лини€м (bug с усекателем в x3 и y3)
+        } // с комментами по дугам и лини€м (bug с усекателем в x3 и y3) (см модель 20)
 
         public static void Econom18()
         {
@@ -1538,7 +1539,7 @@ namespace Steps.NET
                     /*просто убери число в кавычках*/, (par1.height / 2) + 40, 1);
                 // Ёлемент 6                
             }
-        } //bug как с 17 моделью
+        } //bug как с 17 моделью (см модель 20)
 
         public static void Econom19()
         {
@@ -1626,11 +1627,103 @@ namespace Steps.NET
                     /*просто убери число в кавычках*/, (par1.height / 2) + 40, 1);
                 // Ёлемент 6                
             } //как модель 17 только 1 элемент разделен на 3(баг с 17 моделью)
-        } // bug как с 17 моделью
+        } // bug как с 17 (см модель 20)
 
         public static void Econom20()
         {
-        }
+            doc = (ksDocument2D)kompas.Document2D();
+            mat = (ksMathematic2D) kompas.GetMathematic2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                Zagotovka(par1);
+                model1.x = 265;
+                model1.y = 140;
+                model1.height = par1.height / 10;
+                model1.width = (par1.height / 10) * 3;
+                model1.style = 1;
+                doc.ksRectangle(model1);
+                model2.x = 265;
+                model2.y = par1.height - 140 - model1.height;
+                model2.height = par1.height / 10;
+                model2.width = (par1.height / 10) * 3;
+                model2.style = 1;
+                doc.ksRectangle(model2);
+                model3.x = 265;
+                model3.y = 140 + 80 + model1.height;
+                model3.height = par1.height - 280 - 80 * 2 - model1.height * 2;
+                model3.width = (par1.width + 400) / 4;
+                model3.style = 1;
+                doc.ksRectangle(model3);
+                model4.x = 265 + model1.width + 80;
+                model4.y = 140;
+                model4.height = model1.height;
+                model4.width = (par1.width + 100) / 3;
+                model4.style = 1;
+                doc.ksRectangle(model4);
+                model5.x = 265 + model1.width + 80;
+                model5.y = par1.height - 140 - model1.height;
+                model5.height = model1.height;
+                model5.width = (par1.width + 100) / 3;
+                model5.style = 1;
+                doc.ksRectangle(model5);
+
+                doc.ksLineSeg(265 + model3.width + 80, 140 + model4.height + 80, 265 + model3.width + 80,
+                    par1.height - 140 - model5.height - 80, 1);
+                doc.ksLineSeg(265 + model3.width + 80, 140 + model4.height + 80, (par1.width * 3) / 4, 140 + model4.height + 80, 1);
+                doc.ksLineSeg(265 + model3.width + 80, par1.height - 140 - model5.height - 80, (par1.width * 3) / 4,
+                    par1.height - 140 - model5.height - 80, 1);
+
+                doc.ksLineSeg(265 + 80 * 2 + model1.width + model4.width, 140,
+                    265 + 80 * 2 + model1.width + model4.width, 140 + model1.height, 1);
+                doc.ksLineSeg(265 + 80 * 2 + model1.width + model4.width, 140, par1.width - 140, 140, 1);
+                doc.ksLineSeg(265 + 80 * 2 + model1.width + model4.width, 140 + model1.height, (par1.width * 3) / 4,
+                    140 + model1.height, 1);
+                doc.ksLineSeg(par1.width - 140, 140, par1.width - 140, par1.height / 2 - 40, 1);
+
+                doc.ksLineSeg(265 + 80 * 2 + model1.width + model4.width, par1.height - 140,
+                    265 + 80 * 2 + model1.width + model4.width, par1.height - 140 - model5.height, 1);
+                doc.ksLineSeg(265 + 80 * 2 + model1.width + model4.width, par1.height - 140, par1.width - 140,
+                    par1.height - 140, 1);
+                doc.ksLineSeg(265 + 80 * 2 + model1.width + model4.width, par1.height - 140 - model5.height,
+                    (par1.width * 3) / 4, par1.height - 140 - model5.height, 1);
+                doc.ksLineSeg(par1.width - 140, par1.height - 140, par1.width - 140, par1.height / 2 + 40, 1);
+
+                double rad1 = (par1.height - 140 * 2 - model1.height * 2 - 80 * 2) / 2;
+                doc.ksArcBy3Points((par1.width * 3) / 4, 140 + model1.height + 80,
+                    ((par1.width * 3) / 4) + rad1, par1.height / 2,
+                    (par1.width * 3) / 4, par1.height - 140 - model5.height - 80, 1);
+
+                reference curve1 = doc.ksArcBy3Points((par1.width * 3) / 4, 140 + model1.height, ((par1.width * 3) / 4) + rad1 + 80, par1.height / 2,
+                    (par1.width * 3) / 4, par1.height - 140 - model1.height, 1);
+                reference curve2 = doc.ksArcBy3Points((par1.width * 3) / 4, 140 + model1.height, ((par1.width * 3) / 4) + rad1 + 80, par1.height / 2,
+                    (par1.width * 3) / 4, par1.height - 140 - model1.height, 1);
+                //mat.ksPerpendicular()
+                //double ang1=mat.ksAngle()
+                double dist1 = mat.ksDistancePntArc(par1.width - 140, par1.height / 2 - 40, ((par1.width * 3) / 4), par1.height / 2,
+                    rad1 + 80, 270, 351.1501, 1);
+                reference line1=doc.ksLineSeg(par1.width - 140, par1.height / 2 - 40, par1.width - 140 - dist1, par1.height / 2 - 40,
+                    1);
+                doc.ksCopyObj(line1, par1.width - 140, par1.height / 2 - 40, par1.width - 140, par1.height / 2 + 40, 1,
+                    0);
+                
+                doc.ksTrimmCurve(curve1, (par1.width * 3) / 4, 140+model1.height, par1.width - dist1-140, par1.height / 2 - 40,
+                    par1.width - 140 - dist1, par1.height / 2-40, 1);
+                doc.ksTrimmCurve(curve2, (par1.width * 3) / 4, par1.height- 140 - model1.height, par1.width - dist1 - 140, par1.height / 2 + 40,
+                    par1.width - 140 - dist1, par1.height / 2 + 40, 1);
+            }
+        }//ksMathematic2D...bug сделать angle в dist1(351,1501) по формуле 
 
         public static void Econom21()
         {
@@ -2053,7 +2146,76 @@ namespace Steps.NET
 
         public static void Econom44()
         {
-        }
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                Zagotovka(par1);
+                model1.x = 265;
+                model1.y = 140;
+                model1.height = (par1.height / 2 -140-40);
+                model1.width = (par1.width -265 - 140 - 240 - ((par1.height / 2) - 140))/3;//par1.width * (16.5925 / 100)
+                model1.style = 1;
+                doc.ksRectangle(model1);
+                model2.x = 265;
+                model2.y = par1.height/2+40;
+                model2.height = (par1.height / 2 - 140 - 40);
+                model2.width = (par1.width - 265 - 140 - 240 - ((par1.height / 2) - 140)) / 3;
+                model2.style = 1;
+                doc.ksRectangle(model2);
+                model3.x = 265+80 +model1.width;
+                model3.y = 140;
+                model3.height = (par1.height / 2 - 140 - 40);
+                model3.width = (par1.width - 265 - 140 - 240 - ((par1.height / 2) - 140)) / 3;
+                model3.style = 1;
+                doc.ksRectangle(model3);
+                model4.x = 265 + 80 + model1.width;
+                model4.y = par1.height / 2 + 40;
+                model4.height = (par1.height / 2 - 140 - 40);;
+                model4.width = (par1.width - 265 - 140 - 240 - ((par1.height / 2) - 140)) / 3;
+                model4.style = 1;
+                doc.ksRectangle(model4);
+                model5.x = 265 + 80*2 + model1.width*2;
+                model5.y = 140;
+                model5.height = (par1.height / 2 - 140 - 40);
+                model5.width = (par1.width - 265 - 140 - 240 - ((par1.height / 2) - 140)) / 3;
+                model5.style = 1;
+                doc.ksRectangle(model5);
+                model6.x = 265 + 80 * 2 + model1.width * 2;
+                model6.y = par1.height / 2 + 40;
+                model6.height = (par1.height / 2 - 140 - 40);
+                model6.width = (par1.width - 265 - 140 - 240 - ((par1.height / 2) - 140)) / 3;
+                model6.style = 1;
+                doc.ksRectangle(model6);
+                doc.ksLineSeg(265 + 80 * 3 + model1.width * 3, 140, 265 + 80 * 3 + model1.width * 3, par1.height / 2 - 40, 1);
+                doc.ksLineSeg(265 + 80 * 3 + model1.width * 3, par1.height / 2 - 40,par1.width- par1.width/7.528136,par1.height/4.42028,1);      
+                doc.ksLineSeg(265 + 80 * 3 + model1.width * 3+36.57, par1.height/2-20,par1.width-140,par1.height/2-20,1);
+                doc.ksLineSeg(265 + 80 * 3 + model1.width * 3 + 36.57, par1.height / 2 - 20,par1.width- par1.width/ 8.448086, par1.height/3.939173, 1);
+                doc.ksLineSeg(265 + 80 * 3 + model1.width * 3 + 36.57, par1.height / 2 + 20,par1.width-140,par1.height/2+20,1);
+                doc.ksLineSeg(265 + 80 * 3 + model1.width * 3 + 36.57, par1.height / 2 + 20, par1.width - par1.width / 8.448086, par1.height- par1.height / 3.939173, 1);
+                doc.ksLineSeg(265 + 80 * 3 + model1.width * 3, par1.height / 2 + 40, 265 + 80 * 3 + model1.width * 3, par1.height - 140, 1);
+                doc.ksLineSeg(265 + 80 * 3 + model1.width * 3, par1.height / 2 + 40, par1.width - par1.width / 7.528136,par1.height- par1.height / 4.42028, 1);
+                doc.ksArcByPoint(265 + 80 * 3 + model1.width * 3, par1.height / 2, par1.height/2-140, 265 + 80 * 3 + model1.width * 3,
+                    par1.height / 2 - 40,par1.width- par1.width / 7.528136, par1.height / 4.42028, 1,1);
+                doc.ksArcByPoint(265 + 80 * 3 + model1.width * 3, par1.height / 2, par1.height / 2 - 140, par1.width - 140,
+                    par1.height / 2 - 20,par1.width- par1.width / 8.448086, par1.height / 3.939173, -1, 1);
+                doc.ksArcByPoint(265 + 80 * 3 + model1.width * 3, par1.height / 2, par1.height / 2 - 140, par1.width - 140,
+                    par1.height / 2 + 20, par1.width - par1.width / 8.448086, par1.height - par1.height / 3.939173, 1, 1);
+                doc.ksArcByPoint(265 + 80 * 3 + model1.width * 3, par1.height / 2, par1.height / 2 - 140, 265 + 80 * 3 + model1.width * 3,
+                    par1.height - 140, par1.width - par1.width / 7.528136, par1.height - par1.height / 4.42028, -1, 1);
+            }
+        }//Bug переделать шапку накладки(именно линии)
 
         public static void Econom45()
         {
@@ -2074,16 +2236,16 @@ namespace Steps.NET
                 doc.ksCreateDocument(docPar);
                 {
                     Zagotovka(par1);
-                    model1.x = 140; //отступы рисунка на заготовке
+                    model1.x = 140;
                     model1.y = 140;
                     model1.height = par1.height - 280;
                     model1.width = par1.width - 280;
                     model1.style = 1;
                     doc.ksRectangle(model1);
-                    Point1.x = model1.width / 5 + 140; //
-                    Point1.y = 140; //Point1 точка начала отрезка
-                    Point2.x = model1.width / 5 + 140; //
-                    Point2.y = par1.height - 140; //Point2 точка конца отрезка                
+                    Point1.x = model1.width / 5 + 140;
+                    Point1.y = 140;
+                    Point2.x = model1.width / 5 + 140;
+                    Point2.y = par1.height - 140;               
                     doc.ksLineSeg(Point1.x, Point1.y, Point2.x, Point2.y, 1);
                     doc.ksLineSeg((model1.width / 5) * 2 + 140, Point1.y, (model1.width / 5) * 2 + 140, Point2.y, 1);
                     doc.ksLineSeg((model1.width / 5) * 3 + 140, Point1.y, (model1.width / 5) * 3 + 140, Point2.y, 1);
@@ -2115,16 +2277,16 @@ namespace Steps.NET
                 doc.ksCreateDocument(docPar);
                 {
                     Zagotovka(par1);
-                    model1.x = 140; //отступы рисунка на заготовке
+                    model1.x = 140;
                     model1.y = 140;
                     model1.height = par1.height - 280;
                     model1.width = par1.width - 280;
                     model1.style = 1;
                     doc.ksRectangle(model1);
-                    Point1.x = 140; //
-                    Point1.y = model1.height + 140; //Point1 точка начала отрезка
-                    Point2.x = model1.height + 140; //
-                    Point2.y = 140; //Point2 точка конца отрезка                
+                    Point1.x = 140;
+                    Point1.y = model1.height + 140;
+                    Point2.x = model1.height + 140;
+                    Point2.y = 140;               
                     doc.ksLineSeg(Point1.x, Point1.y, Point2.x, Point2.y, 1);
                     doc.ksLineSeg(140, (model1.height / 3) * 2 + 140, (model1.height / 3) * 2 + 140, 140, 1);
                     doc.ksLineSeg(140, (model1.height / 3) + 140, (model1.height / 3) + 140, 140, 1);
@@ -2603,7 +2765,7 @@ namespace Steps.NET
                     //style-стиль линии.
                 }
             }
-        }//ѕример поворота обьекта(на примере линии)Bug отрезать окружность и добавить симметрию
+        }//ѕример поворота обьекта(на примере линии)Bug отрезать окружность и добавить симметрию (—ћќ“–» ћќƒ≈Ћ№ 20)
 
         public static void Econom63()
         {
