@@ -33,8 +33,15 @@ namespace Steps.NET
         public static ksMathematic2D mat;
         public static float Visota { get; set; }
         public static float Shirina { get; set; }
-        
 
+
+        private static void GetPoint(ksDynamicArray arr, ksMathPointParam par)//создание математических точек (POINT_ARR)
+        {
+            for (int i = 0; i < arr.ksGetArrayCount(); i++)
+            {
+                arr.ksGetArrayItem(i, par);
+            }
+        }
         public static void DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
             out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
             out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
@@ -1539,7 +1546,7 @@ namespace Steps.NET
                     /*просто убери число в кавычках*/, (par1.height / 2) + 40, 1);
                 // Элемент 6                
             }
-        } //bug как с 17 моделью (см модель 20)
+        } //bug как с 17 моделью (см модель 67)
 
         public static void Econom19()
         {
@@ -1741,7 +1748,7 @@ namespace Steps.NET
                         par1.width - 140 - dist1, par1.height / 2 + 40, 1);//две одиннаковые кривые делим на равные отрезки в разных углах
                 }
             }
-        }//ksMathematic2D...bug расчет не точный.. сделать angle в dist1(351,1501) по формуле или изменить dist1 на перпендикуляр(mat.ksPerpendicular) посмотреть в ksMathematic2D что нибудь еще?
+        }//ksMathematic2D...bug расчет не точный..Уменьшить неточность вычислив последовательнось(построив 10-20штук и замерив угол)... сделать angle в dist1(351,1501) по формуле или изменить dist1 на перпендикуляр(mat.ksPerpendicular) посмотреть в ksMathematic2D что нибудь еще?
 
         public static void Econom21()
         {
@@ -2879,7 +2886,135 @@ namespace Steps.NET
 
         public static void Econom67()
         {
-        }
+            doc = (ksDocument2D)kompas.Document2D();
+            mat = (ksMathematic2D)kompas.GetMathematic2D();
+            ksDynamicArray arr = (ksDynamicArray)kompas.GetDynamicArray(ldefin2d.POINT_ARR);
+            ksMathPointParam par = (ksMathPointParam)kompas.GetParamStruct((short)StructType2DEnum.ko_MathPointParam);
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                Zagotovka(par1);
+
+                model1.x = 265;
+                model1.y = 140;
+                model1.height = ((par1.height - 280) - 160) / 3;
+                model1.width = (par1.width - 405 - 160) / 3.5;
+                model1.style = 1;
+                doc.ksRectangle(model1);
+
+                model2.x = 265 + model1.width + 80;
+                model2.y = 140;
+                model2.height = ((par1.height - 280) - 160) / 3;
+                model2.width = (par1.width - 405 - 160) / 7;
+                model2.style = 1;
+                doc.ksRectangle(model2);
+
+                model3.x = 265;
+                model3.y = 140 + model1.height + 80;
+                model3.height = ((par1.height - 280) - 160) / 3;
+                model3.width = (par1.width - 405 - 160) / 3.5;
+                model3.style = 1;
+                doc.ksRectangle(model3);
+
+                model4.x = 265 + model1.width + 80;
+                model4.y = 140 + model1.height + 80;
+                model4.height = ((par1.height - 280) - 160) / 3;
+                model4.width = (par1.width - 405 - 160) / 7;
+                model4.style = 1;
+                doc.ksRectangle(model4);
+
+                model5.x = 265;
+                model5.y = 140 + model1.height * 2 + 80 * 2;
+                model5.height = ((par1.height - 280) - 160) / 3;
+                model5.width = (par1.width - 405 - 160) / 3.5;
+                model5.style = 1;
+                doc.ksRectangle(model5);
+
+                model6.x = 265 + model1.width + 80;
+                model6.y = 140 + model1.height * 2 + 80 * 2;
+                model6.height = ((par1.height - 280) - 160) / 3;
+                model6.width = (par1.width - 405 - 160) / 7;
+                model6.style = 1;
+                doc.ksRectangle(model6);
+
+
+                double rad1 = (par1.width - 140 - 265 - 80 * 2 - model1.width - model2.width) / 2;
+                reference auxcircle = doc.ksCircle(265 + model1.width + model2.width + 80 * 2 + rad1,
+                    par1.height / 2, rad1, 1);
+
+                mat.ksIntersectLinSCir(par1.width, 140, 265 + model1.width + model2.width + 80 * 2 + rad1,
+                   140, 265 + model1.width + model2.width + 80 * 2 + rad1, par1.height / 2, rad1, arr);//Получаем расстояние от заданой точки до точки пересечения
+                GetPoint(arr, par);//записываем координаты точки пересечения в массив
+                double px1 = par.x;
+                double py1 = par.y;
+                doc.ksLineSeg(265 + 80 * 2 + model1.width + model2.width, 140, par.x, 140, 1);//Рисуем линию от заданой точки до точки пересечения
+
+                mat.ksIntersectLinSCir(par1.width, 140 + model1.height,
+                    265 + model1.width + model2.width + 80 * 2 + rad1, 140 + model1.height,
+                    265 + model1.width + model2.width + 80 * 2 + rad1, par1.height / 2, rad1, arr);
+                GetPoint(arr, par);
+                doc.ksLineSeg(265 + 80 * 2 + model1.width + model2.width, 140 + model1.height, par.x,
+                    140 + model1.height, 1);
+                doc.ksLineSeg(265 + 80 * 2 + model1.width + model2.width, 140,
+                    265 + 80 * 2 + model1.width + model2.width, 140 + model1.height, 1);
+                double px2 = par.x;
+                double py2 = par.y;
+
+                mat.ksIntersectLinSCir(par1.width, 140 + model1.height + 80,
+                    265 + model1.width + model2.width + 80 * 2 + rad1, 140 + model1.height + 80,
+                    265 + model1.width + model2.width + 80 * 2 + rad1, par1.height / 2, rad1, arr);
+                GetPoint(arr, par);
+                doc.ksLineSeg(265 + 80 * 2 + model1.width + model2.width, 140 + model1.height + 80, par.x, par.y, 1);
+                double px3 = par.x;
+                double py3 = par.y;
+
+                mat.ksIntersectLinSCir(par1.width, 140 + model1.height*2 + 80,
+                    265 + model1.width + model2.width + 80 * 2 + rad1, 140 + model1.height*2 + 80,
+                    265 + model1.width + model2.width + 80 * 2 + rad1, par1.height / 2, rad1, arr);
+                GetPoint(arr, par);
+                doc.ksLineSeg(265 + 80 * 2 + model1.width + model2.width, 140 + model1.height*2 + 80, par.x, par.y, 1);
+                doc.ksLineSeg(265 + 80 * 2 + model1.width + model2.width, 140 + model1.height + 80,
+                    265 + 80 * 2 + model1.width + model2.width, 140 + model1.height * 2 + 80, 1);
+                double px4 = par.x;
+                double py4 = par.y;
+
+                mat.ksIntersectLinSCir(par1.width, 140 + model1.height*2 + 80*2,
+                    265 + model1.width + model2.width + 80 * 2 + rad1, 140 + model1.height*2 + 80*2,
+                    265 + model1.width + model2.width + 80 * 2 + rad1, par1.height / 2, rad1, arr);
+                GetPoint(arr, par);
+                doc.ksLineSeg(265 + 80 * 2 + model1.width + model2.width, 140 + model1.height*2 + 80*2, par.x, par.y, 1);
+                double px5 = par.x;
+                double py5 = par.y;
+
+                mat.ksIntersectLinSCir(par1.width, 140 + model1.height*3 + 80*2,
+                    265 + model1.width + model2.width + 80 * 2 + rad1, 140 + model1.height*3 + 80*2,
+                    265 + model1.width + model2.width + 80 * 2 + rad1, par1.height / 2, rad1, arr);
+                GetPoint(arr, par);
+                doc.ksLineSeg(265 + 80 * 2 + model1.width + model2.width, 140 + model1.height*3 + 80*2, par.x, par.y, 1);
+                doc.ksLineSeg(265 + 80 * 2 + model1.width + model2.width, 140 + model1.height * 2 + 80 * 2,
+                    265 + 80 * 2 + model1.width + model2.width, 140 + model1.height * 3 + 80 * 2, 1);
+                double px6 = par.x;
+                double py6 = par.y;
+                reference curve1 = doc.ksArcBy3Points(px1, py1, par1.width - 140, par1.height / 2, px6, py6, 1);
+                doc.ksDeleteObj(auxcircle);
+                doc.ksTrimmCurve(curve1, px1, py1, px2, py2, px2, py2, 0);
+                doc.ksTrimmCurve(curve1, px3, py3, px4, py4, px4, py4, 0);
+                doc.ksTrimmCurve(curve1, px5, py5, px6, py6, px6, py6, 1);
+            }
+        }//пример вычесления от точки до окружности(mat.ksIntersectLinSCir)
+
+
 
         public static void Econom68()
         {
@@ -3016,7 +3151,7 @@ namespace Steps.NET
                         1); //две одиннаковые кривые делим на равные отрезки в разных углах
                 }
             }
-        }//bug 1)все 130 отступы заменить на переменную которая будет уменьшать на ~100 на каждые 100 высоты(для примера отрисуй накладку 700-2000...2)угол расчитывается не точно от центра 2го радиуса до перпендикуляра от верха
+        }//bug 1)все 130 отступы заменить на переменную которая будет уменьшать на ~100 на каждые 100 высоты(для примера отрисуй накладку 700-2000...2)угол расчитывается не точно от центра 2го радиуса до перпендикуляра от верха(Сделать как в модели 67)
         
 
         public static void Econom70()
