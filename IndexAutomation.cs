@@ -1913,6 +1913,191 @@ namespace Steps.NET
 
         public static void Econom26()
         {
+            doc = (ksDocument2D)kompas.Document2D();
+            mat = (ksMathematic2D)kompas.GetMathematic2D();
+            ksDynamicArray arr = (ksDynamicArray)kompas.GetDynamicArray(ldefin2d.POINT_ARR);
+            ksMathPointParam par = (ksMathPointParam)kompas.GetParamStruct((short)StructType2DEnum.ko_MathPointParam);
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    reference grpRect = doc.ksNewGroup(0);
+                    model1.x = 265;
+                    model1.y = 140;
+                    model1.height = (par1.height / 2 - 180);
+                    model1.width = ((par1.width - 405) - 160) / 3;
+                    model1.style = 6;
+                    doc.ksRectangle(model1);
+                    model2.x = 265;
+                    model2.y = (par1.height / 2 + 40);
+                    model2.height = (par1.height / 2 - 180);
+                    model2.width = ((par1.width - 405) - 160) / 3;
+                    model2.style = 6;
+                    doc.ksRectangle(model2);
+                    doc.ksEndGroup();
+
+                    double rad1 = par1.height / 2 - 140;
+                    reference auxcircle = doc.ksCircle(par1.width - 140 - rad1, par1.height / 2, rad1, 1);//вспомогательная окружность для построения
+                    reference auxline1 = doc.ksLine(0, par1.height / 2 + 40, 180);//линии 40 усечения центральной части или начальные точки дуг
+                    reference auxline2 = doc.ksLine(0, par1.height / 2 - 40, 180);
+                    reference auxline3 = doc.ksLine(0, par1.height - 140 - rad1 / 2, 180);//точки соединения дуг
+                    reference auxline4 = doc.ksLine(0, 140 + rad1 / 2, 180);
+
+                    mat.ksIntersectCirLin(par1.width - 140 - rad1, par1.height / 2, rad1, 0, par1.height / 2 + 40, 180, arr);
+                    GetPoint(arr, par);
+                    double px1 = par.x;
+                    double py1 = par.y;
+
+                    mat.ksIntersectCirLin(par1.width - 140 - rad1, par1.height / 2, rad1, 0, par1.height / 2 - 40, 180, arr);
+                    GetPoint(arr, par);
+                    double px2 = par.x;
+                    double py2 = par.y;
+
+                    mat.ksIntersectCirLin(par1.width - 140 - rad1, par1.height / 2, rad1, 0, par1.height - 140 - rad1 / 2, 180, arr);
+                    GetPoint(arr, par);
+                    double px3 = par.x;
+                    double py3 = par.y;
+
+                    mat.ksIntersectCirLin(par1.width - 140 - rad1, par1.height / 2, rad1, 0, 140 + rad1 / 2, 180, arr);
+                    GetPoint(arr, par);
+                    double px4 = par.x;
+                    double py4 = par.y;
+
+                    reference auxlinexcyc1 = doc.ksLine(par1.width - 140 - rad1, par1.height / 2, 30);//получаем центры крайних дуг(точки расположены под углом 30 градсов и на расстоянии двух радиусов)
+                    reference auxlinexcyc2 = doc.ksLine(par1.width - 140 - rad1, par1.height / 2, -30);//строим 2 прямые из цетра главной окружности под углом 30 и -30 градусов и еще две из отступов 140 точки пересечения и будут центрами
+                    reference auxline5 = doc.ksLine(0, par1.height - 140, 180);//линии 140-радиус конечные точки дуг
+                    reference auxline6 = doc.ksLine(0, 140, 180);
+                    mat.ksIntersectLinLin(par1.width - 140 - rad1, par1.height / 2, 30, 0, par1.height - 140, 180, arr);
+                    GetPoint(arr, par);
+                    double pxc1 = par.x;//координаты цетра дуги верхней(левой)
+                    double pyc1 = par.y;
+
+                    mat.ksIntersectLinLin(par1.width - 140 - rad1, par1.height / 2, -30, 0, 140, 180, arr);
+                    GetPoint(arr, par);
+                    double pxc2 = par.x;//координаты цетра дуги нижней(правой)
+                    double pyc2 = par.y;
+
+                    reference auxcircle2 = doc.ksCircle(pxc1, pyc1, rad1, 1);//поиск крайней точки для верхней дуги
+                    reference auxcircle3 = doc.ksCircle(pxc2, pyc2, rad1, 1);
+                    reference auxlineS1 = doc.ksLineSeg(265 + model1.width + 80, par1.height - 140, par1.width,
+                        par1.height - 140, 6);
+                    reference auxlineS2 = doc.ksLineSeg(265 + model1.width + 80, 140, par1.width, 140, 6);
+                    mat.ksIntersectLinSCir(265 + model1.width + 80, par1.height - 140, par1.width,
+                        par1.height - 140, pxc1, pyc1, rad1, arr);
+                    GetPoint(arr, par);
+                    double px5 = par.x;
+                    double py5 = par.y;
+                    reference auxlineS3 = doc.ksLineSeg(265 + model1.width + 80, par1.height - 140, px5, py5, 6);
+
+                    mat.ksIntersectLinSCir(265 + model1.width + 80, 140, par1.width, 140, pxc2, pyc2, rad1, arr);//поиск крайней точки для нижней дуги
+                    GetPoint(arr, par);
+                    double px6 = par.x;
+                    double py6 = par.y;
+                    reference auxlineS4 = doc.ksLineSeg(265 + model1.width + 80, 140, px6, py6, 6);
+
+                    doc.ksLineSeg(265, 140, 265, 140 + model1.height, 1);
+                    doc.ksLineSeg(265, 140 + model1.height + 80, 265, par1.height - 140, 1);
+                    
+                    doc.ksArcByPoint(par1.width - 140 - rad1, par1.height / 2, rad1, px1, py1, px3, py3, 1, 1);//построение центральных дуг
+                    doc.ksArcByPoint(par1.width - 140 - rad1, par1.height / 2, rad1, px2, py2, px4, py4, -1, 1);
+                    doc.ksArcByPoint(pxc1, pyc1, rad1, px3, py3, px5, py5, -1, 1);//построение крайних дуг
+                    doc.ksArcByPoint(pxc2, pyc2, rad1, px4, py4, px6, py6, 1, 1);
+                    
+                    //строим нижню часть накладки
+                    reference auxcurve2 = doc.ksArcByPoint(240 + rad1, par1.height / 2, rad1, 240 + rad1, 140,
+                        240 + rad1, par1.height - 140, 1, 6);
+                    mat.ksIntersectArcLin(240 + rad1, par1.height / 2, rad1, 270, 90, 1, 0, par1.height / 2 + 40, 180,arr);
+                    GetPoint(arr,par);
+                    double px7 = par.x;//40е от центра точки пересечения
+                    double py7 = par.y;
+                    mat.ksIntersectArcLin(240 + rad1, par1.height / 2, rad1, 270, 90, 1, 0, par1.height / 2 - 40, 180, arr);
+                    GetPoint(arr, par);
+                    double px8 = par.x;
+                    double py8 = par.y;
+                    doc.ksLineSeg(px7, py7, px1, py1, 1);
+                    doc.ksLineSeg(px8, py8, px2, py2, 1);
+                    mat.ksIntersectArcLin(240 + rad1, par1.height / 2, rad1, 270, 90, 1, 0,
+                        par1.height - 140 - rad1 / 2, 180, arr);
+                    GetPoint(arr,par);
+                    double px9 = par.x;//точки соединения дуг
+                    double py9 = par.y;
+                    mat.ksIntersectArcLin(240 + rad1, par1.height / 2, rad1, 270, 90, 1, 0,
+                        140 + rad1 / 2, 180, arr);
+                    GetPoint(arr, par);
+                    double px10 = par.x;
+                    double py10 = par.y;
+                    reference auxlinexcyc3 = doc.ksLine(240 + rad1, par1.height/2, 30);
+                    reference auxlinexcyc4 = doc.ksLine(240 + rad1, par1.height/2, -30);
+                    mat.ksIntersectLinLin(0, par1.height - 140, 180, 240 + rad1, par1.height/2, 30, arr);
+                    GetPoint(arr,par);
+                    double pxc3 = par.x;
+                    double pyc3 = par.y;
+                    mat.ksIntersectLinLin(0, 140, 180, 240 + rad1, par1.height/2, -30, arr);
+                    GetPoint(arr, par);
+                    double pxc4 = par.x;
+                    double pyc4 = par.y;
+                    reference auxcircle4 = doc.ksCircle(pxc3, pyc3, rad1, 6);
+                    reference auxcircle5 = doc.ksCircle(pxc4, pyc4, rad1, 6);
+                    mat.ksIntersectCirLin(pxc3, pyc3, rad1, 0, par1.height - 140, 180, arr);
+                    GetPoint(arr,par);
+                    double px11 = par.x;//крайние точки
+                    double py11 = par.y;
+                    mat.ksIntersectCirLin(pxc4, pyc4, rad1, 0, 140, 180, arr);
+                    GetPoint(arr, par);
+                    double px12 = par.x;
+                    double py12 = par.y;
+                    doc.ksLineSeg(px11 - rad1 * 2, py11, px5, py5, 1);
+                    doc.ksLineSeg(px12 - rad1 * 2, py12, px6, py6, 1);
+
+                    reference grpCurve = doc.ksNewGroup(0);
+                    doc.ksArcByPoint(240 + rad1, par1.height / 2, rad1, px7, py7, px9, py9, 1, 1);
+                    doc.ksArcByPoint(240 + rad1, par1.height / 2, rad1, px8, py8, px10, py10, -1, 1);
+                    doc.ksArcByPoint(pxc3, pyc3,rad1, px9, py9, px11 - rad1 * 2, py11, -1,1);
+                    doc.ksArcByPoint(pxc4, pyc4, rad1, px10, py10, px12 - rad1 * 2, py12, 1, 1);
+                    doc.ksEndGroup();
+                    doc.ksCopyObj(grpCurve, px12 - rad1 * 2, py12, px12 - rad1 * 2 - 80, py12, 1, 0);
+                    doc.ksLineSeg(265, 140, px12 - rad1 * 2 - 80, py12, 1);
+                    doc.ksLineSeg(265, par1.height-140, px11 - rad1 * 2 - 80, py11, 1);
+                    doc.ksLineSeg(265, 140 + model1.height, px8 - 80, py8, 1);
+                    doc.ksLineSeg(265, py7, px7 - 80, py7, 1);
+
+                    doc.ksDeleteObj(auxline1);//удаляем вспомогательные линии
+                    doc.ksDeleteObj(auxline2);
+                    doc.ksDeleteObj(auxline3);
+                    doc.ksDeleteObj(auxline4);
+                    doc.ksDeleteObj(auxline5);
+                    doc.ksDeleteObj(auxline6);
+                    doc.ksDeleteObj(auxlinexcyc1);
+                    doc.ksDeleteObj(auxlinexcyc2);
+                    doc.ksDeleteObj(auxcircle);
+                    doc.ksDeleteObj(auxcircle2);
+                    doc.ksDeleteObj(auxcircle3);
+                    doc.ksDeleteObj(auxlineS1);
+                    doc.ksDeleteObj(auxlineS2);
+                    doc.ksDeleteObj(grpRect);
+                    doc.ksDeleteObj(auxlineS3);
+                    doc.ksDeleteObj(auxlineS4);
+                    doc.ksDeleteObj(auxcurve2);
+                    doc.ksDeleteObj(auxlinexcyc3);
+                    doc.ksDeleteObj(auxlinexcyc4);
+                    doc.ksDeleteObj(auxcircle4);
+                    doc.ksDeleteObj(auxcircle5);
+                    
+                    //За основу взята модель 21
+                }
+            }
         }
 
         public static void Econom27()
