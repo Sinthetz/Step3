@@ -3129,18 +3129,20 @@ namespace Steps.NET
                 doc.ksCreateDocument(docPar);
                 {
                     Zagotovka(par1);
-                    doc.ksArcByPoint(265, 140, 80, 265 + 80, 140, 265, 140 + 80, 1, 1);
-                    doc.ksArcByPoint(265, par1.height - 140, 80, 265 + 80, par1.height - 140, 265,
-                        par1.height - 140 - 80, -1, 1);
-                    doc.ksArcByPoint(par1.width - 190, 140, 80, par1.width - 190 - 80, 140, par1.width - 190, 140 + 80,
-                        -1, 1);
-                    doc.ksArcByPoint(par1.width - 190, par1.height - 140, 80, par1.width - 190 - 80, par1.height - 140,
-                        par1.width - 190, par1.height - 140 - 80, 1, 1);
-                    doc.ksArcBy3Points(par1.width - 190, 140 + 80, par1.width - 140, par1.height / 2, par1.width - 190,
-                        par1.height - 140 - 80, 1);
-                    doc.ksLineSeg(265 + 80, 140, par1.width - 190 - 80, 140, 1);
-                    doc.ksLineSeg(265, 140 + 80, 265, par1.height - 140 - 80, 1);
-                    doc.ksLineSeg(265 + 80, par1.height - 140, par1.width - 190 - 80, par1.height - 140, 1);
+                    double rad1 = par1.height / 10;
+                    doc.ksArcByPoint(par1.width - (par1.width - 100) / 10, par1.height - 140, rad1, par1.width - (par1.width - 100) / 10,
+                        par1.height - 140 - rad1, par1.width - (par1.width - 100) / 10 - rad1, par1.height - 140, -1, 1);
+                    doc.ksArcByPoint(par1.width - (par1.width - 100) / 10, 140, rad1, par1.width - (par1.width - 100) / 10, 140 + rad1, par1.width - (par1.width - 100) / 10 - rad1,
+                        140, 1, 1);
+                    doc.ksArcBy3Points(par1.width - (par1.width - 100) / 10, 140 + rad1, par1.width - 140, par1.height / 2,
+                        par1.width - (par1.width - 100) / 10, par1.height - 140 - rad1, 1);
+                    doc.ksArcByPoint(265, 140, rad1, 265 + rad1, 140, 265, 140 + rad1, 1, 1);
+                    doc.ksArcByPoint(265, par1.height - 140, rad1, 265 + rad1, par1.height - 140, 265,
+                        par1.height - 140 - rad1, -1, 1);
+                    doc.ksLineSeg(265, 140 + rad1, 265, par1.height - 140 - rad1, 1);
+                    doc.ksLineSeg(265 + rad1, 140, par1.width - (par1.width - 100) / 10 - rad1, 140, 1);
+                    doc.ksLineSeg(265 + rad1, par1.height - 140, par1.width - (par1.width - 100) / 10 - rad1,
+                        par1.height - 140, 1);
                 }
             }
         }
