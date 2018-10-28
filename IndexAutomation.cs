@@ -2983,6 +2983,54 @@ namespace Steps.NET
 
         public static void Econom34()
         {
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    //верхн€€ часть
+                    double rad1 = par1.height / 10;
+                    doc.ksArcByPoint(par1.width - (par1.width-100)/10, par1.height - 140, rad1, par1.width - (par1.width-100)/10,
+                        par1.height - 140 - rad1, par1.width - (par1.width-100)/10 - rad1, par1.height - 140, -1, 1);
+                    doc.ksArcByPoint(par1.width - (par1.width-100)/10, 140, rad1, par1.width - (par1.width-100)/10, 140 + rad1, par1.width - (par1.width-100)/10 - rad1,
+                        140, 1, 1);
+                    doc.ksArcBy3Points(par1.width - (par1.width-100)/10, 140 + rad1, par1.width - 140, par1.height / 2,
+                        par1.width - (par1.width-100)/10, par1.height - 140 - rad1, 1);
+                    doc.ksArcByPoint(par1.width / 2.5 + 80, 140, rad1, par1.width / 2.5 + 80 + rad1, 140,
+                        par1.width / 2.5 + 80, 140 + rad1, 1, 1);
+                    doc.ksArcByPoint(par1.width / 2.5 + 80, par1.height - 140, rad1, par1.width / 2.5 + 80 + rad1,
+                        par1.height - 140, par1.width / 2.5 + 80, par1.height - 140 - rad1, -1, 1);
+                    doc.ksArcBy3Points(par1.width / 2.5 + 80, 140 + rad1,
+                        par1.width / 2.5 + (80 - ((par1.width - 100) / 10 - 140)), par1.height / 2,
+                        par1.width / 2.5 + 80, par1.height - 140 - rad1, 1);
+                    doc.ksLineSeg(par1.width / 2.5 + 80 + rad1, 140, par1.width - (par1.width-100)/10 - rad1, 140, 1);
+                    doc.ksLineSeg(par1.width / 2.5 + 80 + rad1, par1.height - 140, par1.width - (par1.width-100)/10 - rad1,
+                        par1.height - 140, 1);
+
+                    //нижн€€ часть
+                    doc.ksArcByPoint(par1.width / 2.5, 140, rad1, par1.width / 2.5 - rad1, 140, par1.width / 2.5,
+                        140 + rad1, -1, 1);
+                    doc.ksArcByPoint(par1.width / 2.5, par1.height - 140, rad1, par1.width / 2.5 - rad1,
+                        par1.height - 140, par1.width / 2.5, par1.height - 140 - rad1, 1, 1);
+                    doc.ksArcBy3Points(par1.width / 2.5, 140 + rad1, par1.width / 2.5 - ((par1.width - 100) / 10 - 140),
+                        par1.height / 2, par1.width / 2.5, par1.height - 140 - rad1, 1);
+                    doc.ksLineSeg(265, 140, par1.width / 2.5 - rad1, 140, 1);
+                    doc.ksLineSeg(265, 140, 265, par1.height - 140, 1);
+                    doc.ksLineSeg(265, par1.height - 140, par1.width / 2.5 - rad1, par1.height - 140, 1);
+                }
+            }
         }
 
         public static void Econom35()
@@ -2999,6 +3047,55 @@ namespace Steps.NET
 
         public static void Econom38()
         {
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    double rad1 = par1.height / 10;
+                    doc.ksArcByPoint(par1.width - (par1.width - 100) / 10, par1.height - 140, rad1, par1.width - (par1.width - 100) / 10,
+                        par1.height - 140 - rad1, par1.width - (par1.width - 100) / 10 - rad1, par1.height - 140, -1, 1);
+                    doc.ksArcByPoint(par1.width - (par1.width - 100) / 10, 140, rad1, par1.width - (par1.width - 100) / 10, 140 + rad1, par1.width - (par1.width - 100) / 10 - rad1,
+                        140, 1, 1);
+                    doc.ksArcBy3Points(par1.width - (par1.width - 100) / 10, 140 + rad1, par1.width - 140, par1.height / 2,
+                        par1.width - (par1.width - 100) / 10, par1.height - 140 - rad1, 1);
+                    doc.ksArcByPoint(par1.width / 2.5 + 80, 140, rad1, par1.width / 2.5 + 80 + rad1, 140,
+                        par1.width / 2.5 + 80, 140 + rad1, 1, 1);
+                    doc.ksArcByPoint(par1.width / 2.5 + 80, par1.height - 140, rad1, par1.width / 2.5 + 80 + rad1,
+                        par1.height - 140, par1.width / 2.5 + 80, par1.height - 140 - rad1, -1, 1);
+                    doc.ksArcBy3Points(par1.width / 2.5 + 80, 140 + rad1,
+                        par1.width / 2.5 + (80 - ((par1.width - 100) / 10 - 140)), par1.height / 2,
+                        par1.width / 2.5 + 80, par1.height - 140 - rad1, 1);
+                    doc.ksLineSeg(par1.width / 2.5 + 80 + rad1, 140, par1.width - (par1.width - 100) / 10 - rad1, 140, 1);
+                    doc.ksLineSeg(par1.width / 2.5 + 80 + rad1, par1.height - 140, par1.width - (par1.width - 100) / 10 - rad1,
+                        par1.height - 140, 1);
+
+                    doc.ksArcByPoint(par1.width / 2.5, 140, rad1, par1.width / 2.5 - rad1, 140, par1.width / 2.5,
+                        140 + rad1, -1, 1);
+                    doc.ksArcByPoint(par1.width / 2.5, par1.height - 140, rad1, par1.width / 2.5 - rad1,
+                        par1.height - 140, par1.width / 2.5, par1.height - 140 - rad1, 1, 1);
+                    doc.ksArcBy3Points(par1.width / 2.5, 140 + rad1, par1.width / 2.5 - ((par1.width - 100) / 10 - 140),
+                        par1.height / 2, par1.width / 2.5, par1.height - 140 - rad1, 1);
+                    doc.ksArcByPoint(265, 140, rad1, 265 + rad1, 140, 265, 140 + rad1, 1, 1);
+                    doc.ksArcByPoint(265, par1.height - 140, rad1, 265 + rad1, par1.height - 140, 265,
+                        par1.height - 140 - rad1, -1, 1);
+                    doc.ksLineSeg(265, 140 + rad1, 265, par1.height - 140 - rad1, 1);
+                    doc.ksLineSeg(265 + rad1, 140, par1.width / 2.5 - rad1, 140, 1);
+                    doc.ksLineSeg(265 + rad1, par1.height - 140, par1.width / 2.5 - rad1, par1.height - 140, 1);
+                }
+            }
         }
 
         public static void Econom39()
@@ -3209,6 +3306,74 @@ namespace Steps.NET
 
         public static void Econom46()
         {
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    double rad1 = par1.height / 10;
+                    doc.ksArcByPoint(par1.width - (par1.width - 100) / 10, par1.height - 140, rad1, par1.width - (par1.width - 100) / 10,
+                        par1.height - 140 - rad1, par1.width - (par1.width - 100) / 10 - rad1, par1.height - 140, -1, 1);
+                    doc.ksArcByPoint(par1.width - (par1.width - 100) / 10, 140, rad1, par1.width - (par1.width - 100) / 10, 140 + rad1, par1.width - (par1.width - 100) / 10 - rad1,
+                        140, 1, 1);
+                    doc.ksArcBy3Points(par1.width - (par1.width - 100) / 10, 140 + rad1, par1.width - 140, par1.height / 2,
+                        par1.width - (par1.width - 100) / 10, par1.height - 140 - rad1, 1);
+                    doc.ksArcByPoint(par1.width / 2.5 + 80, 140, rad1, par1.width / 2.5 + 80 + rad1, 140,
+                        par1.width / 2.5 + 80, 140 + rad1, 1, 1);
+                    doc.ksArcByPoint(par1.width / 2.5 + 80, par1.height - 140, rad1, par1.width / 2.5 + 80 + rad1,
+                        par1.height - 140, par1.width / 2.5 + 80, par1.height - 140 - rad1, -1, 1);
+                    doc.ksArcBy3Points(par1.width / 2.5 + 80, 140 + rad1,
+                        par1.width / 2.5 + (80 - ((par1.width - 100) / 10 - 140)), par1.height / 2,
+                        par1.width / 2.5 + 80, par1.height - 140 - rad1, 1);
+                    doc.ksLineSeg(par1.width / 2.5 + 80 + rad1, 140, par1.width - (par1.width - 100) / 10 - rad1, 140, 1);
+                    doc.ksLineSeg(par1.width / 2.5 + 80 + rad1, par1.height - 140, par1.width - (par1.width - 100) / 10 - rad1,
+                        par1.height - 140, 1);
+                    ksEllipseParam Epar =
+                        (ksEllipseParam)kompas.GetParamStruct((short)StructType2DEnum.ko_EllipseParam);
+                    Epar.xc = par1.width / 2.5 +
+                              ((par1.width - par1.width / 2.5 - rad1 * 2 - 80 - (par1.width - 100) / 10) / 2)+80+rad1; //координаты центра
+                    Epar.yc = par1.height / 2;
+                    Epar.A = (par1.width-par1.width/2.5-140- (80 - ((par1.width - 100) / 10 - 140)))/2-100;//длина эллипса по ’
+                    Epar.B = par1.height / 2 - 140 - 100;// длина эллипса по Y
+                    Epar.style = 1;
+                    reference _ell1 = doc.ksEllipse(Epar);
+                    doc.ksEllipse(_ell1);
+                    //double xc, yc координаты центра эллипса
+                    //double a, b длина полуосей эллипса
+                    //double ang угол наклона оси а эллипса к оси X
+                    //style стиль линии
+
+                    doc.ksArcByPoint(par1.width / 2.5, 140, rad1, par1.width / 2.5 - rad1, 140, par1.width / 2.5,
+                        140 + rad1, -1, 1);
+                    doc.ksArcByPoint(par1.width / 2.5, par1.height - 140, rad1, par1.width / 2.5 - rad1,
+                        par1.height - 140, par1.width / 2.5, par1.height - 140 - rad1, 1, 1);
+                    doc.ksArcBy3Points(par1.width / 2.5, 140 + rad1, par1.width / 2.5 - ((par1.width - 100) / 10 - 140),
+                        par1.height / 2, par1.width / 2.5, par1.height - 140 - rad1, 1);
+                    doc.ksLineSeg(265, 140, par1.width / 2.5 - rad1, 140, 1);
+                    doc.ksLineSeg(265, 140, 265, par1.height - 140, 1);
+                    doc.ksLineSeg(265, par1.height - 140, par1.width / 2.5 - rad1, par1.height - 140, 1);
+
+                    doc.ksLineSeg(265 + 100, 140 + 100, par1.width / 2.5 - rad1-(100-rad1), 140 + 100, 1);
+                    doc.ksLineSeg(265 + 100, par1.height - 140 - 100, par1.width / 2.5 - rad1 - (100 - rad1), par1.height - 140 - 100, 1);
+                    doc.ksLineSeg(265 + 100, 140 + 100, 265 + 100, par1.height - 140 - 100, 1);
+                    doc.ksArcBy3Points(par1.width / 2.5 - rad1- (100 - rad1), 140 + 100,
+                        par1.width / 2.5 - ((par1.width - 100) / 10 - 140) - rad1 - (100 - rad1), par1.height / 2,
+                        par1.width / 2.5 - rad1 - (100 - rad1), par1.height - 140 - 100, 1);
+
+                }
+            }
         }
 
         public static void Econom47()
