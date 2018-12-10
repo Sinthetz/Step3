@@ -3020,6 +3020,7 @@ namespace Steps.NET
                         par1.height - 140, 1);
 
                     //нижн€€ часть
+
                     doc.ksArcByPoint(par1.width / 2.5, 140, rad1, par1.width / 2.5 - rad1, 140, par1.width / 2.5,
                         140 + rad1, -1, 1);
                     doc.ksArcByPoint(par1.width / 2.5, par1.height - 140, rad1, par1.width / 2.5 - rad1,
@@ -3035,6 +3036,55 @@ namespace Steps.NET
 
         public static void Econom35()
         {
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    //верхн€€ часть верхней части накладки
+                    double rad1 = par1.height / 10;
+                    doc.ksArcByPoint(par1.width - (par1.width - 100) / 10, par1.height - 140, rad1, par1.width - (par1.width - 100) / 10,
+                        par1.height - 140 - rad1, par1.width - (par1.width - 100) / 10 - rad1, par1.height - 140, -1, 1);
+                    doc.ksArcByPoint(par1.width - (par1.width - 100) / 10, 140, rad1, par1.width - (par1.width - 100) / 10, 140 + rad1, par1.width - (par1.width - 100) / 10 - rad1,
+                        140, 1, 1);
+                    doc.ksArcBy3Points(par1.width - (par1.width - 100) / 10, 140 + rad1, par1.width - 140, par1.height / 2,
+                        par1.width - (par1.width - 100) / 10, par1.height - 140 - rad1, 1);
+                    // нижн€€ часть верхней части накладки
+                    doc.ksArcByPoint(par1.width / 2.5 + 80+ ((par1.width - 100) / 10 - 90)- (2000-par1.width)/10, 140, rad1, par1.width / 2.5 + 80 + rad1+ ((par1.width - 100) / 10 - 90) - (2000 - par1.width) / 10, 140,
+                        par1.width / 2.5 + 80+ ((par1.width - 100) / 10 - 90) - (2000 - par1.width) / 10, 140 + rad1, 1, 1);
+                    doc.ksArcByPoint(par1.width / 2.5 + 80+ ((par1.width - 100) / 10 - 90) - (2000 - par1.width) / 10, par1.height - 140, rad1, par1.width / 2.5 + 80 + rad1+ ((par1.width - 100) / 10 - 90) - (2000 - par1.width) / 10,
+                        par1.height - 140, par1.width / 2.5+ ((par1.width - 100) / 10 - 90) + 80 - (2000 - par1.width) / 10, par1.height - 140 - rad1, -1, 1);
+                    doc.ksArcBy3Points(par1.width / 2.5 + 80+ ((par1.width - 100) / 10 - 90) - (2000 - par1.width) / 10, 140 + rad1,
+                        par1.width / 2.5 + ((par1.width - 100) / 10 - 90) - (2000 - par1.width) / 10 + (80 - ((par1.width - 100) / 10 - 140)), par1.height / 2,
+                        par1.width / 2.5 + 80+ ((par1.width - 100) / 10 - 90) - (2000 - par1.width) / 10, par1.height - 140 - rad1, 1);
+                    doc.ksLineSeg(par1.width / 2.5 + 80 + rad1 + ((par1.width - 100) / 10 - 90) - (2000 - par1.width) / 10, 140, par1.width - (par1.width - 100) / 10 - rad1, 140, 1);
+                    doc.ksLineSeg(par1.width / 2.5 + 80 + rad1 + ((par1.width - 100) / 10 - 90) - (2000 - par1.width) / 10, par1.height - 140, par1.width - (par1.width - 100) / 10 - rad1,
+                        par1.height - 140, 1);
+
+                    //полна€ нижн€€ часть накладки
+                    doc.ksArcByPoint(par1.width / 2.5, 140, rad1, par1.width / 2.5 - rad1, 140, par1.width / 2.5,
+                        140 + rad1, -1, 1);
+                    doc.ksArcByPoint(par1.width / 2.5, par1.height - 140, rad1, par1.width / 2.5 - rad1,
+                        par1.height - 140, par1.width / 2.5, par1.height - 140 - rad1, 1, 1);
+                    doc.ksArcBy3Points(par1.width / 2.5, 140 + rad1, par1.width / 2.5 + ((par1.width - 100) / 10 - 140),
+                        par1.height / 2, par1.width / 2.5, par1.height - 140 - rad1, 1);
+                    doc.ksLineSeg(265, 140, par1.width / 2.5 - rad1, 140, 1);
+                    doc.ksLineSeg(265, 140, 265, par1.height - 140, 1);
+                    doc.ksLineSeg(265, par1.height - 140, par1.width / 2.5 - rad1, par1.height - 140, 1);
+                }
+            }
         }
 
         public static void Econom36()
