@@ -5323,9 +5323,62 @@ namespace Steps.NET
 
         public static void ArcaDv()
         {
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    double rad1 = par1.height / 2 - IndentY;
+                    doc.ksArcByPoint(par1.width - IndentX - rad1, par1.height / 2, rad1, par1.width - IndentX - rad1,
+                        IndentY, par1.width - IndentX - rad1, par1.height - IndentY, 1, 1);
+                    doc.ksArcByPoint(IndentX + rad1, par1.height / 2, rad1, IndentX + rad1, IndentY, IndentX + rad1,
+                        par1.height - IndentY, -1, 1);
+                    doc.ksLineSeg(IndentX + rad1, IndentY, par1.width - IndentX - rad1, IndentY, 1);
+                    doc.ksLineSeg(IndentX + rad1, par1.height - IndentY, par1.width - IndentX - rad1,
+                        par1.height - IndentY, 1);
+                }
+            }
         }
         public static void ArcaOd()
         {
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    double rad1 = par1.height / 2 - IndentY;
+                    doc.ksArcByPoint(par1.width - IndentX - rad1, par1.height / 2, rad1, par1.width - IndentX - rad1,
+                        IndentY, par1.width - IndentX - rad1, par1.height - IndentY, 1, 1);
+                    doc.ksLineSeg(IndentX, IndentY, IndentX, par1.height - IndentY, 1);
+                    doc.ksLineSeg(IndentX, IndentY, par1.width - IndentX - rad1, IndentY, 1);
+                    doc.ksLineSeg(IndentX, par1.height - IndentY, par1.width - IndentX - rad1, par1.height - IndentY,
+                        1);
+                }
+            }
         }
         public static void Kvadrat()
         {
@@ -5358,9 +5411,74 @@ namespace Steps.NET
         }
         public static void Vosmiugolnik()
         {
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    doc.ksLineSeg(IndentX, IndentY + 42.43, IndentX + 42.43, IndentY, 1);
+                    doc.ksLineSeg(IndentX, IndentY + 42.43, IndentX, par1.height - IndentY - 42.43, 1);
+                    doc.ksLineSeg(IndentX, par1.height - IndentY - 42.43, IndentX + 42.43, par1.height - IndentY, 1);
+                    doc.ksLineSeg(IndentX + 42.43, par1.height - IndentY, par1.width - IndentX - 42.43,
+                        par1.height - IndentY, 1);
+                    doc.ksLineSeg(par1.width - IndentX - 42.43, par1.height - IndentY, par1.width - IndentX,
+                        par1.height - IndentY - 42.43, 1);
+                    doc.ksLineSeg(par1.width - IndentX, par1.height - IndentY - 42.43, par1.width - IndentX,
+                        IndentY + 42.43, 1);
+                    doc.ksLineSeg(par1.width - IndentX, IndentY + 42.43, par1.width - IndentX - 42.43, IndentY, 1);
+                    doc.ksLineSeg(par1.width - IndentX - 42.43, IndentY, IndentX + 42.43, IndentY, 1);
+                    //¬се фаски сделаны под 45 градусов длиной 60мм в дальнейшем,если понадобитс€, переделать под настраиваемую пользователем
+                }
+            }
         }
         public static void Tango()
         {
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    double rad1 = (par1.height / 2 - IndentY) - (par1.height / 2 - IndentY) * 0.57;
+                    doc.ksArcByPoint(IndentX, IndentY, rad1, IndentX, IndentY + rad1, IndentX + rad1, IndentY, -1, 1);
+                    doc.ksLineSeg(IndentX, IndentY + rad1, IndentX, par1.height - IndentY - rad1, 1);
+                    doc.ksArcByPoint(IndentX, par1.height - IndentY, rad1, IndentX + rad1, par1.height - IndentY,
+                        IndentX, par1.height - IndentY - rad1, -1, 1);
+                    doc.ksLineSeg(IndentX + rad1, par1.height - IndentY, par1.width - IndentX - rad1,
+                        par1.height - IndentY, 1);
+                    doc.ksArcByPoint(par1.width - IndentX, par1.height - IndentY, rad1, par1.width - IndentX - rad1,
+                        par1.height - IndentY, par1.width - IndentX, par1.height - IndentY - rad1, 1, 1);
+                    doc.ksLineSeg(par1.width - IndentX, par1.height - IndentY - rad1, par1.width - IndentX,
+                        IndentY + rad1, 1);
+                    doc.ksArcByPoint(par1.width - IndentX, IndentY, rad1, par1.width - IndentX, IndentY + rad1,
+                        par1.width - IndentX - rad1, IndentY, 1, 1);
+                    doc.ksLineSeg(par1.width - IndentX - rad1, IndentY, IndentX + rad1, IndentY, 1);
+                }
+            }
+            //радиус измен€етс€, изменить если надо на статичный
         }
         public static void Elegant()
         {
