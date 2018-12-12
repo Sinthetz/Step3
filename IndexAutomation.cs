@@ -19,6 +19,7 @@ using Kompas6Constants;
 using static Steps.NET.Automation;
 	using Application = System.Windows.Forms.Application;
 	using reference = System.Int32;
+using static Steps.NET.Facade;
 
 
 
@@ -33,8 +34,8 @@ namespace Steps.NET
         public static ksMathematic2D mat;
         public static float Visota { get; set; }
         public static float Shirina { get; set; }
-
-
+        public static float IndentX { get; set; }
+        public static float IndentY { get; set; }
         private static void GetPoint(ksDynamicArray arr, ksMathPointParam par)//создание математических точек (POINT_ARR)
         {
             for (int i = 0; i < arr.ksGetArrayCount(); i++)
@@ -5318,6 +5319,183 @@ namespace Steps.NET
 
         #endregion
 
+        #region ----------------------Facade-----------------------
+
+        public static void ArcaDv()
+        {
+        }
+        public static void ArcaOd()
+        {
+        }
+        public static void Kvadrat()
+        {
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    //создание заготовки
+                    model1.x = IndentX; //отступы рисунка на заготовке
+                    model1.y = IndentY;
+                    model1.height = par1.height - IndentY*2;
+                    model1.width = par1.width - IndentX*2;
+                    model1.style = 1;
+                    doc.ksRectangle(model1);
+                }
+            }
+        }
+        public static void Vosmiugolnik()
+        {
+        }
+        public static void Tango()
+        {
+        }
+        public static void Elegant()
+        {
+        }
+        public static void Kapriz()
+        {
+        }
+        public static void Venecia()
+        {
+        }
+        public static void KievskayaDv()
+        {
+        }
+        public static void Kvadro()
+        {
+        }
+        public static void KlassikaDv()
+        {
+        }
+        public static void KlassikaOd()
+        {
+        }
+        public static void ZigzagLeft()
+        {
+        }
+        public static void ZigzagRight()
+        {
+        }
+        public static void Zmeika()
+        {
+        }
+        public static void DuetLeft()
+        {
+        }
+        public static void DuetRight()
+        {
+        }
+        public static void KvadratDv()
+        {
+        }
+        public static void Kletka()
+        {
+        }
+        public static void Lzheviborka()
+        {
+        }
+        public static void PolosiBokovie()
+        {
+        }
+        public static void PolosiDv()
+        {
+        }
+        public static void Riv_era()
+        {
+        }
+        public static void StrelaLeft()
+        {
+        }
+        public static void StrelaRight()
+        {
+        }
+        public static void StrelaDvLeft()
+        {
+        }
+        public static void StrelaDvRight()
+        {
+        }
+        public static void Tehno()
+        {
+        }
+        public static void TrioLeft()
+        {
+        }
+        public static void TrioRight()
+        {
+        }
+        public static void Universal()
+        {
+        }
+        public static void TehnoKrupnii()
+        {
+        }
+        public static void TehnoMelkii()
+        {
+        }
+        public static void Elegant1()
+        {
+        }
+        public static void Elegant2()
+        {
+        }
+        public static void Piramida3D()
+        {
+        }
+        public static void Style2Dmini()
+        {
+        }
+        public static void Versal()
+        {
+        }
+        public static void Scarlet()
+        {
+        }
+        public static void Reshetka()
+        {
+        }
+        public static void Grafskii()
+        {
+        }
+        public static void FigurnayaKlassika()
+        {
+        }
+        public static void Granada()
+        {
+        }
+        public static void Astoria()
+        {
+        }
+        public static void KvadratSPryamimUglom()
+        {
+        }
+        public static void KvadratnayaViborka()
+        {
+        }
+        public static void LzheviborkaKvadratnaya()
+        {
+        }
+        public static void Neapol()
+        {
+        }
+        public static void KvadratSPramimUglomSlozhnii()
+        {
+        }
+        #endregion
+
         [return: MarshalAs(UnmanagedType.BStr)]
         public string GetLibraryName()
         {
@@ -5336,12 +5514,16 @@ namespace Steps.NET
             switch (number)
             {
                 case 1:
-                    result = "Главный запуск приложения";
+                    result = "Накладки";
                     command = 210;
                     break;
                 case 2:
+                    result = "Фасады";
+                    command = 211;
+                    break;
+                case 3:
                     command = -1;
-                    itemType = 212; // "ENDMENU"
+                    itemType = 213; // "ENDMENU"
                     break;
             }
             return result; 
@@ -5364,6 +5546,9 @@ namespace Steps.NET
             {
                 case 210:
                     Instance.ShowDialog(); //главный запуск приложения(для отдельного окна со всеми настройками)
+                    break;
+                case 211:
+                    Instancef.ShowDialog(); //главный запуск приложения(для отдельного окна со всеми настройками)
                     break;
             }
         }

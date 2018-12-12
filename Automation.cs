@@ -30,8 +30,8 @@ namespace Steps.NET
         public delegate void ComboFuncDel(); //делегат для комбобокса для перечисления
         public void button1_Click(object sender, EventArgs e)
         {                 
-            Step3.Visota = Convert.ToInt32(textBox1.Text);
-            Step3.Shirina = Convert.ToInt32(textBox2.Text);
+            Step3.Visota = Convert.ToInt32(textBox2.Text);
+            Step3.Shirina = Convert.ToInt32(textBox1.Text);
             
             var cfuncdel = new ComboFuncDel[] //работа комбобокса при выборе элемента срабатывает метод
             {

@@ -126,6 +126,12 @@
     <Compile Include="Automation.Designer.cs">
       <DependentUpon>Automation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Facade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Facade.Designer.cs">
+      <DependentUpon>Facade.cs</DependentUpon>
+    </Compile>
     <Compile Include="Global.cs" />
     <Compile Include="IndexAutomation.cs" />
     <Compile Include="AssemblyInfo.cs" />
@@ -140,6 +146,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Automation.resx">
       <DependentUpon>Automation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Facade.resx">
+      <DependentUpon>Facade.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
