@@ -5482,15 +5482,152 @@ namespace Steps.NET
         }
         public static void Elegant()
         {
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    double rad1 = par1.height / 11;
+                    doc.ksArcBy3Points(IndentX + rad1, IndentY, IndentX, par1.height / 2, IndentX + rad1,
+                        par1.height - IndentY, 1);
+                    doc.ksLineSeg(IndentX + rad1, IndentY, par1.width - IndentX - rad1, IndentY, 1);
+                    doc.ksLineSeg(IndentX + rad1, par1.height - IndentY, par1.width - IndentX - rad1,
+                        par1.height - IndentY, 1);
+                    doc.ksArcBy3Points(par1.width - IndentX - rad1, par1.height - IndentY, par1.width - IndentX,
+                        par1.height / 2, par1.width - IndentX - rad1, IndentY, 1);
+                }
+            }
         }
         public static void Kapriz()
         {
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    double rad1 = par1.height * 0.15;
+                    double rad2 = par1.width * 0.019;
+                    double rad3 = par1.height * 0.06;
+                    doc.ksArcByPoint(IndentX, IndentY, rad1, IndentX + rad1, IndentY, IndentX, IndentY + rad1, 1, 1);
+                    doc.ksArcBy3Points(IndentX, IndentY + rad1, IndentX + rad2, par1.height / 2, IndentX,
+                        par1.height - IndentY - rad1, 1);
+                    doc.ksArcByPoint(IndentX, par1.height - IndentY, rad1, IndentX + rad1, par1.height - IndentY,
+                        IndentX, par1.height - IndentY - rad1, -1, 1);
+                    doc.ksArcBy3Points(IndentX + rad1, par1.height - IndentY, par1.width / 2,
+                        par1.height - IndentY - rad3, par1.width - IndentX - rad1, par1.height - IndentY, 1);
+                    doc.ksArcByPoint(par1.width - IndentX, par1.height - IndentY, rad1, par1.width - IndentX - rad1,
+                        par1.height - IndentY, par1.width - IndentX, par1.height - IndentY - rad1, 1, 1);
+                    doc.ksArcBy3Points(par1.width - IndentX, par1.height - IndentY - rad1, par1.width - IndentX - rad2,
+                        par1.height / 2, par1.width - IndentX, IndentY + rad1, 1);
+                    doc.ksArcByPoint(par1.width - IndentX, IndentY, rad1, par1.width - IndentX, IndentY + rad1,
+                        par1.width - IndentX - rad1, IndentY, 1, 1);
+                    doc.ksArcBy3Points(par1.width - IndentX - rad1, IndentY, par1.width / 2, IndentY + rad3,
+                        IndentX + rad1, IndentY, 1);
+
+                }
+            }
         }
         public static void Venecia()
         {
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    double rad1 = par1.height * 0.15;
+                    double rad2 = par1.width * 0.019;
+                    doc.ksArcByPoint(IndentX, IndentY, rad1, IndentX + rad1, IndentY, IndentX, IndentY + rad1, 1, 1);
+                    doc.ksArcBy3Points(IndentX, IndentY + rad1, IndentX + rad2, par1.height / 2, IndentX,
+                        par1.height - IndentY-rad1, 1);
+                    doc.ksArcByPoint(IndentX, par1.height - IndentY, rad1, IndentX + rad1, par1.height - IndentY,
+                        IndentX, par1.height - IndentY - rad1, -1, 1);
+                    doc.ksLineSeg(IndentX + rad1, IndentY, par1.width - IndentX - rad1, IndentY, 1);
+                    doc.ksLineSeg(IndentX + rad1, par1.height - IndentY, par1.width - IndentX - rad1,
+                        par1.height - IndentY, 1);
+                    doc.ksArcByPoint(par1.width - IndentX, par1.height - IndentY, rad1, par1.width - IndentX - rad1,
+                        par1.height - IndentY, par1.width - IndentX, par1.height - IndentY - rad1, 1, 1);
+                    doc.ksArcBy3Points(par1.width - IndentX, par1.height - IndentY - rad1, par1.width - IndentX - rad2,
+                        par1.height / 2, par1.width - IndentX, IndentY + rad1, 1);
+                    doc.ksArcByPoint(par1.width - IndentX, IndentY, rad1, par1.width - IndentX, IndentY + rad1,
+                        par1.width - IndentX - rad1, IndentY,1,1);
+                }
+            }
         }
         public static void KievskayaDv()
         {
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    int rad1 = 30;
+                    double rad2 = par1.height / 15;
+                    doc.ksArcByPoint(IndentX + rad2+15.8, IndentY+1.99, 32.16, IndentX + 47.91 + rad2, IndentY, IndentX + rad2,
+                        IndentY + rad1, 1, 1);
+                    doc.ksArcBy3Points(IndentX + rad2, IndentY + rad1, IndentX, par1.height / 2, IndentX + rad2,
+                        par1.height - IndentY - rad1, 1);
+                    doc.ksArcByPoint(IndentX + rad2+15.8, par1.height - IndentY-1.99, 32.16, IndentX + rad2 + 47.91,
+                        par1.height - IndentY, IndentX + rad2, par1.height - IndentY - rad1, -1, 1);
+                    doc.ksLineSeg(IndentX + rad2 + 47.91, par1.height - IndentY, par1.width - IndentX - rad2 - 47.91,
+                        par1.height - IndentY, 1);
+                    doc.ksArcByPoint(par1.width - IndentX - rad2-15.8, par1.height - IndentY-1.99, 32.16,
+                        par1.width - IndentX - 47.91 - rad2, par1.height - IndentY, par1.width - IndentX - rad2,
+                        par1.height - rad1 - IndentY, 1, 1);
+                    doc.ksArcBy3Points(par1.width - IndentX - rad2, par1.height - IndentY - rad1, par1.width - IndentX,
+                        par1.height / 2, par1.width - IndentX - rad2, IndentY + rad1, 1);
+                    doc.ksArcByPoint(par1.width - IndentX - rad2-15.8, IndentY+1.99, 32.16, par1.width - IndentX - rad2,
+                        IndentY + rad1, par1.width - IndentX - rad2 - 47.91, IndentY, 1, 1);
+                    doc.ksLineSeg(par1.width - IndentX - rad2 - 47.91, IndentY, IndentX + rad2 + 47.91, IndentY, 1);
+                }
+            }
         }
         public static void Kvadro()
         {
