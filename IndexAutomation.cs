@@ -6095,12 +6095,90 @@ namespace Steps.NET
         }
         public static void TrioLeft()
         {
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    reference grpLine = doc.ksNewGroup(0);
+                    doc.ksLineSeg(IndentX - 20, 0, IndentX - 20, par1.height, 1);
+                    doc.ksLineSeg(IndentX + 5, 0, IndentX + 5, par1.height, 1);
+                    doc.ksLineSeg(IndentX + 30, 0, IndentX + 30, par1.height, 1);
+                    doc.ksLineSeg(0, IndentY - 20, par1.width, IndentY - 20, 1);
+                    doc.ksLineSeg(0, IndentY + 5, par1.width, IndentY + 5, 1);
+                    doc.ksLineSeg(0, IndentY + 30, par1.width, IndentY + 30, 1);
+                    doc.ksEndGroup();
+                    doc.ksSymmetryObj(grpLine, par1.width / 2, par1.height / 2, par1.width / 2 + 1, par1.height / 2,
+                        "0");
+
+                }
+            }
         }
         public static void TrioRight()
         {
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    doc.ksLineSeg(IndentX - 20, 0, IndentX - 20, par1.height, 1);
+                    doc.ksLineSeg(IndentX + 5, 0, IndentX + 5, par1.height, 1);
+                    doc.ksLineSeg(IndentX + 30, 0, IndentX + 30, par1.height, 1);
+                    doc.ksLineSeg(0, IndentY - 20, par1.width, IndentY - 20, 1);
+                    doc.ksLineSeg(0, IndentY + 5, par1.width, IndentY + 5, 1);
+                    doc.ksLineSeg(0, IndentY + 30, par1.width, IndentY + 30, 1);
+                }
+            }
         }
         public static void Universal()
         {
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    doc.ksLineSeg(0, IndentY, par1.width - IndentX, IndentY, 1);
+                    doc.ksLineSeg(IndentX, IndentY, IndentX, par1.height, 1);
+                    doc.ksLineSeg(IndentX, par1.height - IndentY, par1.width, par1.height - IndentY, 1);
+                    doc.ksLineSeg(par1.width - IndentX, par1.height - IndentY, par1.width - IndentX, 0, 1);
+                }
+            }
         }
         public static void TehnoKrupnii()
         {
@@ -6143,12 +6221,110 @@ namespace Steps.NET
         }
         public static void KvadratSPryamimUglom()
         {
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+
+                    model1.x = IndentX;
+                    model1.y = IndentY;
+                    model1.height = par1.height - IndentY * 2;
+                    model1.width = par1.width - IndentX * 2;
+                    model1.style = 1;
+                    doc.ksRectangle(model1);
+
+                    model1.x = IndentX -18;
+                    model1.y = IndentY -18;
+                    model1.height = par1.height - IndentY * 2 + 36;
+                    model1.width = par1.width - IndentX * 2 + 36;
+                    model1.style = 7;
+                    doc.ksRectangle(model1);
+
+                }
+            }
         }
         public static void KvadratnayaViborka()
         {
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    
+                    model1.x = IndentX;
+                    model1.y = IndentY;
+                    model1.height = par1.height - IndentY * 2;
+                    model1.width = par1.width - IndentX * 2;
+                    model1.style = 7;
+                    doc.ksRectangle(model1);
+
+                    model1.x = IndentX+8;
+                    model1.y = IndentY+8;
+                    model1.height = par1.height - IndentY * 2-16;
+                    model1.width = par1.width - IndentX * 2-16;
+                    model1.style = 1;
+                    doc.ksRectangle(model1);
+
+                }
+            }
         }
         public static void LzheviborkaKvadratnaya()
         {
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    doc.ksLineSeg(0, IndentY, par1.width, IndentY, 1);
+                    doc.ksLineSeg(IndentX, IndentY, IndentX, par1.height - IndentY, 1);
+                    doc.ksLineSeg(0, par1.height - IndentY, par1.width, par1.height - IndentY, 1);
+                    doc.ksLineSeg(par1.width - IndentX, par1.height - IndentY, par1.width - IndentX, IndentY, 1);
+                    model1.x = IndentX;
+                    model1.y = IndentY;
+                    model1.height = par1.height - IndentY * 2;
+                    model1.width = par1.width - IndentX * 2;
+                    model1.style = 7;
+                    doc.ksRectangle(model1);
+
+                }
+            }
         }
         public static void Neapol()
         {
