@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
@@ -15,7 +18,7 @@ namespace Steps.NET
             InitializeComponent();
         }
 
-
+        
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -68,7 +71,9 @@ namespace Steps.NET
                 cfuncdel[comboBox1.SelectedIndex]();
             }
             Close();
+
         }
+
 
         private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
         {
