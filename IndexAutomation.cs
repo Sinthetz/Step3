@@ -5676,15 +5676,251 @@ namespace Steps.NET
         }//20 статичные края, если нужно чтобы изменялась вместе с отступами заменить на IndentX/Y-41
         public static void KlassikaDv()
         {
+            doc = (ksDocument2D)kompas.Document2D();
+            mat = (ksMathematic2D)kompas.GetMathematic2D();
+            ksDynamicArray arr = (ksDynamicArray)kompas.GetDynamicArray(ldefin2d.POINT_ARR);
+            ksMathPointParam par = (ksMathPointParam)kompas.GetParamStruct((short)StructType2DEnum.ko_MathPointParam);
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    double rad1 = par1.height / 2 - IndentY;
+                    reference auxcircle1 = doc.ksCircle(par1.width - IndentX - rad1, par1.height / 2, rad1, 6);
+                    reference auxlinexcyc1 = doc.ksLine(par1.width - IndentX - rad1, par1.height / 2, 30);
+                    reference auxlinexcyc2 = doc.ksLine(par1.width - IndentX - rad1, par1.height / 2, -30);
+                    reference auxline1 = doc.ksLine(0, par1.height - IndentY - rad1 / 2, 180);//линии 140-радиус конечные точки дуг
+                    reference auxline2 = doc.ksLine(0, IndentY + rad1 / 2, 180);
+                    reference auxline3 = doc.ksLine(0, par1.height - IndentY, 180);//крайние линии
+                    reference auxline4 = doc.ksLine(0, IndentY, 180);
+                    mat.ksIntersectCirLin(par1.width - IndentX - rad1, par1.height / 2, rad1, 0, par1.height - IndentY - rad1 / 2, 180, arr);
+                    GetPoint(arr, par);
+                    double px1 = par.x;
+                    double py1 = par.y;
+
+                    mat.ksIntersectCirLin(par1.width - IndentX - rad1, par1.height / 2, rad1, 0, IndentY + rad1 / 2, 180, arr);
+                    GetPoint(arr, par);
+                    double px2 = par.x;
+                    double py2 = par.y;
+
+                    mat.ksIntersectLinLin(par1.width - IndentX - rad1, par1.height / 2, 30, 0, par1.height - IndentY, 180, arr);
+                    GetPoint(arr, par);
+                    double pxc1 = par.x;//координаты цетра дуги верхней(левой)
+                    double pyc1 = par.y;
+
+                    mat.ksIntersectLinLin(par1.width - IndentX - rad1, par1.height / 2, -30, 0, IndentY, 180, arr);
+                    GetPoint(arr, par);
+                    double pxc2 = par.x;//координаты цетра дуги нижней(правой)
+                    double pyc2 = par.y;
+
+                    reference auxcircle2 = doc.ksCircle(pxc1, pyc1, rad1, 6);//поиск крайней точки для верхней дуги
+                    reference auxcircle3 = doc.ksCircle(pxc2, pyc2, rad1, 6);
+                    reference auxlineS1 = doc.ksLineSeg(par1.width / 2, par1.height - IndentY, par1.width,
+                        par1.height - IndentY, 6);
+                    reference auxlineS2 = doc.ksLineSeg(par1.width / 2, IndentY, par1.width, IndentY, 6);
+                    mat.ksIntersectLinSCir(par1.width / 2, par1.height - IndentY, par1.width,
+                        par1.height - IndentY, pxc1, pyc1, rad1, arr);
+                    GetPoint(arr, par);
+                    double px3 = par.x;
+                    double py3 = par.y;
+
+                    mat.ksIntersectLinSCir(par1.width / 2, IndentY, par1.width, IndentY, pxc2, pyc2, rad1, arr);//поиск крайней точки для нижней дуги
+                    GetPoint(arr, par);
+                    double px4 = par.x;
+                    double py4 = par.y;
+
+                    reference grpCurve = doc.ksNewGroup(0);
+                    doc.ksArcByPoint(par1.width - IndentX - rad1, par1.height / 2, rad1, px1, py1, px2, py2, -1, 1);
+                    doc.ksArcByPoint(pxc1, pyc1, rad1, px1, py1, px3, py3, -1, 1);
+                    doc.ksArcByPoint(pxc2, pyc2, rad1, px2, py2, px4, py4, 1, 1);
+                    doc.ksLineSeg(par1.width/2, IndentY, px4, py4, 1);
+                    doc.ksLineSeg(par1.width/2, par1.height - IndentY, px3, py3, 1);
+                    doc.ksEndGroup();
+                    doc.ksSymmetryObj(grpCurve, par1.width / 2, par1.height / 2, par1.width / 2, par1.height / 2 - 1,
+                        "1");
+
+                    doc.ksDeleteObj(auxline1);//удаляем вспомогательные линии
+                    doc.ksDeleteObj(auxline2);
+                    doc.ksDeleteObj(auxline3);
+                    doc.ksDeleteObj(auxline4);
+                    doc.ksDeleteObj(auxlinexcyc1);
+                    doc.ksDeleteObj(auxlinexcyc2);
+                    doc.ksDeleteObj(auxcircle1);
+                    doc.ksDeleteObj(auxcircle2);
+                    doc.ksDeleteObj(auxcircle3);
+                    doc.ksDeleteObj(auxlineS1);
+                    doc.ksDeleteObj(auxlineS2);
+                }
+            }
         }
         public static void KlassikaOd()
         {
+            doc = (ksDocument2D)kompas.Document2D();
+            mat = (ksMathematic2D)kompas.GetMathematic2D();
+            ksDynamicArray arr = (ksDynamicArray)kompas.GetDynamicArray(ldefin2d.POINT_ARR);
+            ksMathPointParam par = (ksMathPointParam)kompas.GetParamStruct((short)StructType2DEnum.ko_MathPointParam);
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    double rad1 = par1.height / 2 - IndentY;
+                    reference auxcircle1 = doc.ksCircle(par1.width - IndentX - rad1, par1.height / 2, rad1, 6);
+                    reference auxlinexcyc1 = doc.ksLine(par1.width - IndentX - rad1, par1.height / 2, 30);
+                    reference auxlinexcyc2 = doc.ksLine(par1.width - IndentX - rad1, par1.height / 2, -30);
+                    reference auxline1 = doc.ksLine(0, par1.height - IndentY - rad1 / 2, 180);//линии 140-радиус конечные точки дуг
+                    reference auxline2 = doc.ksLine(0, IndentY + rad1 / 2, 180);
+                    reference auxline3 = doc.ksLine(0, par1.height - IndentY, 180);//крайние линии
+                    reference auxline4 = doc.ksLine(0, IndentY, 180);
+                    mat.ksIntersectCirLin(par1.width - IndentX - rad1, par1.height / 2, rad1, 0, par1.height - IndentY - rad1 / 2, 180, arr);
+                    GetPoint(arr, par);
+                    double px1 = par.x;
+                    double py1 = par.y;
+
+                    mat.ksIntersectCirLin(par1.width - IndentX - rad1, par1.height / 2, rad1, 0, IndentY + rad1 / 2, 180, arr);
+                    GetPoint(arr, par);
+                    double px2 = par.x;
+                    double py2 = par.y;
+
+                    mat.ksIntersectLinLin(par1.width - IndentX - rad1, par1.height / 2, 30, 0, par1.height - IndentY, 180, arr);
+                    GetPoint(arr, par);
+                    double pxc1 = par.x;//координаты цетра дуги верхней(левой)
+                    double pyc1 = par.y;
+
+                    mat.ksIntersectLinLin(par1.width - IndentX - rad1, par1.height / 2, -30, 0, IndentY, 180, arr);
+                    GetPoint(arr, par);
+                    double pxc2 = par.x;//координаты цетра дуги нижней(правой)
+                    double pyc2 = par.y;
+
+                    reference auxcircle2 = doc.ksCircle(pxc1, pyc1, rad1, 6);//поиск крайней точки для верхней дуги
+                    reference auxcircle3 = doc.ksCircle(pxc2, pyc2, rad1, 6);
+                    reference auxlineS1 = doc.ksLineSeg(par1.width/2, par1.height - IndentY, par1.width,
+                        par1.height - IndentY, 6);
+                    reference auxlineS2 = doc.ksLineSeg(par1.width / 2, IndentY, par1.width, IndentY, 6);
+                    mat.ksIntersectLinSCir(par1.width / 2, par1.height - IndentY, par1.width,
+                        par1.height - IndentY, pxc1, pyc1, rad1, arr);
+                    GetPoint(arr, par);
+                    double px3 = par.x;
+                    double py3 = par.y;
+
+                    mat.ksIntersectLinSCir(par1.width / 2, IndentY, par1.width, IndentY, pxc2, pyc2, rad1, arr);//поиск крайней точки для нижней дуги
+                    GetPoint(arr, par);
+                    double px4 = par.x;
+                    double py4 = par.y;
+
+                    reference grpCurve = doc.ksNewGroup(0);
+                    doc.ksArcByPoint(par1.width - IndentX - rad1, par1.height / 2, rad1, px1, py1, px2, py2, -1, 1);
+                    doc.ksArcByPoint(pxc1, pyc1, rad1, px1, py1, px3, py3, -1, 1);
+                    doc.ksArcByPoint(pxc2, pyc2, rad1, px2, py2, px4, py4, 1, 1);
+                    doc.ksEndGroup();
+
+                    doc.ksLineSeg(IndentX, IndentY, px4, py4, 1);
+                    doc.ksLineSeg(IndentX, par1.height - IndentY, px3, py3, 1);
+                    doc.ksLineSeg(IndentX, IndentY, IndentX, par1.height - IndentY, 1);
+
+                    doc.ksDeleteObj(auxline1);//удаляем вспомогательные линии
+                    doc.ksDeleteObj(auxline2);
+                    doc.ksDeleteObj(auxline3);
+                    doc.ksDeleteObj(auxline4);
+                    doc.ksDeleteObj(auxlinexcyc1);
+                    doc.ksDeleteObj(auxlinexcyc2);
+                    doc.ksDeleteObj(auxcircle1);
+                    doc.ksDeleteObj(auxcircle2);
+                    doc.ksDeleteObj(auxcircle3);
+                    doc.ksDeleteObj(auxlineS1);
+                    doc.ksDeleteObj(auxlineS2);
+                }
+            }
         }
         public static void ZigzagLeft()
         {
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    reference grpCurve = doc.ksNewGroup(0);
+                    doc.ksLineSeg(IndentX + 35, IndentY + 50, IndentX + 35, IndentY, 1);
+                    doc.ksLineSeg(IndentX + 35, IndentY, par1.width - IndentX, IndentY, 1);
+                    doc.ksLineSeg(par1.width - IndentX, IndentY, par1.width - IndentX, par1.height - IndentY - 35, 1);
+                    doc.ksLineSeg(par1.width - IndentX, par1.height - IndentY - 35, par1.width - IndentX - 50,
+                        par1.height - IndentY - 35, 1);
+                    doc.ksLineSeg(par1.width - IndentX - 35, par1.height - IndentY - 50, par1.width - IndentX - 35,
+                        par1.height - IndentY, 1);
+                    doc.ksLineSeg(par1.width - IndentX - 35, par1.height - IndentY, IndentX, par1.height - IndentY, 1);
+                    doc.ksLineSeg(IndentX, par1.height - IndentY, IndentX, IndentY + 35, 1);
+                    doc.ksLineSeg(IndentX, IndentY + 35, IndentX + 50, IndentY + 35, 1);
+                    doc.ksEndGroup();
+                    doc.ksSymmetryObj(grpCurve, par1.width / 2, par1.height / 2, par1.width / 2, par1.height / 2 + 1,
+                        "0");
+                }
+            }
         }
         public static void ZigzagRight()
         {
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    doc.ksLineSeg(IndentX + 35, IndentY + 50, IndentX + 35, IndentY, 1);
+                    doc.ksLineSeg(IndentX + 35, IndentY, par1.width - IndentX, IndentY, 1);
+                    doc.ksLineSeg(par1.width - IndentX, IndentY, par1.width - IndentX, par1.height - IndentY - 35, 1);
+                    doc.ksLineSeg(par1.width - IndentX, par1.height - IndentY - 35, par1.width - IndentX - 50,
+                        par1.height - IndentY - 35, 1);
+                    doc.ksLineSeg(par1.width - IndentX - 35, par1.height - IndentY - 50, par1.width - IndentX - 35,
+                        par1.height - IndentY, 1);
+                    doc.ksLineSeg(par1.width - IndentX - 35, par1.height - IndentY, IndentX, par1.height - IndentY, 1);
+                    doc.ksLineSeg(IndentX, par1.height - IndentY, IndentX, IndentY + 35, 1);
+                    doc.ksLineSeg(IndentX, IndentY + 35, IndentX + 50, IndentY + 35, 1);
+                }
+            }
         }
         public static void Zmeika()
         {
@@ -6182,9 +6418,146 @@ namespace Steps.NET
         }
         public static void TehnoKrupnii()
         {
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+
+                    model1.x = IndentX-40;
+                    model1.y = IndentY-40;
+                    model1.height = par1.height - IndentY*2+80;
+                    model1.width = par1.width - IndentX*2+80;
+                    model1.style = 1;
+                    doc.ksRectangle(model1);
+
+                    model2.x = IndentX + 16-40;
+                    model2.y = IndentY + 16-40;
+                    model2.height = par1.height - IndentY * 2 - 32+80;
+                    model2.width = par1.width - IndentX * 2 - 32+80;
+                    model2.style = 1;
+                    doc.ksRectangle(model2);
+
+                    model3.x = IndentX + 32-40;
+                    model3.y = IndentY + 32-40;
+                    model3.height = par1.height - IndentY * 2 - 64+80;
+                    model3.width = par1.width - IndentX * 2 - 64+80;
+                    model3.style = 1;
+                    doc.ksRectangle(model3);
+
+                    model4.x = IndentX + 48-40;
+                    model4.y = IndentY + 48-40;
+                    model4.height = par1.height - IndentY * 2 - 96+80;
+                    model4.width = par1.width - IndentX * 2 - 96+80;
+                    model4.style = 1;
+                    doc.ksRectangle(model4);
+
+                    model5.x = IndentX + 64-40;
+                    model5.y = IndentY + 64-40;
+                    model5.height = par1.height - IndentY * 2 - 128+80;
+                    model5.width = par1.width - IndentX * 2 - 128+80;
+                    model5.style = 1;
+                    doc.ksRectangle(model5);
+
+                    model6.x = IndentX + 80-40;
+                    model6.y = IndentY + 80-40;
+                    model6.height = par1.height - IndentY * 2 - 160+80;
+                    model6.width = par1.width - IndentX * 2 - 160+80;
+                    model6.style = 1;
+                    doc.ksRectangle(model6);
+
+                }
+            }
         }
         public static void TehnoMelkii()
         {
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+
+                    model1.x = IndentX - 40;
+                    model1.y = IndentY - 40;
+                    model1.height = par1.height - IndentY * 2 + 80;
+                    model1.width = par1.width - IndentX * 2 + 80;
+                    model1.style = 1;
+                    doc.ksRectangle(model1);
+
+                    model2.x = IndentX + 12 - 40;
+                    model2.y = IndentY + 12 - 40;
+                    model2.height = par1.height - IndentY * 2 - 24 + 80;
+                    model2.width = par1.width - IndentX * 2 - 24 + 80;
+                    model2.style = 1;
+                    doc.ksRectangle(model2);
+
+                    model3.x = IndentX + 24 - 40;
+                    model3.y = IndentY + 24 - 40;
+                    model3.height = par1.height - IndentY * 2 - 48 + 80;
+                    model3.width = par1.width - IndentX * 2 - 48 + 80;
+                    model3.style = 1;
+                    doc.ksRectangle(model3);
+
+                    model4.x = IndentX + 36 - 40;
+                    model4.y = IndentY + 36 - 40;
+                    model4.height = par1.height - IndentY * 2 - 72 + 80;
+                    model4.width = par1.width - IndentX * 2 - 72 + 80;
+                    model4.style = 1;
+                    doc.ksRectangle(model4);
+
+                    model5.x = IndentX + 48 - 40;
+                    model5.y = IndentY + 48 - 40;
+                    model5.height = par1.height - IndentY * 2 - 96 + 80;
+                    model5.width = par1.width - IndentX * 2 - 96 + 80;
+                    model5.style = 1;
+                    doc.ksRectangle(model5);
+
+                    model6.x = IndentX + 60 - 40;
+                    model6.y = IndentY + 60 - 40;
+                    model6.height = par1.height - IndentY * 2 - 120 + 80;
+                    model6.width = par1.width - IndentX * 2 - 120 + 80;
+                    model6.style = 1;
+                    doc.ksRectangle(model6);
+
+                    model7.x = IndentX + 72 - 40;
+                    model7.y = IndentY + 72 - 40;
+                    model7.height = par1.height - IndentY * 2 - 144 + 80;
+                    model7.width = par1.width - IndentX * 2 - 144 + 80;
+                    model7.style = 1;
+                    doc.ksRectangle(model7);
+
+                    model8.x = IndentX + 84 - 40;
+                    model8.y = IndentY + 84 - 40;
+                    model8.height = par1.height - IndentY * 2 - 168 + 80;
+                    model8.width = par1.width - IndentX * 2 - 168 + 80;
+                    model8.style = 1;
+                    doc.ksRectangle(model8);
+                }
+            }
         }
         public static void Elegant1()
         {
