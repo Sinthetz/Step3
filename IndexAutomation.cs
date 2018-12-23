@@ -4614,7 +4614,7 @@ namespace Steps.NET
                     }
                 }
             }
-        }//Цикличная отрисовка Bug переделать алгоритм
+        }//Цикличная отрисовка Bug переделать алгоритм.
 
         public static void Econom78()
         {
@@ -6761,6 +6761,204 @@ namespace Steps.NET
                     model6.style = 7;
                     doc.ksRectangle(model6);
 
+                    model7.x = IndentX;
+                    model7.y = IndentY;
+                    model7.height = par1.height - IndentY * 2;
+                    model7.width = par1.width - IndentX * 2;
+                    model7.style = 7;
+                    doc.ksRectangle(model7);
+
+                    doc.ksBezier(0, 7);
+                    doc.ksPoint(IndentX+1.75, IndentY +0.99,7);
+                    doc.ksPoint(IndentX +1.73, IndentY +1.06, 7);
+                    doc.ksPoint(IndentX +1.36, IndentY +2.12, 7);
+                    doc.ksPoint(IndentX + 0.09, IndentY + 4.98, 7);
+                    doc.ksPoint(IndentX +0.02, IndentY +5.38, 7);
+                    doc.ksPoint(IndentX +0.06, IndentY +5.58, 7);
+                    doc.ksPoint(IndentX + 0.8, IndentY + 5.99, 7);
+                    doc.ksPoint(IndentX +1.93, IndentY +6.25, 7);
+                    doc.ksPoint(IndentX +4.92, IndentY +6.21, 7);
+                    doc.ksPoint(IndentX +6.79, IndentY +5.36, 7);
+                    doc.ksPoint(IndentX + 7.74, IndentY + 4.3, 7);
+                    doc.ksPoint(IndentX + 8.5, IndentY + 3.13, 7);
+                    doc.ksPoint(IndentX + 9.22, IndentY + 2.18, 7);
+                    doc.ksPoint(IndentX +10.92, IndentY +0.75, 7);
+                    doc.ksPoint(IndentX +14.56, IndentY +0.05, 7);
+                    doc.ksPoint(IndentX +17.01, IndentY +0.99, 7);
+                    int Elem_PletX = doc.ksEndObj();
+
+                    Point1.x = (Shirina-IndentX*2) / 7.63;
+                    for (int i = 1; i <= Point1.x; i++)
+                    {
+                        doc.ksCopyObj(Elem_PletX, IndentX + 1.75, IndentY + 0.99, IndentX + 1.75 + 7.63 * i,
+                            IndentY + 0.99, 1, 0);
+                    }
+                    //нижняя часть по Х
+                    doc.ksBezier(0, 7);
+                    doc.ksPoint(IndentX + 0.99, IndentY + 7.86, 7);
+                    doc.ksPoint(IndentX + 1.06, IndentY + 7.84, 7);
+                    doc.ksPoint(IndentX + 2.12, IndentY + 7.47, 7);
+                    doc.ksPoint(IndentX + 4.98, IndentY + 6.2, 7);
+                    doc.ksPoint(IndentX + 5.38, IndentY + 6.13, 7);
+                    doc.ksPoint(IndentX + 5.58, IndentY + 6.17, 7);
+                    doc.ksPoint(IndentX + 5.99, IndentY + 6.91, 7);
+                    doc.ksPoint(IndentX + 6.25, IndentY + 8.04, 7);
+                    doc.ksPoint(IndentX + 6.21, IndentY + 11.03, 7);
+                    doc.ksPoint(IndentX + 5.36, IndentY + 12.9, 7);
+                    doc.ksPoint(IndentX + 4.3, IndentY + 13.85, 7);
+                    doc.ksPoint(IndentX + 3.13, IndentY + 14.61, 7);
+                    doc.ksPoint(IndentX + 2.18, IndentY + 15.33, 7);
+                    doc.ksPoint(IndentX + 0.75, IndentY + 17.03, 7);
+                    doc.ksPoint(IndentX + 0.05, IndentY + 20.67, 7);
+                    doc.ksPoint(IndentX + 0.99, IndentY + 23.12, 7);
+                    int Elem_PletY = doc.ksEndObj();
+                    Point1.y = (Visota - IndentY * 2) / 7.63;
+                    for (int i = 1; i <= Point1.y; i++)
+                    {
+                        doc.ksCopyObj(Elem_PletY, IndentX + 0.99, IndentY + 7.86, IndentX + 0.99,
+                            IndentY + 7.86 + 7.63*i, 1, 0);
+                    }
+                    //Левая часть по У
+                    doc.ksDeleteObj(Elem_PletX);
+                    doc.ksDeleteObj(Elem_PletY);
+
+                    doc.ksBezier(0, 7);
+                    doc.ksPoint(IndentX + 1.75 + 7.63, IndentY + 0.99, 7);
+                    doc.ksPoint(IndentX + 6.93, IndentY + 0.05, 7);
+                    doc.ksPoint(IndentX + 3.29, IndentY + 0.75, 7);
+                    doc.ksPoint(IndentX + 1.59, IndentY + 2.18, 7);
+                    doc.ksPoint(IndentX + 0.92, IndentY + 3.06, 7);
+                    doc.ksPoint(IndentX + 0.09, IndentY + 4.98, 7);
+                    doc.ksPoint(IndentX + 0.02, IndentY + 5.38, 7);
+                    doc.ksPoint(IndentX + 0.06, IndentY + 5.58, 7);
+                    doc.ksPoint(IndentX + 0.8, IndentY + 5.99, 7);
+                    doc.ksPoint(IndentX + 1.93, IndentY + 6.25, 7);
+                    doc.ksPoint(IndentX + 4.92, IndentY + 6.21, 7);
+                    doc.ksPoint(IndentX + 6.79, IndentY + 5.36, 7);
+                    doc.ksPoint(IndentX + 7.74, IndentY + 4.3, 7);
+                    doc.ksPoint(IndentX + 8.5, IndentY + 3.13, 7);
+                    doc.ksPoint(IndentX + 9.22, IndentY + 2.18, 7);
+                    doc.ksPoint(IndentX + 10.92, IndentY + 0.75, 7);
+                    doc.ksPoint(IndentX + 14.56, IndentY + 0.05, 7);
+                    doc.ksPoint(IndentX + 17.01, IndentY + 0.99, 7);
+                    doc.ksEndObj();//Первый элемент по Х низ (изменены и добавлены первые пять элементов)
+
+                    doc.ksBezier(0, 7);
+                    doc.ksPoint(IndentX + 0.99,IndentY + 7.86 + 7.63, 7);
+                    doc.ksPoint(IndentX + 0.05, IndentY + 20.67-7.63, 7);
+                    doc.ksPoint(IndentX + 0.75, IndentY + 17.03-7.63, 7);
+                    doc.ksPoint(IndentX + 2.18, IndentY + 15.33-7.63, 7);
+                    doc.ksPoint(IndentX + 3.06, IndentY + 7.03, 7);
+                    doc.ksPoint(IndentX + 4.98, IndentY + 6.2, 7);
+                    doc.ksPoint(IndentX + 5.38, IndentY + 6.13, 7);
+                    doc.ksPoint(IndentX + 5.58, IndentY + 6.17, 7);
+                    doc.ksPoint(IndentX + 5.99, IndentY + 6.91, 7);
+                    doc.ksPoint(IndentX + 6.25, IndentY + 8.04, 7);
+                    doc.ksPoint(IndentX + 6.21, IndentY + 11.03, 7);
+                    doc.ksPoint(IndentX + 5.36, IndentY + 12.9, 7);
+                    doc.ksPoint(IndentX + 4.3, IndentY + 13.85, 7);
+                    doc.ksPoint(IndentX + 3.13, IndentY + 14.61, 7);
+                    doc.ksPoint(IndentX + 2.18, IndentY + 15.33, 7);
+                    doc.ksPoint(IndentX + 0.75, IndentY + 17.03, 7);
+                    doc.ksPoint(IndentX + 0.05, IndentY + 20.67, 7);
+                    doc.ksPoint(IndentX + 0.99, IndentY + 23.12, 7);
+                    doc.ksEndObj();//Первый элемент по У лево (изменены и добавлены первые пять элементов)
+
+                    doc.ksBezier(0, 7);
+                    doc.ksPoint(IndentX + 1.75 + 6.22, par1.height - IndentY - 6.38 + 0.99, 7);
+                    doc.ksPoint(IndentX + 1.73 + 6.22, par1.height - IndentY - 6.38 + 1.06, 7);
+                    doc.ksPoint(IndentX + 1.36 + 6.22, par1.height - IndentY - 6.38 + 2.12, 7);
+                    doc.ksPoint(IndentX + 0.09 + 6.22, par1.height - IndentY - 6.38 + 4.98, 7);
+                    doc.ksPoint(IndentX + 0.02 + 6.22, par1.height - IndentY - 6.38 + 5.38, 7);
+                    doc.ksPoint(IndentX + 0.06 + 6.22, par1.height - IndentY - 6.38 + 5.58, 7);
+                    doc.ksPoint(IndentX + 0.8 + 6.22, par1.height - IndentY - 6.38 + 5.99, 7);
+                    doc.ksPoint(IndentX + 1.93 + 6.22, par1.height - IndentY - 6.38 + 6.25, 7);
+                    doc.ksPoint(IndentX + 4.92 + 6.22, par1.height - IndentY - 6.38 + 6.21, 7);
+                    doc.ksPoint(IndentX + 6.79 + 6.22, par1.height - IndentY - 6.38 + 5.36, 7);
+                    doc.ksPoint(IndentX + 7.74 + 6.22, par1.height - IndentY - 6.38 + 4.3, 7);
+                    doc.ksPoint(IndentX + 8.5 + 6.22, par1.height - IndentY - 6.38 + 3.13, 7);
+                    doc.ksPoint(IndentX + 9.22 + 6.22, par1.height - IndentY - 6.38 + 2.18, 7);
+                    doc.ksPoint(IndentX + 10.92 + 6.22, par1.height - IndentY - 6.38 + 0.75, 7);
+                    doc.ksPoint(IndentX + 14.56 + 6.22, par1.height - IndentY - 6.38 + 0.05, 7);
+                    doc.ksPoint(IndentX + 17.01 + 6.22, par1.height - IndentY - 6.38 + 0.99, 7);
+                    int Elem_PletXtop = doc.ksEndObj();
+                    for (int i = 1; i <= Point1.x-1; i++)
+                    {
+                        doc.ksCopyObj(Elem_PletXtop, IndentX + 1.75 + 6.22, par1.height - IndentY - 6.38 + 0.99, IndentX + 1.75 + 6.22 + 7.63 * i,
+                            par1.height - IndentY - 6.38 + 0.99, 1, 0);
+                    }
+                    //верхняя часть по Х
+                    doc.ksBezier(0, 7);
+                    doc.ksPoint(par1.width - IndentX - 6.38 + 0.99, IndentY + 7.86, 7);
+                    doc.ksPoint(par1.width - IndentX - 6.38 + 1.06, IndentY + 7.84, 7);
+                    doc.ksPoint(par1.width - IndentX - 6.38 + 2.12, IndentY + 7.47, 7);
+                    doc.ksPoint(par1.width - IndentX - 6.38 + 4.98, IndentY + 6.2, 7);
+                    doc.ksPoint(par1.width - IndentX - 6.38 + 5.38, IndentY + 6.13, 7);
+                    doc.ksPoint(par1.width - IndentX - 6.38 + 5.58, IndentY + 6.17, 7);
+                    doc.ksPoint(par1.width - IndentX - 6.38 + 5.99, IndentY + 6.91, 7);
+                    doc.ksPoint(par1.width - IndentX - 6.38 + 6.25, IndentY + 8.04, 7);
+                    doc.ksPoint(par1.width - IndentX - 6.38 + 6.21, IndentY + 11.03, 7);
+                    doc.ksPoint(par1.width - IndentX - 6.38 + 5.36, IndentY + 12.9, 7);
+                    doc.ksPoint(par1.width - IndentX - 6.38 + 4.3, IndentY + 13.85, 7);
+                    doc.ksPoint(par1.width - IndentX - 6.38 + 3.13, IndentY + 14.61, 7);
+                    doc.ksPoint(par1.width - IndentX - 6.38 + 2.18, IndentY + 15.33, 7);
+                    doc.ksPoint(par1.width - IndentX - 6.38 + 0.75, IndentY + 17.03, 7);
+                    doc.ksPoint(par1.width - IndentX - 6.38 + 0.05, IndentY + 20.67, 7);
+                    doc.ksPoint(par1.width - IndentX - 6.38 + 0.99, IndentY + 23.12, 7);
+                    int Elem_PletYright = doc.ksEndObj();
+                    Point1.y = (Visota - IndentY * 2) / 7.63;
+                    for (int i = 1; i <= Point1.y-2; i++)
+                    {
+                        doc.ksCopyObj(Elem_PletYright, par1.width - IndentX - 6.38 + 0.99, IndentY + 7.86, par1.width - IndentX - 6.38 + 0.99,
+                            IndentY + 7.86 + 7.63 * i, 1, 0);
+                    }
+                    //Правая часть по У (у здесь тот же что и в левой части можно ниже на 0.35(из расчета))
+                    doc.ksDeleteObj(Elem_PletXtop);
+                    doc.ksDeleteObj(Elem_PletYright);
+
+                    doc.ksBezier(0, 7);
+                    doc.ksPoint(IndentX + 1.75 + 7.63 + 6.22, par1.height - IndentY - 6.38 + 0.99, 7);
+                    doc.ksPoint(IndentX + 6.93 + 6.22, par1.height - IndentY - 6.38 + 0.05, 7);
+                    doc.ksPoint(IndentX + 3.29 + 6.22, par1.height - IndentY - 6.38 + 0.75, 7);
+                    doc.ksPoint(IndentX + 1.59 + 6.22, par1.height - IndentY - 6.38 + 2.18, 7);
+                    doc.ksPoint(IndentX + 0.92 + 6.22, par1.height - IndentY - 6.38 + 3.06, 7);
+                    doc.ksPoint(IndentX + 0.09 + 6.22, par1.height - IndentY - 6.38 + 4.98, 7);
+                    doc.ksPoint(IndentX + 0.02 + 6.22, par1.height - IndentY - 6.38 + 5.38, 7);
+                    doc.ksPoint(IndentX + 0.06 + 6.22, par1.height - IndentY - 6.38 + 5.58, 7);
+                    doc.ksPoint(IndentX + 0.8 + 6.22, par1.height - IndentY - 6.38 + 5.99, 7);
+                    doc.ksPoint(IndentX + 1.93 + 6.22, par1.height - IndentY - 6.38 + 6.25, 7);
+                    doc.ksPoint(IndentX + 4.92 + 6.22, par1.height - IndentY - 6.38 + 6.21, 7);
+                    doc.ksPoint(IndentX + 6.79 + 6.22, par1.height - IndentY - 6.38 + 5.36, 7);
+                    doc.ksPoint(IndentX + 7.74 + 6.22, par1.height - IndentY - 6.38 + 4.3, 7);
+                    doc.ksPoint(IndentX + 8.5 + 6.22, par1.height - IndentY - 6.38 + 3.13, 7);
+                    doc.ksPoint(IndentX + 9.22 + 6.22, par1.height - IndentY - 6.38 + 2.18, 7);
+                    doc.ksPoint(IndentX + 10.92 + 6.22, par1.height - IndentY - 6.38 + 0.75, 7);
+                    doc.ksPoint(IndentX + 14.56 + 6.22, par1.height - IndentY - 6.38 + 0.05, 7);
+                    doc.ksPoint(IndentX + 17.01 + 6.22, par1.height - IndentY - 6.38 + 0.99, 7);
+                    doc.ksEndObj();
+                    //Первый элемент верхней части по Х
+
+                    doc.ksBezier(0, 7);
+                    doc.ksPoint(par1.width - IndentX - 6.38 + 0.99, IndentY + 7.86 + 7.63, 7);
+                    doc.ksPoint(par1.width - IndentX - 6.38 + 0.05, IndentY + 20.67 - 7.63, 7);
+                    doc.ksPoint(par1.width - IndentX - 6.38 + 0.75, IndentY + 17.03 - 7.63, 7);
+                    doc.ksPoint(par1.width - IndentX - 6.38 + 2.18, IndentY + 15.33 - 7.63, 7);
+                    doc.ksPoint(par1.width - IndentX - 6.38 + 3.06, IndentY + 7.03, 7);
+                    doc.ksPoint(par1.width - IndentX - 6.38 + 4.98, IndentY + 6.2, 7);
+                    doc.ksPoint(par1.width - IndentX - 6.38 + 5.38, IndentY + 6.13, 7);
+                    doc.ksPoint(par1.width - IndentX - 6.38 + 5.58, IndentY + 6.17, 7);
+                    doc.ksPoint(par1.width - IndentX - 6.38 + 5.99, IndentY + 6.91, 7);
+                    doc.ksPoint(par1.width - IndentX - 6.38 + 6.25, IndentY + 8.04, 7);
+                    doc.ksPoint(par1.width - IndentX - 6.38 + 6.21, IndentY + 11.03, 7);
+                    doc.ksPoint(par1.width - IndentX - 6.38 + 5.36, IndentY + 12.9, 7);
+                    doc.ksPoint(par1.width - IndentX - 6.38 + 4.3, IndentY + 13.85, 7);
+                    doc.ksPoint(par1.width - IndentX - 6.38 + 3.13, IndentY + 14.61, 7);
+                    doc.ksPoint(par1.width - IndentX - 6.38 + 2.18, IndentY + 15.33, 7);
+                    doc.ksPoint(par1.width - IndentX - 6.38 + 0.75, IndentY + 17.03, 7);
+                    doc.ksPoint(par1.width - IndentX - 6.38 + 0.05, IndentY + 20.67, 7);
+                    doc.ksPoint(par1.width - IndentX - 6.38 + 0.99, IndentY + 23.12, 7);
+                    doc.ksEndObj();
+                    //Первый элемент правой части по У
                 }
             }
         }
