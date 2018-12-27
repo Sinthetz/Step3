@@ -6561,9 +6561,252 @@ namespace Steps.NET
         }
         public static void Elegant1()
         {
+            doc = (ksDocument2D)kompas.Document2D();
+            mat = (ksMathematic2D)kompas.GetMathematic2D();
+            ksDynamicArray arr = (ksDynamicArray)kompas.GetDynamicArray(ldefin2d.POINT_ARR);
+            ksMathPointParam par = (ksMathPointParam)kompas.GetParamStruct((short)StructType2DEnum.ko_MathPointParam);
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    double rad1 = par1.height / 2 - IndentY-15;
+                    reference auxcircle1 = doc.ksCircle(par1.width - IndentX-15 - rad1, par1.height / 2, rad1, 6);
+                    reference auxlinexcyc1 = doc.ksLine(par1.width - IndentX-15 - rad1, par1.height / 2, 30);
+                    reference auxlinexcyc2 = doc.ksLine(par1.width - IndentX-15 - rad1, par1.height / 2, -30);
+                    reference auxline1 = doc.ksLine(0, par1.height - IndentY-15 - rad1 / 2, 180);//линии 140-радиус конечные точки дуг
+                    reference auxline2 = doc.ksLine(0, IndentY+15 + rad1 / 2, 180);
+                    reference auxline3 = doc.ksLine(0, par1.height - IndentY-15, 180);//крайние линии
+                    reference auxline4 = doc.ksLine(0, IndentY+15, 180);
+                    mat.ksIntersectCirLin(par1.width - IndentX-15 - rad1, par1.height / 2, rad1, 0, par1.height - IndentY-15 - rad1 / 2, 180, arr);
+                    GetPoint(arr, par);
+                    double px1 = par.x;
+                    double py1 = par.y;
+
+                    mat.ksIntersectCirLin(par1.width - IndentX-15 - rad1, par1.height / 2, rad1, 0, IndentY+15 + rad1 / 2, 180, arr);
+                    GetPoint(arr, par);
+                    double px2 = par.x;
+                    double py2 = par.y;
+
+                    mat.ksIntersectLinLin(par1.width - IndentX-15 - rad1, par1.height / 2, 30, 0, par1.height - IndentY-15, 180, arr);
+                    GetPoint(arr, par);
+                    double pxc1 = par.x;//координаты цетра дуги верхней(левой)
+                    double pyc1 = par.y;
+
+                    mat.ksIntersectLinLin(par1.width - IndentX-15 - rad1, par1.height / 2, -30, 0, IndentY+15, 180, arr);
+                    GetPoint(arr, par);
+                    double pxc2 = par.x;//координаты цетра дуги нижней(правой)
+                    double pyc2 = par.y;
+
+                    reference auxcircle2 = doc.ksCircle(pxc1, pyc1, rad1, 6);//поиск крайней точки для верхней дуги
+                    reference auxcircle3 = doc.ksCircle(pxc2, pyc2, rad1, 6);
+                    reference auxlineS1 = doc.ksLineSeg(par1.width / 2, par1.height - IndentY-15, par1.width,
+                        par1.height - IndentY-15, 6);
+                    reference auxlineS2 = doc.ksLineSeg(par1.width / 2, IndentY+15, par1.width, IndentY+15, 6);
+                    mat.ksIntersectLinSCir(par1.width / 2, par1.height - IndentY-15, par1.width,
+                        par1.height - IndentY-15, pxc1, pyc1, rad1, arr);
+                    GetPoint(arr, par);
+                    double px3 = par.x;
+                    double py3 = par.y;
+
+                    mat.ksIntersectLinSCir(par1.width / 2, IndentY+15, par1.width, IndentY+15, pxc2, pyc2, rad1, arr);//поиск крайней точки для нижней дуги
+                    GetPoint(arr, par);
+                    double px4 = par.x;
+                    double py4 = par.y;
+
+                    reference grpCurve = doc.ksNewGroup(0);
+                    doc.ksArcByPoint(par1.width - IndentX-15 - rad1, par1.height / 2, rad1, px1, py1, px2, py2, -1, 1);
+                    doc.ksArcByPoint(pxc1, pyc1, rad1, px1, py1, px3, py3, -1, 1);
+                    doc.ksArcByPoint(pxc2, pyc2, rad1, px2, py2, px4, py4, 1, 1);
+
+                    #region кв52х52
+                    doc.ksArcByPoint(par1.width - IndentX - 15 - rad1, par1.height / 2, rad1+23, px1, py1, px2, py2, -1, 7);
+                    doc.ksArcByPoint(pxc1, pyc1, rad1-23, px1, py1, px3, py3, -1, 7);
+                    doc.ksArcByPoint(pxc2, pyc2, rad1-23, px2, py2, px4, py4, 1, 7);
+                    doc.ksLineSeg(px4 + 23, IndentY - 8, px4 + 23, py4, 7);
+                    doc.ksLineSeg(px4 + 23, IndentY - 8, par1.width / 2, IndentY - 8, 7);
+                    doc.ksLineSeg(px3 + 23, par1.height - IndentY + 8, px3 + 23, py3, 7);
+                    doc.ksLineSeg(px3 + 23, par1.height - IndentY + 8, par1.width / 2, par1.height - IndentY + 8, 7);
+                    #endregion
+
+                    #region кв100х100
+                    doc.ksArcByPoint(par1.width - IndentX - 15 - rad1, par1.height / 2, rad1 - 25, px1, py1, px2, py2, -1, 7);
+                    reference cur1002 = doc.ksArcByPoint(pxc1, pyc1, rad1 + 25, px1, py1, px3, py3, -1, 7);
+                    reference cur1001 = doc.ksArcByPoint(pxc2, pyc2, rad1 + 25, px2, py2, px4, py4, 1, 7);
+                    reference curL1 = doc.ksLineSeg(par1.width / 2, IndentY + 15 + 25, px4, IndentY + 15 + 25, 6);
+                    reference curL2 = doc.ksLineSeg(par1.width / 2, par1.height - IndentY - 15 - 25, px3,
+                        par1.height - IndentY - 15 - 25, 6);
+                    mat.ksIntersectCurvCurv(curL1, cur1001, arr);
+                    GetPoint(arr, par);
+                    double px1001 = par.x;
+                    double py1001 = par.y;
+                    doc.ksTrimmCurve(cur1001, px2, py2, px1001, py1001, px1001, py1001, 1);
+                    mat.ksIntersectCurvCurv(curL2, cur1002, arr);
+                    GetPoint(arr, par);
+                    double px1002 = par.x;
+                    double py1002 = par.y;
+                    doc.ksTrimmCurve(cur1002, px1, py1, px1002, py1002, px1002, py1002, 1);
+                    doc.ksLineSeg(par1.width / 2, IndentY + 15 + 25, px1001, py1001, 7);
+                    doc.ksLineSeg(par1.width / 2, par1.height - IndentY - 15 - 25, px1002, py1002, 7);
+                    doc.ksDeleteObj(curL1);
+                    doc.ksDeleteObj(curL2);
+                    #endregion
+
+                    doc.ksLineSeg(par1.width / 2, IndentY+15, px4, py4, 1);
+                    doc.ksLineSeg(par1.width / 2, par1.height - IndentY-15, px3, py3, 1);
+                    doc.ksEndGroup();
+                    doc.ksSymmetryObj(grpCurve, par1.width / 2, par1.height / 2, par1.width / 2, par1.height / 2 - 1,
+                        "1");
+                    
+                    doc.ksDeleteObj(auxline1);//удаляем вспомогательные линии
+                    doc.ksDeleteObj(auxline2);
+                    doc.ksDeleteObj(auxline3);
+                    doc.ksDeleteObj(auxline4);
+                    doc.ksDeleteObj(auxlinexcyc1);
+                    doc.ksDeleteObj(auxlinexcyc2);
+                    doc.ksDeleteObj(auxcircle1);
+                    doc.ksDeleteObj(auxcircle2);
+                    doc.ksDeleteObj(auxcircle3);
+                    doc.ksDeleteObj(auxlineS1);
+                    doc.ksDeleteObj(auxlineS2);
+
+                }
+            }
         }
         public static void Elegant2()
         {
+            doc = (ksDocument2D)kompas.Document2D();
+            mat = (ksMathematic2D)kompas.GetMathematic2D();
+            ksDynamicArray arr = (ksDynamicArray)kompas.GetDynamicArray(ldefin2d.POINT_ARR);
+            ksMathPointParam par = (ksMathPointParam)kompas.GetParamStruct((short)StructType2DEnum.ko_MathPointParam);
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    double rad1 = par1.height / 2 - IndentY - 15;
+                    reference auxcircle1 = doc.ksCircle(par1.width - IndentX - 15 - rad1, par1.height / 2, rad1, 6);
+                    reference auxlinexcyc1 = doc.ksLine(par1.width - IndentX - 15 - rad1, par1.height / 2, 30);
+                    reference auxlinexcyc2 = doc.ksLine(par1.width - IndentX - 15 - rad1, par1.height / 2, -30);
+                    reference auxline1 = doc.ksLine(0, par1.height - IndentY - 15 - rad1 / 2, 180);//линии 140-радиус конечные точки дуг
+                    reference auxline2 = doc.ksLine(0, IndentY + 15 + rad1 / 2, 180);
+                    reference auxline3 = doc.ksLine(0, par1.height - IndentY - 15, 180);//крайние линии
+                    reference auxline4 = doc.ksLine(0, IndentY + 15, 180);
+                    mat.ksIntersectCirLin(par1.width - IndentX - 15 - rad1, par1.height / 2, rad1, 0, par1.height - IndentY - 15 - rad1 / 2, 180, arr);
+                    GetPoint(arr, par);
+                    double px1 = par.x;
+                    double py1 = par.y;
+
+                    mat.ksIntersectCirLin(par1.width - IndentX - 15 - rad1, par1.height / 2, rad1, 0, IndentY + 15 + rad1 / 2, 180, arr);
+                    GetPoint(arr, par);
+                    double px2 = par.x;
+                    double py2 = par.y;
+
+                    mat.ksIntersectLinLin(par1.width - IndentX - 15 - rad1, par1.height / 2, 30, 0, par1.height - IndentY - 15, 180, arr);
+                    GetPoint(arr, par);
+                    double pxc1 = par.x;//координаты цетра дуги верхней(левой)
+                    double pyc1 = par.y;
+
+                    mat.ksIntersectLinLin(par1.width - IndentX - 15 - rad1, par1.height / 2, -30, 0, IndentY + 15, 180, arr);
+                    GetPoint(arr, par);
+                    double pxc2 = par.x;//координаты цетра дуги нижней(правой)
+                    double pyc2 = par.y;
+
+                    reference auxcircle2 = doc.ksCircle(pxc1, pyc1, rad1, 6);//поиск крайней точки для верхней дуги
+                    reference auxcircle3 = doc.ksCircle(pxc2, pyc2, rad1, 6);
+                    reference auxlineS1 = doc.ksLineSeg(par1.width / 2, par1.height - IndentY - 15, par1.width,
+                        par1.height - IndentY - 15, 6);
+                    reference auxlineS2 = doc.ksLineSeg(par1.width / 2, IndentY + 15, par1.width, IndentY + 15, 6);
+                    mat.ksIntersectLinSCir(par1.width / 2, par1.height - IndentY - 15, par1.width,
+                        par1.height - IndentY - 15, pxc1, pyc1, rad1, arr);
+                    GetPoint(arr, par);
+                    double px3 = par.x;
+                    double py3 = par.y;
+
+                    mat.ksIntersectLinSCir(par1.width / 2, IndentY + 15, par1.width, IndentY + 15, pxc2, pyc2, rad1, arr);//поиск крайней точки для нижней дуги
+                    GetPoint(arr, par);
+                    double px4 = par.x;
+                    double py4 = par.y;
+
+                    reference grpCurve = doc.ksNewGroup(0);
+                    doc.ksArcByPoint(par1.width - IndentX - 15 - rad1, par1.height / 2, rad1, px1, py1, px2, py2, -1, 1);
+                    doc.ksArcByPoint(pxc1, pyc1, rad1, px1, py1, px3, py3, -1, 1);
+                    doc.ksArcByPoint(pxc2, pyc2, rad1, px2, py2, px4, py4, 1, 1);
+
+                    #region кв52х52
+                    doc.ksArcByPoint(par1.width - IndentX - 15 - rad1, par1.height / 2, rad1 + 23, px1, py1, px2, py2, -1, 7);
+                    doc.ksArcByPoint(pxc1, pyc1, rad1 - 23, px1, py1, px3, py3, -1, 7);
+                    doc.ksArcByPoint(pxc2, pyc2, rad1 - 23, px2, py2, px4, py4, 1, 7);
+                    doc.ksLineSeg(px4 + 23, IndentY - 8, px4 + 23, py4, 7);
+                    doc.ksLineSeg(px4 + 23, IndentY - 8, par1.width / 2, IndentY - 8, 7);
+                    doc.ksLineSeg(px3 + 23, par1.height - IndentY + 8, px3 + 23, py3, 7);
+                    doc.ksLineSeg(px3 + 23, par1.height - IndentY + 8, par1.width / 2, par1.height - IndentY + 8, 7);
+                    #endregion
+
+                    #region кв100х100
+                    doc.ksArcByPoint(par1.width - IndentX - 15 - rad1, par1.height / 2, rad1 - 25, px1, py1, px2, py2, -1, 7);
+                    reference cur1002 = doc.ksArcByPoint(pxc1, pyc1, rad1 + 25, px1, py1, px3, py3, -1, 7);
+                    reference cur1001 = doc.ksArcByPoint(pxc2, pyc2, rad1 + 25, px2, py2, px4, py4, 1, 7);
+                    reference curL1 = doc.ksLineSeg(par1.width / 2, IndentY + 15 + 25, px4, IndentY + 15 + 25, 6);
+                    reference curL2 = doc.ksLineSeg(par1.width / 2, par1.height - IndentY - 15 - 25, px3,
+                        par1.height - IndentY - 15 - 25, 6);
+                    mat.ksIntersectCurvCurv(curL1, cur1001, arr);
+                    GetPoint(arr, par);
+                    double px1001 = par.x;
+                    double py1001 = par.y;
+                    doc.ksTrimmCurve(cur1001, px2, py2, px1001, py1001, px1001, py1001, 1);
+                    mat.ksIntersectCurvCurv(curL2, cur1002, arr);
+                    GetPoint(arr, par);
+                    double px1002 = par.x;
+                    double py1002 = par.y;
+                    doc.ksTrimmCurve(cur1002, px1, py1, px1002, py1002, px1002, py1002, 1);
+                    doc.ksLineSeg(par1.width / 2, IndentY + 15 + 25, px1001, py1001, 7);
+                    doc.ksLineSeg(par1.width / 2, par1.height - IndentY - 15 - 25, px1002, py1002, 7);
+                    doc.ksDeleteObj(curL1);
+                    doc.ksDeleteObj(curL2);
+                    #endregion
+
+                    doc.ksLineSeg(par1.width / 2, IndentY + 15, px4, py4, 1);
+                    doc.ksLineSeg(par1.width / 2, par1.height - IndentY - 15, px3, py3, 1);
+                    doc.ksEndGroup();
+                    doc.ksSymmetryObj(grpCurve, par1.width / 2, par1.height / 2, par1.width / 2, par1.height / 2 - 1,
+                        "1");
+
+                    doc.ksDeleteObj(auxline1);//удаляем вспомогательные линии
+                    doc.ksDeleteObj(auxline2);
+                    doc.ksDeleteObj(auxline3);
+                    doc.ksDeleteObj(auxline4);
+                    doc.ksDeleteObj(auxlinexcyc1);
+                    doc.ksDeleteObj(auxlinexcyc2);
+                    doc.ksDeleteObj(auxcircle1);
+                    doc.ksDeleteObj(auxcircle2);
+                    doc.ksDeleteObj(auxcircle3);
+                    doc.ksDeleteObj(auxlineS1);
+                    doc.ksDeleteObj(auxlineS2);
+                }
+            }
         }
         public static void Piramida3D()
         {
@@ -6813,7 +7056,7 @@ namespace Steps.NET
                     doc.ksPoint(IndentX + 0.99, IndentY + 23.12, 7);
                     int Elem_PletY = doc.ksEndObj();
                     Point1.y = (Visota - IndentY * 2) / 7.63;
-                    for (int i = 1; i <= Point1.y; i++)
+                    for (int i = 1; i <= Point1.y-1; i++)
                     {
                         doc.ksCopyObj(Elem_PletY, IndentX + 0.99, IndentY + 7.86, IndentX + 0.99,
                             IndentY + 7.86 + 7.63*i, 1, 0);
