@@ -6563,6 +6563,7 @@ namespace Steps.NET
         {
             doc = (ksDocument2D)kompas.Document2D();
             mat = (ksMathematic2D)kompas.GetMathematic2D();
+            ksNurbsPointParam parN = (ksNurbsPointParam)kompas.GetParamStruct((short)StructType2DEnum.ko_NurbsPointParam);
             ksDynamicArray arr = (ksDynamicArray)kompas.GetDynamicArray(ldefin2d.POINT_ARR);
             ksMathPointParam par = (ksMathPointParam)kompas.GetParamStruct((short)StructType2DEnum.ko_MathPointParam);
             DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
@@ -6681,9 +6682,111 @@ namespace Steps.NET
                     doc.ksDeleteObj(auxlineS1);
                     doc.ksDeleteObj(auxlineS2);
 
+                    #region VENZEL
+                    doc.ksBezier(0, 2);
+                    doc.ksPoint(par1.width / 2 - 111.1, par1.height / 2, 7);
+                    doc.ksPoint(par1.width / 2 - 89.5, par1.height / 2 + 2.9, 7);
+                    doc.ksPoint(par1.width / 2 - 67, par1.height / 2 + 5.8, 7);
+                    reference blockbez1 = doc.ksEndObj();
+
+                    doc.ksBezier(0, 2);
+                    doc.ksPoint(par1.width / 2 - 67, par1.height / 2 + 5.8, 7);
+                    doc.ksPoint(par1.width / 2 - 64.83, par1.height / 2 - 0.86, 7);
+                    doc.ksPoint(par1.width / 2 - 62.36, par1.height / 2 - 4.75, 7);
+                    doc.ksPoint(par1.width / 2 - 58.05, par1.height / 2 - 8.88, 7);
+                    doc.ksPoint(par1.width / 2 - 50.73, par1.height / 2 - 12.26, 7);
+                    doc.ksPoint(par1.width / 2 - 40.75, par1.height / 2 - 13.69, 7);
+                    doc.ksPoint(par1.width / 2 - 31.18, par1.height / 2 - 12.26, 7);
+                    doc.ksPoint(par1.width / 2 - 22.88, par1.height / 2 - 7.66, 7);
+                    doc.ksPoint(par1.width / 2 - 14.96, par1.height / 2 - 1.04, 7);
+                    doc.ksPoint(par1.width / 2 - 7.18, par1.height / 2 + 7.31, 7);
+                    doc.ksPoint(par1.width / 2, par1.height / 2 + 17.4, 7);
+                    reference blockbez2 = doc.ksEndObj();
+
+                    doc.ksBezier(0, 2);
+                    doc.ksPoint(par1.width / 2 - 50.73, par1.height / 2, 7);
+                    doc.ksPoint(par1.width / 2 - 49.76, par1.height / 2 - 6.59, 7);
+                    doc.ksPoint(par1.width / 2 - 43.37, par1.height / 2 - 15.41, 7);
+                    doc.ksPoint(par1.width / 2 - 33.04, par1.height / 2 - 18.86, 7);
+                    doc.ksPoint(par1.width / 2 - 21.09, par1.height / 2 - 16.05, 7);
+                    doc.ksPoint(par1.width / 2 - 7.8, par1.height / 2 - 7.66, 7);
+                    doc.ksPoint(par1.width / 2, par1.height / 2, 7);
+                    reference blockbez3 = doc.ksEndObj();
+                    reference grpVenzel = doc.ksNewGroup(0);
+                    doc.ksSymmetryObj(blockbez1, par1.width / 2, par1.height / 2, par1.width / 2, par1.height / 2 - 1,
+                        "1");
+                    doc.ksSymmetryObj(blockbez2, par1.width / 2, par1.height / 2, par1.width / 2, par1.height / 2 - 1,
+                        "1");
+                    doc.ksSymmetryObj(blockbez3, par1.width / 2, par1.height / 2, par1.width / 2, par1.height / 2 - 1,
+                        "1");
+                    doc.ksEndGroup();
+                    doc.ksSymmetryObj(blockbez1, par1.width / 2, par1.height / 2, par1.width / 2-1, par1.height / 2,
+                        "1");
+                    doc.ksSymmetryObj(blockbez2, par1.width / 2, par1.height / 2, par1.width / 2-1, par1.height / 2,
+                        "1");
+                    doc.ksSymmetryObj(blockbez3, par1.width / 2, par1.height / 2, par1.width / 2-1, par1.height / 2,
+                        "1");
+                    doc.ksSymmetryObj(grpVenzel, par1.width / 2, par1.height / 2, par1.width / 2 + 1, par1.height / 2,
+                        "1");
+
+                    #endregion
+
+                    #region Gravirovka
+                    reference grpGrav = doc.ksNewGroup(0);
+                    doc.ksNurbs(4, false, 2);
+                    parN.x = 36.85;parN.y = 17.28;parN.weight = 1;doc.ksNurbsPoint(parN);
+                    parN.x = 37.76;parN.y = 22.49;parN.weight = 1;doc.ksNurbsPoint(parN);
+                    parN.x = 34.49;parN.y = 24.83;parN.weight = 1;doc.ksNurbsPoint(parN);
+                    parN.x = 31.79;parN.y = 24.83;parN.weight = 1;doc.ksNurbsPoint(parN);
+                    parN.x = 31.79;parN.y = 28.26;parN.weight = 1;doc.ksNurbsPoint(parN);
+                    parN.x = 34.64;parN.y = 31.11;parN.weight = 1;doc.ksNurbsPoint(parN);
+                    parN.x = 40.61; parN.y = 31.11; parN.weight = 1; doc.ksNurbsPoint(parN);
+                    parN.x = 42.07; parN.y = 27.24; parN.weight = 1; doc.ksNurbsPoint(parN);
+                    parN.x = 38.29; parN.y = 27.22; parN.weight = 1; doc.ksNurbsPoint(parN);
+                    doc.ksEndObj();
+
+                    doc.ksArcByAngle(37.5777, 43.5749, 16.3704, 272.493, 310.360, -1, 2);
+
+                    doc.ksNurbs(4, false, 2);
+                    parN.x = 45.57; parN.y = 32; parN.weight = 1; doc.ksNurbsPoint(parN);
+                    parN.x = 55.41; parN.y = 28.5; parN.weight = 1; doc.ksNurbsPoint(parN);
+                    parN.x = 65.23; parN.y = 27.31; parN.weight = 1; doc.ksNurbsPoint(parN);
+                    parN.x = 66.41; parN.y = 30.17; parN.weight = 1; doc.ksNurbsPoint(parN);
+                    parN.x = 56.07; parN.y = 36.31; parN.weight = 1; doc.ksNurbsPoint(parN);
+                    parN.x = 45.87; parN.y = 37.27; parN.weight = 1; doc.ksNurbsPoint(parN);
+                    parN.x = 35.6; parN.y = 35.14; parN.weight = 1; doc.ksNurbsPoint(parN);
+                    parN.x = 23.61; parN.y = 33.21; parN.weight = 1; doc.ksNurbsPoint(parN);
+                    parN.x = 15.48; parN.y = 37.96; parN.weight = 1; doc.ksNurbsPoint(parN);
+                    parN.x = 11.83; parN.y = 48.78; parN.weight = 1; doc.ksNurbsPoint(parN);
+                    parN.x = 17; parN.y = 61.33; parN.weight = 1; doc.ksNurbsPoint(parN);
+                    parN.x = 24.58; parN.y = 73.66; parN.weight = 1; doc.ksNurbsPoint(parN);
+                    parN.x = 27.13; parN.y = 84; parN.weight = 1; doc.ksNurbsPoint(parN);
+                    parN.x = 25.61; parN.y = 92.13; parN.weight = 1; doc.ksNurbsPoint(parN);
+                    parN.x = 22.99; parN.y = 95.99; parN.weight = 1; doc.ksNurbsPoint(parN);
+                    parN.x = 18.92; parN.y = 94.55; parN.weight = 1; doc.ksNurbsPoint(parN);
+                    parN.x = 18.92; parN.y = 80.97; parN.weight = 1; doc.ksNurbsPoint(parN);
+                    parN.x = 17; parN.y = 77.04; parN.weight = 1; doc.ksNurbsPoint(parN);
+                    doc.ksEndObj();
+
+                    doc.ksNurbs(4, false, 2);
+                    parN.x = 17; parN.y = 77.04; parN.weight = 1; doc.ksNurbsPoint(parN);
+                    parN.x = 21.44; parN.y = 87.58; parN.weight = 1; doc.ksNurbsPoint(parN);
+                    parN.x = 24.6; parN.y = 96.68; parN.weight = 1; doc.ksNurbsPoint(parN);
+                    parN.x = 32.51; parN.y = 96.25; parN.weight = 1; doc.ksNurbsPoint(parN);
+                    parN.x = 39.15; parN.y = 94.77; parN.weight = 1; doc.ksNurbsPoint(parN);
+                    doc.ksEndObj();
+                    doc.ksLineSeg(45.57, 32, par1.width / 2, 32, 2);
+                    doc.ksLineSeg(17, 77.04, 17, par1.height / 2, 2);
+                    doc.ksEndGroup();
+                    reference symmCurveGrav = doc.ksSymmetryObj(grpGrav, par1.width / 2, par1.height / 2, par1.width / 2, par1.height / 2-1, "1");
+                    doc.ksSymmetryObj(grpGrav, par1.width / 2, par1.height / 2, par1.width / 2+1, par1.height / 2, "1");
+                    doc.ksSymmetryObj(symmCurveGrav, par1.width / 2, par1.height / 2, par1.width / 2 + 1,
+                        par1.height / 2, "1");
+
+                    #endregion
                 }
             }
-        }
+        }//Работа с безье и NURBS(сплайн) линиями
         public static void Elegant2()
         {
             doc = (ksDocument2D)kompas.Document2D();
