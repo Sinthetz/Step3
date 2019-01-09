@@ -6775,13 +6775,25 @@ namespace Steps.NET
                     parN.x = 32.51; parN.y = 96.25; parN.weight = 1; doc.ksNurbsPoint(parN);
                     parN.x = 39.15; parN.y = 94.77; parN.weight = 1; doc.ksNurbsPoint(parN);
                     doc.ksEndObj();
-                    doc.ksLineSeg(45.57, 32, par1.width / 2, 32, 2);
-                    doc.ksLineSeg(17, 77.04, 17, par1.height / 2, 2);
+                    //doc.ksLineSeg(45.57, 32, par1.width / 2, 32, 2);
+                    //doc.ksLineSeg(17, 77.04, 17, par1.height / 2, 2);
                     doc.ksEndGroup();
-                    reference symmCurveGrav = doc.ksSymmetryObj(grpGrav, par1.width / 2, par1.height / 2, par1.width / 2, par1.height / 2-1, "1");
-                    doc.ksSymmetryObj(grpGrav, par1.width / 2, par1.height / 2, par1.width / 2+1, par1.height / 2, "1");
-                    doc.ksSymmetryObj(symmCurveGrav, par1.width / 2, par1.height / 2, par1.width / 2 + 1,
+                    reference symmCurveGrav = doc.ksSymmetryObj(grpGrav, par1.width / 2, par1.height / 2, par1.width / 2, par1.height / 2-1, "1");// -B
+                    reference symmCurveGrav2 = doc.ksSymmetryObj(grpGrav, par1.width / 2, par1.height / 2, par1.width / 2+1, par1.height / 2, "1");// |L
+                    reference symmCurveGrav3 = doc.ksSymmetryObj(symmCurveGrav, par1.width / 2, par1.height / 2, par1.width / 2 + 1,// |R
                         par1.height / 2, "1");
+                    doc.ksMoveObj(grpGrav, IndentX - 60, IndentY - 60);
+                    doc.ksMoveObj(symmCurveGrav, -IndentX + 60, IndentY - 60);
+                    doc.ksMoveObj(symmCurveGrav2, IndentX - 60, -IndentY + 60);
+                    doc.ksMoveObj(symmCurveGrav3, -IndentX + 60, -IndentY + 60);
+                    doc.ksLineSeg(IndentX - 60 + 45.57, IndentY - 60 + 32, par1.width - IndentX + 60 - 45.57,
+                        IndentY - 60 + 32,2);
+                    doc.ksLineSeg(IndentX - 60 + 17, IndentY - 60 + 77.04, IndentX - 60 + 17,
+                        par1.height - IndentY + 60 - 77.04, 2);
+                    doc.ksLineSeg(IndentX - 60 + 45.57, par1.height - IndentY + 60 - 32,
+                        par1.width - IndentX + 60 - 45.57, par1.height - IndentY + 60 - 32, 2);
+                    doc.ksLineSeg(par1.width - IndentX + 60 - 17, par1.height - IndentY + 60 - 77.04,
+                        par1.width - IndentX + 60 - 17, IndentY - 60 + 77.04, 2);
 
                     #endregion
                 }
@@ -6908,6 +6920,229 @@ namespace Steps.NET
                     doc.ksDeleteObj(auxcircle3);
                     doc.ksDeleteObj(auxlineS1);
                     doc.ksDeleteObj(auxlineS2);
+
+                    #region Venzel
+
+                    doc.ksCircle(par1.width / 2 - 46.74, par1.height / 2, 3.0696, 2);
+                    doc.ksCircle(par1.width / 2 + 46.74, par1.height / 2, 3.0696, 2);
+
+                    reference grpVenzOSMirrorY = doc.ksNewGroup(0);                    
+                    doc.ksArcBy3Points(par1.width / 2 - 111.62, par1.height / 2 + 0.51, par1.width / 2 - 111.89,
+                        par1.height / 2, par1.width / 2 - 111.62, par1.height / 2 - 0.51, 2);
+                    doc.ksArcBy3Points(par1.width / 2 - 92.13, par1.height / 2 - 0.51, par1.width/2 - 91.86,
+                        par1.height / 2, par1.width / 2 - 92.13, par1.height / 2 + 0.51, 2);
+                    doc.ksArcBy3Points(par1.width / 2 - 81.34, par1.height / 2 + 0.87, par1.width / 2 - 82.08,
+                        par1.height / 2, par1.width / 2 - 81.34, par1.height / 2 - 0.87, 2);
+                    doc.ksArcBy3Points(par1.width / 2 - 54.36, par1.height / 2 + 0.83, par1.width / 2 - 55.07,
+                        par1.height / 2, par1.width / 2 - 54.36, par1.height / 2 - 0.83, 2);
+                    doc.ksEndGroup();
+                    doc.ksSymmetryObj(grpVenzOSMirrorY, par1.width / 2, par1.height / 2, par1.width / 2,
+                        par1.height / 2 - 1, "1");
+
+                    reference grpVenzOSMirrorX = doc.ksNewGroup(0);
+                    doc.ksArcBy3Points(par1.width / 2 - 15.7722, par1.height / 2 + 13.9320, par1.width / 2,
+                        par1.height / 2 + 4.64, par1.width / 2 + 15.7722, par1.height / 2 + 13.9320, 2);
+                    doc.ksArcBy3Points(par1.width / 2 - 36.8796, par1.height / 2 + 16.9503, par1.width / 2,
+                        par1.height / 2 + 1.74, par1.width / 2 + 36.8796, par1.height / 2 + 16.9503, 2);
+                    doc.ksEndGroup();
+                    doc.ksSymmetryObj(grpVenzOSMirrorX, par1.width / 2, par1.height / 2, par1.width / 2+1,
+                        par1.height / 2, "1");
+
+                    reference grpOstVenz = doc.ksNewGroup(0);
+                    doc.ksArcBy3Points(par1.width / 2 - 111.62, par1.height / 2 + 0.51, par1.width / 2 - 101.87,
+                        par1.height / 2 + 3.57, par1.width / 2 - 92.13, par1.height / 2 + 0.51, 2);
+
+                    doc.ksArcBy3Points(par1.width / 2 - 89.5, par1.height / 2 + 1.98, par1.width / 2 - 88.07,
+                        par1.height / 2 + 2.39, par1.width / 2 - 88.36, par1.height / 2 + 3.86,2);
+                    doc.ksArcBy3Points(par1.width / 2 - 88.36, par1.height / 2 + 3.86, par1.width / 2 - 91.31,
+                        par1.height / 2 + 8.35, par1.width / 2 - 90.77, par1.height / 2 + 13.69, 2);
+                    doc.ksArcBy3Points(par1.width / 2 - 90.77, par1.height / 2 + 13.69, par1.width / 2 - 89.32,
+                        par1.height / 2 + 14.08, par1.width / 2 - 88.43, par1.height / 2 + 12.87, 2);
+                    doc.ksArcBy3Points(par1.width / 2 - 88.43, par1.height / 2 + 12.87, par1.width / 2 - 88.07,
+                        par1.height / 2 + 12.56, par1.width / 2 - 87.71, par1.height / 2 + 12.87, 2);
+                    doc.ksArcBy3Points(par1.width / 2 - 87.71, par1.height / 2 + 12.87, par1.width / 2 - 87.65,
+                        par1.height / 2 + 14.31, par1.width / 2 - 88.11, par1.height / 2 + 15.67, 2);
+                    doc.ksArcBy3Points(par1.width / 2 - 88.11, par1.height / 2 + 15.67, par1.width / 2 - 93.3,
+                        par1.height / 2 + 17.37, par1.width / 2 - 96.32, par1.height / 2 + 12.81, 2);
+                    doc.ksArcBy3Points(par1.width / 2 - 96.32, par1.height / 2 + 12.81, par1.width / 2 - 94.46,
+                        par1.height / 2 + 6.42, par1.width / 2 - 89.5, par1.height / 2 + 1.98, 2);
+
+                    doc.ksArcBy3Points(par1.width / 2 - 81.34, par1.height / 2 + 0.87, par1.width / 2 - 72.81,
+                        par1.height / 2 + 3.63, par1.width / 2 - 65.42, par1.height / 2 + 8.71, 2);
+                    doc.ksArcBy3Points(par1.width / 2 - 65.42, par1.height / 2 + 8.71, par1.width / 2 - 57.52,
+                        par1.height / 2 + 10.03, par1.width / 2 - 52.44, par1.height / 2 + 3.83, 2);
+                    doc.ksArcBy3Points(par1.width / 2 - 52.44, par1.height / 2 + 3.83, par1.width / 2 - 52.73,
+                        par1.height / 2 + 1.9, par1.width / 2 - 54.36, par1.height / 2 + 0.83, 2);
+
+                    doc.ksArcBy3Points(par1.width / 2 - 38.84, par1.height / 2, par1.width / 2 - 37.74,
+                        par1.height / 2 + 1.57, par1.width / 2 - 35.89, par1.height / 2 + 1.06, 2);
+                    doc.ksArcBy3Points(par1.width / 2 - 35.89, par1.height / 2 + 1.06, par1.width / 2 - 35.35,
+                        par1.height / 2 + 0.86, par1.width / 2 - 34.79, par1.height / 2 + 1.03, 2);
+                    doc.ksArcBy3Points(par1.width / 2 - 31.91, par1.height / 2 + 6.43, par1.width / 2 - 27.9,
+                        par1.height / 2 + 2.44, par1.width / 2 - 22.5, par1.height / 2 + 0.72, 2);
+                    doc.ksArcBy3Points(par1.width / 2 - 22.5, par1.height / 2 + 0.72, par1.width / 2 - 22.03,
+                        par1.height / 2 + 0.49, par1.width / 2 - 21.83, par1.height / 2, 2);
+                    doc.ksLineSeg(par1.width / 2 - 34.79, par1.height / 2 + 1.03, par1.width / 2 - 34.79,
+                        par1.height / 2 + 4.41, 2);
+                    doc.ksLineSeg(par1.width / 2 - 34.79, par1.height / 2 + 4.41, par1.width / 2 - 31.91,
+                        par1.height / 2 + 6.43, 2);
+
+                    doc.ksArcBy3Points(par1.width / 2 - 75.5077, par1.height / 2 + 11.8987, par1.width / 2 - 73.9763,
+                        par1.height / 2 + 14.6741, par1.width / 2 - 76.6111, par1.height / 2 + 16.4365, 2);
+                    doc.ksArcBy3Points(par1.width / 2 - 76.6111, par1.height / 2 + 16.4365, par1.width / 2 - 74.3091,
+                        par1.height / 2 + 20.7785, par1.width / 2 - 69.8752, par1.height / 2 + 22.8981, 2);
+                    doc.ksArcBy3Points(par1.width / 2 - 69.8752, par1.height / 2 + 22.8981, par1.width / 2 - 52.5182,
+                        par1.height / 2 + 18.5808, par1.width / 2 - 39.9941, par1.height / 2 + 5.8117, 2);
+                    doc.ksArcBy3Points(par1.width / 2 - 39.9941, par1.height / 2 + 5.8117, par1.width / 2 - 37.9913,
+                        par1.height / 2 + 5.7311, par1.width / 2 - 37.5153, par1.height / 2 + 7.6782, 2);
+                    doc.ksArcBy3Points(par1.width / 2 - 37.5153, par1.height / 2 + 7.6782, par1.width / 2 - 46.5773,
+                        par1.height / 2 + 19.5488, par1.width / 2 - 59.0307, par1.height / 2 + 27.7916, 2);
+                    doc.ksArcBy3Points(par1.width / 2 - 59.0307, par1.height / 2 + 27.7916, par1.width / 2 - 67.4038,
+                        par1.height / 2 + 29.1737, par1.width / 2 - 75.5077, par1.height / 2 + 26.6547, 2);
+                    doc.ksArcBy3Points(par1.width / 2 - 75.5077, par1.height / 2 + 26.6547, par1.width / 2 - 80.0892,
+                        par1.height / 2 + 21.8384, par1.width / 2 - 81.3433, par1.height / 2 + 15.3104, 2);
+                    doc.ksArcBy3Points(par1.width / 2 - 81.3433, par1.height / 2 + 15.3104, par1.width / 2 - 79.3099,
+                        par1.height / 2 + 12.0920, par1.width / 2 - 75.5077, par1.height / 2 + 11.8987, 2);
+
+                    doc.ksArcBy3Points(par1.width / 2 - 36.8796, par1.height / 2 + 16.9503, par1.width / 2 - 39.9748,
+                        par1.height / 2 + 26.6027, par1.width / 2 - 35.7729, par1.height / 2 + 35.8273, 2);
+                    doc.ksArcBy3Points(par1.width / 2 - 35.7729, par1.height / 2 + 35.8273, par1.width / 2 - 34.7983,
+                        par1.height / 2 + 35.8339, par1.width / 2 - 34.7573, par1.height / 2 + 34.8601, 2);
+                    doc.ksArcBy3Points(par1.width / 2 - 34.7573, par1.height / 2 + 34.8601, par1.width / 2 - 35.7956,
+                        par1.height / 2 + 33.3114, par1.width / 2 - 36.3832, par1.height / 2 + 31.5419, 2);
+                    doc.ksArcBy3Points(par1.width / 2 - 36.3832, par1.height / 2 + 31.5419, par1.width / 2 - 36.1952,
+                        par1.height / 2 + 29.7398, par1.width / 2 - 35.0518, par1.height / 2 + 28.3343, 2);
+                    doc.ksArcBy3Points(par1.width / 2 - 35.0518, par1.height / 2 + 28.3343, par1.width / 2 - 31.3155,
+                        par1.height / 2 + 25.5411, par1.width / 2 - 27.8369, par1.height / 2 + 22.4327, 2);
+                    doc.ksArcBy3Points(par1.width / 2 - 27.8369, par1.height / 2 + 22.4327, par1.width / 2 - 27.5206,
+                        par1.height / 2 + 21.8002, par1.width / 2 - 27.3843, par1.height / 2 + 21.1062, 2);
+                    doc.ksArcBy3Points(par1.width / 2 - 27.3843, par1.height / 2 + 21.1062, par1.width / 2 - 27.1905,
+                        par1.height / 2 + 20.8698, par1.width / 2 - 26.9057, par1.height / 2 + 20.9808, 2);
+                    doc.ksArcBy3Points(par1.width / 2 - 26.9057, par1.height / 2 + 20.9808, par1.width / 2 - 26.4308,
+                        par1.height / 2 + 22.010, par1.width / 2 - 26.2566, par1.height / 2 + 23.130, 2);
+                    doc.ksArcBy3Points(par1.width / 2 - 26.2566, par1.height / 2 + 23.130, par1.width / 2 - 26.0927,
+                        par1.height / 2 + 24.0742, par1.width / 2 - 25.6456, par1.height / 2 + 24.9217, 2);
+                    doc.ksArcBy3Points(par1.width / 2 - 25.6456, par1.height / 2 + 24.9217, par1.width / 2 - 23.5863,
+                        par1.height / 2 + 26.7893, par1.width / 2 - 20.9772, par1.height / 2 + 27.7490, 2);
+                    doc.ksArcBy3Points(par1.width / 2 - 20.9772, par1.height / 2 + 27.7490, par1.width / 2 - 20.7159,
+                        par1.height / 2 + 27.6748, par1.width / 2 - 20.6050, par1.height / 2 + 27.4268, 2);
+                    doc.ksArcBy3Points(par1.width / 2 - 20.6050, par1.height / 2 + 27.4268, par1.width / 2 - 20.6693,
+                        par1.height / 2 + 26.1442, par1.width / 2 - 20.8195, par1.height / 2 + 24.8688, 2);
+                    doc.ksArcBy3Points(par1.width / 2 - 20.8195, par1.height / 2 + 24.8688, par1.width / 2 - 20.7365,
+                        par1.height / 2 + 23.3583, par1.width / 2 - 19.7179, par1.height / 2 + 22.2399, 2);
+                    doc.ksArcBy3Points(par1.width / 2 - 19.7179, par1.height / 2 + 22.2399, par1.width / 2 - 16.6514,
+                        par1.height / 2 + 18.6054, par1.width / 2 - 15.7722, par1.height / 2 + 13.9320, 2);
+                    doc.ksEndGroup();
+
+                    reference symmOstVenz = doc.ksSymmetryObj(grpOstVenz, par1.width / 2, par1.height / 2, par1.width / 2, par1.height / 2-1,
+                        "1");
+                    doc.ksSymmetryObj(grpOstVenz, par1.width / 2, par1.height / 2, par1.width / 2+1, par1.height / 2,
+                        "1");
+                    doc.ksSymmetryObj(symmOstVenz, par1.width / 2, par1.height / 2, par1.width / 2 + 1, par1.height / 2,
+                        "1");
+
+                    #endregion
+
+                    #region Gravirovka
+
+                    reference grpGrav = doc.ksNewGroup(0);
+                    doc.ksLineSeg(11, 57.5125, 11, 114.5749, 2);
+                    doc.ksLineSeg(11, 114.5749, 13.4303, 114.5749,2);
+                    doc.ksLineSeg(13.4303, 114.5749, 13.4303, 57.5125, 2);
+                    doc.ksLineSeg(13.4303, 57.5125, 11, 57.5125, 2);
+
+                    doc.ksLineSeg(16.4328, 56.8170, 16.4328, 107.0443, 2);
+                    doc.ksLineSeg(16.4328, 107.0443, 18.7837, 107.0443, 2);
+                    doc.ksLineSeg(18.7837, 107.0443, 18.7837, 51.680, 2);
+                    doc.ksArcBy3Points(16.4328, 56.8170, 13.8073, 45.1138, 13.8137, 33.1198, 2);
+                    doc.ksArcBy3Points(13.8137, 33.1198, 31.5675, 12.0639, 57.4244, 21.5492, 2);
+                    doc.ksArcBy3Points(57.4244, 21.5492, 61.6856, 25.3985, 67.3414, 26.3918, 2);
+                    doc.ksArcBy3Points(67.3414, 26.3918, 68.0020, 25.2916, 67.1940, 24.2947, 2);
+                    doc.ksArcBy3Points(67.1940, 24.2947, 66.6704, 23.6626, 67.1940, 23.0306, 2);
+                    doc.ksArcBy3Points(67.1940, 23.0306, 68.0134, 22.9661, 68.8209, 23.1197, 2);
+                    doc.ksArcBy3Points(68.8209, 23.1197, 71.1715, 24.0472, 73.6699, 23.6680, 2);
+                    doc.ksArcBy3Points(73.6699, 23.6680, 75.1378, 21.3983, 73.6699, 19.1286, 2);
+                    doc.ksArcBy3Points(73.6699, 19.1286, 71.8081, 18.7776, 69.9463, 19.1286, 2);
+                    doc.ksLineSeg(69.9463, 19.1286, 68.9728, 20.1021, 2);
+                    doc.ksArcBy3Points(68.9728, 20.1021, 68.8045, 20.2145, 68.6060, 20.2540, 2);
+                    doc.ksLineSeg(68.6060, 20.2540, 67.8601, 20.2540, 2);
+                    doc.ksArcBy3Points(67.8601, 20.2540, 67.4933, 20.1021, 67.3414, 19.7353, 2);
+                    doc.ksLineSeg(67.3414, 19.7353, 67.3414, 16.0756, 2);
+                    doc.ksArcBy3Points(67.3414, 16.0756, 66.6622, 15.2620, 66.2810, 14.2731, 2);
+                    doc.ksArcBy3Points(66.2810, 14.2731, 66.8095, 12.1098, 68.8209, 11.1537, 2);
+                    doc.ksLineSeg(68.8209, 11.1537, 77.7163, 11.1537, 2);
+                    doc.ksArcBy3Points(77.7163, 11.1537, 79.0294, 12.5759, 78.8776, 14.5055, 2);
+                    doc.ksArcBy3Points(78.8776, 14.5055, 79.1875, 16.3208, 81.0228, 16.4727, 2);
+                    doc.ksArcBy3Points(81.0228, 16.4727, 88.2215, 12.8540, 96.0409, 10.9119, 2);
+                    doc.ksArcBy3Points(96.0409, 10.9119, 101.0930, 12.5535, 103.9144, 17.0543, 2);
+                    doc.ksArcBy3Points(103.9144, 17.0543, 101.6172, 21.7982, 96.3558, 22.1144, 2);
+                    doc.ksArcBy3Points(96.3558, 22.1144, 95.7917, 19.1992, 98.7166, 18.6886, 2);
+                    doc.ksArcBy3Points(98.7166, 18.6886, 98.9447, 14.4940, 94.8810, 13.4296, 2);
+                    doc.ksArcBy3Points(94.8810, 13.4296, 83.2953, 18.6237, 73.6699, 26.9038, 2);
+                    doc.ksArcBy3Points(73.6699, 26.9038, 68.7703, 31.5115, 62.8507, 34.7045, 2);
+                    doc.ksArcBy3Points(62.8507, 34.7045, 60.5195, 34.8899, 59.1997, 32.9594, 2);
+                    doc.ksArcBy3Points(59.1997, 32.9594, 58.7544, 32.5455, 58.3079, 32.9581, 2);
+                    doc.ksArcBy3Points(58.3079, 32.9581, 57.5577, 36.0779, 56.270, 39.0169, 2);
+                    doc.ksArcBy3Points(56.270, 39.0169, 66.1260, 37.0336, 73.6699, 30.3880, 2);
+                    doc.ksArcBy3Points(73.6699, 30.3880, 64.7747, 42.8522, 49.7525, 45.8213, 2);
+                    doc.ksArcBy3Points(49.7525, 45.8213, 43.9927, 48.0773, 37.8098, 48.2689, 2);
+                    doc.ksArcBy3Points(37.8098, 48.2689, 27.1912, 51.3653, 22.8233, 61.5272, 2);
+                    doc.ksLineSeg(22.8233, 61.5272, 22.8233, 71.9021, 2);
+                    doc.ksLineSeg(22.8233, 71.9021, 19.7988, 67.6876, 2);
+                    doc.ksLineSeg(19.7988, 67.6876, 19.7988, 64.2518, 2);
+                    doc.ksLineSeg(19.7988, 64.2518, 20.9008, 64.2518, 2);
+                    doc.ksLineSeg(20.9008, 64.2518, 20.9008, 56.4706, 2);
+                    doc.ksArcBy3Points(20.9008, 56.4706, 21.5636, 51.7261, 24.8798, 48.2689, 2);
+                    doc.ksLineSeg(24.8798, 48.2689, 24.8798, 46.7408, 2);
+                    doc.ksLineSeg(24.8798, 46.7408, 23.1537, 45.9078, 2);
+                    doc.ksArcBy3Points(23.1537, 45.9078, 23.0101, 45.7140, 23.0883, 45.4857, 2);
+                    doc.ksArcBy3Points(23.0883, 45.4857, 27.3308, 43.4382, 31.9772, 44.2138, 2);
+                    doc.ksArcBy3Points(31.9772, 44.2138, 32.4851, 44.1264, 32.5436, 43.6144, 2);
+                    doc.ksArcBy3Points(32.5436, 43.6144, 32.3228, 34.0180, 40.3476, 28.7510, 2);
+                    doc.ksArcBy3Points(40.3476, 28.7510, 45.9881, 35.2787, 53.8993, 38.7196, 2);
+                    doc.ksArcBy3Points(53.8993, 38.7196, 55.4113, 35.5520, 56.1738, 32.1258, 2);
+                    doc.ksArcBy3Points(56.1738, 32.1258, 52.5204, 22.1605, 43.9201, 15.9405, 2);
+                    doc.ksArcBy3Points(43.9201, 15.9405, 31.5219, 15.9961, 21.3686, 23.1116, 2);
+                    doc.ksArcBy3Points(21.3686, 23.1116, 15.7674, 37.0059, 18.7837, 51.680, 2);
+
+                    doc.ksLineSeg(38.7224, 32.7852, 38.7224, 39.9590, 2);
+                    doc.ksArcBy3Points(38.7224, 39.9590, 42.3113, 42.8765, 46.4574, 44.9265, 2);
+                    doc.ksArcBy3Points(46.4574, 44.9265, 43.8216, 45.7115, 41.0887, 46.0194, 2);
+                    doc.ksArcBy3Points(41.0887, 46.0194, 39.2804, 45.7393, 37.6819, 44.8487, 2);
+                    doc.ksArcBy3Points(37.6819, 44.8487, 34.9292, 41.3734, 33.8786, 37.0661, 2);
+                    doc.ksArcBy3Points(33.8786, 37.0661, 35.2595, 33.7478, 38.7224, 32.7852, 2);
+                    doc.ksLineSeg(105.2389, 11.0, 109.2821, 13.3344, 2);
+                    doc.ksLineSeg(119.6812, 16.3363, 123.7244, 18.6707, 2);
+                    doc.ksEndGroup();
+
+                    reference symmGrav = doc.ksSymmetryObj(grpGrav, par1.width / 2, par1.height / 2, par1.width / 2, par1.height / 2 - 1,
+                        "1");
+                    reference symmGrav2 = doc.ksSymmetryObj(grpGrav, par1.width / 2, par1.height / 2, par1.width / 2-1, par1.height / 2,
+                        "1");
+                    reference symmGrav3 = doc.ksSymmetryObj(symmGrav, par1.width / 2, par1.height / 2, par1.width / 2 - 1, par1.height / 2,
+                        "1");
+                    doc.ksMoveObj(grpGrav, IndentX - 60, IndentY - 60);
+                    doc.ksMoveObj(symmGrav, -IndentX + 60, IndentY - 60);
+                    doc.ksMoveObj(symmGrav2, IndentX - 60, -IndentY + 60);
+                    doc.ksMoveObj(symmGrav3, -IndentX + 60, -IndentY + 60);
+                    doc.ksLineSeg(IndentX - 60 + 105.2389, IndentY - 60 + 11, par1.width - IndentX + 60 - 105.2389,
+                        IndentY - 60 + 11, 2);
+                    doc.ksLineSeg(IndentX - 60 + 109.2821, IndentY - 60 + 13.3344, par1.width - IndentX + 60 - 109.2821,
+                        IndentY - 60 + 13.3344, 2);
+                    doc.ksLineSeg(IndentX - 60 + 119.6812, IndentY - 60 + 16.3363, par1.width - IndentX + 60 - 119.6812,
+                        IndentY - 60 + 16.3363, 2);
+                    doc.ksLineSeg(IndentX - 60 + 123.7244, IndentY - 60 + 18.6707, par1.width - IndentX + 60 - 123.7244,
+                        IndentY - 60 + 18.6707, 2);
+                    doc.ksLineSeg(IndentX - 60 + 105.2389, par1.height -IndentY + 60 - 11, par1.width - IndentX + 60 - 105.2389,
+                        par1.height - IndentY + 60 - 11, 2);
+                    doc.ksLineSeg(IndentX - 60 + 109.2821, par1.height - IndentY + 60 - 13.3344, par1.width - IndentX + 60 - 109.2821,
+                        par1.height - IndentY + 60 - 13.3344, 2);
+                    doc.ksLineSeg(IndentX - 60 + 119.6812, par1.height - IndentY + 60 - 16.3363, par1.width - IndentX + 60 - 119.6812,
+                        par1.height - IndentY + 60 - 16.3363, 2);
+                    doc.ksLineSeg(IndentX - 60 + 123.7244, par1.height - IndentY + 60 - 18.6707, par1.width - IndentX + 60 - 123.7244,
+                        par1.height - IndentY + 60 - 18.6707, 2);
+
+                    #endregion
                 }
             }
         }
