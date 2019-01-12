@@ -58,13 +58,11 @@ namespace Steps.NET
             var cfuncdel = new ComboFuncDelFacade[] //работа комбобокса при выборе элемента срабатывает метод
             {
                 Step3.ArcaDv,Step3.ArcaOd,Step3.Kvadrat,Step3.Vosmiugolnik,Step3.Tango,Step3.Elegant,Step3.Kapriz,Step3.Venecia,
-                Step3.KievskayaDv,Step3.Kvadro,Step3.KlassikaDv,Step3.KlassikaOd,Step3.ZigzagLeft,Step3.ZigzagRight,Step3.Zmeika,
+                Step3.KievskayaDv,Step3.Kvadro,Step3.KlassikaDv,Step3.KlassikaOd,Step3.ZigzagLeft,Step3.ZigzagRight,
                 Step3.DuetLeft,Step3.DuetRight,Step3.KvadratDv,Step3.Kletka,Step3.Lzheviborka,Step3.PolosiBokovie,Step3.PolosiDv,
                 Step3.Riv_era,Step3.StrelaLeft,Step3.StrelaRight,Step3.StrelaDvLeft,Step3.StrelaDvRight,Step3.Tehno,Step3.TrioLeft,
-                Step3.TrioRight,Step3.Universal,Step3.TehnoKrupnii,Step3.TehnoMelkii,Step3.Elegant1,Step3.Elegant2,Step3.Piramida3D,
-                Step3.Style2Dmini,Step3.Versal,Step3.Scarlet,Step3.Reshetka,Step3.Grafskii,Step3.FigurnayaKlassika,Step3.Granada,
-                Step3.Astoria,Step3.KvadratSPryamimUglom,Step3.KvadratnayaViborka,Step3.LzheviborkaKvadratnaya,Step3.Neapol,
-                Step3.KvadratSPramimUglomSlozhnii
+                Step3.TrioRight,Step3.Universal,Step3.TehnoKrupnii,Step3.TehnoMelkii,Step3.Elegant1,Step3.Elegant2,Step3.KvadratSPryamimUglom,
+                Step3.KvadratnayaViborka,Step3.LzheviborkaKvadratnaya,Step3.Neapol
             };
             if (comboBox1.SelectedIndex >= 0)
             {

@@ -40,15 +40,16 @@ namespace Steps.NET
                 Step3.Econom13, Step3.Econom14, Step3.Econom15, Step3.Econom16, Step3.Econom17, Step3.Econom18,
                 Step3.Econom19, Step3.Econom20, Step3.Econom21, Step3.Econom22, Step3.Econom23, Step3.Econom24,
                 Step3.Econom25, Step3.Econom26, Step3.Econom27, Step3.Econom28, Step3.Econom29, Step3.Econom30,
-                Step3.Econom31, Step3.Econom32, Step3.Econom33, Step3.Econom34, Step3.Econom35, Step3.Econom36,
-                Step3.Econom37, Step3.Econom38, Step3.Econom39, Step3.Econom40, Step3.Econom41, Step3.Econom42,
+                Step3.Econom31, Step3.Econom32, Step3.Econom33, Step3.Econom34, Step3.Econom35,/* Step3.Econom36,
+                Step3.Econom37,*/ Step3.Econom38, Step3.Econom39,/* Step3.Econom40, Step3.Econom41,*/ Step3.Econom42,
                 Step3.Econom43, Step3.Econom44, Step3.Econom45, Step3.Econom46, Step3.Econom47, Step3.Econom48,
-                Step3.Econom49, Step3.Econom50, Step3.Econom51, Step3.Econom52, Step3.Econom53, Step3.Econom54,
-                Step3.Econom55, Step3.Econom56, Step3.Econom57, Step3.Econom58, Step3.Econom59, Step3.Econom60,
-                Step3.Econom61, Step3.Econom62, Step3.Econom63, Step3.Econom64, Step3.Econom65, Step3.Econom66,
-                Step3.Econom67, Step3.Econom68, Step3.Econom69, Step3.Econom70, Step3.Econom71, Step3.Econom72,
-                Step3.Econom73, Step3.Econom74, Step3.Econom75, Step3.Econom76, Step3.Econom77, Step3.Econom78,
-                Step3.Econom79, Step3.Econom80, Step3.Econom81, Step3.Econom82, Step3.Econom83, Step3.Vclassic1,
+                Step3.Econom49, Step3.Econom50, Step3.Econom51, Step3.Econom52, Step3.Econom53,/* Step3.Econom54,
+                Step3.Econom55,*/ Step3.Econom56,/* Step3.Econom57, Step3.Econom58,*/ Step3.Econom59,/* Step3.Econom60,*/
+                Step3.Econom61, Step3.Econom62, Step3.Econom63,/* Step3.Econom64, Step3.Econom65, */Step3.Econom66,
+                Step3.Econom67, Step3.Econom68, Step3.Econom69, /*Step3.Econom70, Step3.Econom71, Step3.Econom72,*/
+                Step3.Econom73, /*Step3.Econom74, Step3.Econom75, Step3.Econom76, */Step3.Econom77, Step3.Econom78,
+                Step3.Econom79,/* Step3.Econom80, Step3.Econom81, */Step3.Econom82, Step3.Econom83, 
+                /*Step3.Vclassic1,
                 Step3.Vclassic2, Step3.Vclassic3, Step3.Vclassic4, Step3.Vclassic5, Step3.Vclassic6, Step3.Vclassic7,
                 Step3.Vclassic8, Step3.Vclassic9, Step3.Vclassic10, Step3.Vclassic11, Step3.Vclassic12,
                 Step3.Vclassic13, Step3.Vclassic14, Step3.Vclassic15, Step3.Vclassic16, Step3.Vclassic17,
@@ -73,7 +74,7 @@ namespace Steps.NET
                 Step3.Vclassic108, Step3.Vclassic109, Step3.Vclassic110, Step3.Vclassic111, Step3.Vclassic112,
                 Step3.Vclassic113, Step3.Vclassic114, Step3.Vclassic115, Step3.Vclassic116, Step3.Vclassic117,
                 Step3.Vclassic118, Step3.Vclassic119, Step3.Vclassic120, Step3.Vclassic121, Step3.Vclassic122,
-                Step3.Vclassic123
+                Step3.Vclassic123*/
             };
             if (comboBox1.SelectedIndex >= 0)
             {

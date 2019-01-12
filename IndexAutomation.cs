@@ -3088,14 +3088,14 @@ namespace Steps.NET
             }
         }
 
-        public static void Econom36()
-        {
+        //public static void Econom36()
+        //{
             
-        }
+        //}
 
-        public static void Econom37()
-        {
-        }
+        //public static void Econom37()
+        //{
+        //}
 
         public static void Econom38()
         {
@@ -3208,13 +3208,13 @@ namespace Steps.NET
             }
         }
 
-        public static void Econom40()
-        {
-        }
+        //public static void Econom40()
+        //{
+        //}
 
-        public static void Econom41()
-        {
-        }
+        //public static void Econom41()
+        //{
+        //}
 
         public static void Econom42()
         {
@@ -3305,6 +3305,9 @@ namespace Steps.NET
         public static void Econom44()
         {
             doc = (ksDocument2D)kompas.Document2D();
+            mat = (ksMathematic2D)kompas.GetMathematic2D();
+            ksDynamicArray arr = (ksDynamicArray)kompas.GetDynamicArray(ldefin2d.POINT_ARR);
+            ksMathPointParam par = (ksMathPointParam)kompas.GetParamStruct((short)StructType2DEnum.ko_MathPointParam);
             DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
                 out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
                 out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
@@ -3357,23 +3360,62 @@ namespace Steps.NET
                 model6.style = 1;
                 doc.ksRectangle(model6);
                 doc.ksLineSeg(265 + 80 * 3 + model1.width * 3, 140, 265 + 80 * 3 + model1.width * 3, par1.height / 2 - 40, 1);
-                doc.ksLineSeg(265 + 80 * 3 + model1.width * 3, par1.height / 2 - 40,par1.width- par1.width/7.528136,par1.height/4.42028,1);      
-                doc.ksLineSeg(265 + 80 * 3 + model1.width * 3+36.57, par1.height/2-20,par1.width-140,par1.height/2-20,1);
-                doc.ksLineSeg(265 + 80 * 3 + model1.width * 3 + 36.57, par1.height / 2 - 20,par1.width- par1.width/ 8.448086, par1.height/3.939173, 1);
-                doc.ksLineSeg(265 + 80 * 3 + model1.width * 3 + 36.57, par1.height / 2 + 20,par1.width-140,par1.height/2+20,1);
-                doc.ksLineSeg(265 + 80 * 3 + model1.width * 3 + 36.57, par1.height / 2 + 20, par1.width - par1.width / 8.448086, par1.height- par1.height / 3.939173, 1);
                 doc.ksLineSeg(265 + 80 * 3 + model1.width * 3, par1.height / 2 + 40, 265 + 80 * 3 + model1.width * 3, par1.height - 140, 1);
-                doc.ksLineSeg(265 + 80 * 3 + model1.width * 3, par1.height / 2 + 40, par1.width - par1.width / 7.528136,par1.height- par1.height / 4.42028, 1);
-                doc.ksArcByPoint(265 + 80 * 3 + model1.width * 3, par1.height / 2, par1.height/2-140, 265 + 80 * 3 + model1.width * 3,
-                    par1.height / 2 - 40,par1.width- par1.width / 7.528136, par1.height / 4.42028, 1,1);
-                doc.ksArcByPoint(265 + 80 * 3 + model1.width * 3, par1.height / 2, par1.height / 2 - 140, par1.width - 140,
-                    par1.height / 2 - 20,par1.width- par1.width / 8.448086, par1.height / 3.939173, -1, 1);
-                doc.ksArcByPoint(265 + 80 * 3 + model1.width * 3, par1.height / 2, par1.height / 2 - 140, par1.width - 140,
-                    par1.height / 2 + 20, par1.width - par1.width / 8.448086, par1.height - par1.height / 3.939173, 1, 1);
-                doc.ksArcByPoint(265 + 80 * 3 + model1.width * 3, par1.height / 2, par1.height / 2 - 140, 265 + 80 * 3 + model1.width * 3,
-                    par1.height - 140, par1.width - par1.width / 7.528136, par1.height - par1.height / 4.42028, -1, 1);
+                reference _auxcurve1 = doc.ksArcBy3Points(265 + 80 * 3 + model1.width * 3, 140, par1.width - 140, par1.height / 2,
+                    265 + 80 * 3 + model1.width * 3, par1.height - 140, 1);
+                reference _auxLine1 = doc.ksLine(265 + 80 * 3 + model1.width * 3, par1.height / 2 + 40, 45);
+                reference _auxLine2 = doc.ksLine(265 + 80 * 3 + model1.width * 3 + 40, par1.height / 2 + 20, 45);
+                reference _auxLine3 = doc.ksLine(265 + 80 * 3 + model1.width * 3, par1.height / 2 - 40, -45);
+                reference _auxLine4 = doc.ksLine(265 + 80 * 3 + model1.width * 3 + 40, par1.height / 2 - 20, -45);
+                reference _auxLine5 = doc.ksLine(0, par1.height / 2 + 20, 0);
+                reference _auxLine6 = doc.ksLine(0, par1.height / 2 - 20, 0);
+                mat.ksIntersectCurvCurv(_auxcurve1, _auxLine1, arr);
+                GetPoint(arr,par);
+                double px1 = par.x;
+                double py1 = par.y;
+                mat.ksIntersectCurvCurv(_auxcurve1, _auxLine2, arr);
+                GetPoint(arr, par);
+                double px2 = par.x;
+                double py2 = par.y;
+                mat.ksIntersectCurvCurv(_auxcurve1, _auxLine3, arr);
+                GetPoint(arr, par);
+                double px3 = par.x;
+                double py3 = par.y;
+                mat.ksIntersectCurvCurv(_auxcurve1, _auxLine4, arr);
+                GetPoint(arr, par);
+                double px4 = par.x;
+                double py4 = par.y;
+                mat.ksIntersectCurvCurv(_auxcurve1, _auxLine5, arr);
+                GetPoint(arr, par);
+                double px5 = par.x;
+                double py5 = par.y;
+                mat.ksIntersectCurvCurv(_auxcurve1, _auxLine6, arr);
+                GetPoint(arr, par);
+                double px6 = par.x;
+                double py6 = par.y;
+                doc.ksLineSeg(265 + 80 * 3 + model1.width * 3, par1.height / 2 + 40,px1,py1,1);
+                doc.ksLineSeg(265 + 80 * 3 + model1.width * 3 + 40, par1.height / 2 + 20, px2, py2, 1);
+                doc.ksLineSeg(265 + 80 * 3 + model1.width * 3, par1.height / 2 - 40, px3, py3, 1);
+                doc.ksLineSeg(265 + 80 * 3 + model1.width * 3 + 40, par1.height / 2 - 20, px4, py4, 1);
+                doc.ksLineSeg(265 + 80 * 3 + model1.width * 3 + 40, par1.height / 2 + 20, px5, py5, 1);
+                doc.ksLineSeg(265 + 80 * 3 + model1.width * 3 + 40, par1.height / 2 - 20, px6, py6, 1);
+                doc.ksArcByPoint(265 + 80 * 3 + model1.width * 3, par1.height / 2, par1.height / 2 - 140,
+                    265 + 80 * 3 + model1.width * 3, par1.height - 140, px1, py1, -1, 1);
+                doc.ksArcByPoint(265 + 80 * 3 + model1.width * 3, par1.height / 2, par1.height / 2 - 140, px2, py2, px5,
+                    py5, -1, 1);
+                doc.ksArcByPoint(265 + 80 * 3 + model1.width * 3, par1.height / 2, par1.height / 2 - 140, px6, py6, px4,
+                    py4, -1, 1);
+                doc.ksArcByPoint(265 + 80 * 3 + model1.width * 3, par1.height / 2, par1.height / 2 - 140, px3, py3,
+                    265 + 80 * 3 + model1.width * 3, 140, -1, 1);
+                doc.ksDeleteObj(_auxcurve1);
+                doc.ksDeleteObj(_auxLine1);
+                doc.ksDeleteObj(_auxLine2);
+                doc.ksDeleteObj(_auxLine3);
+                doc.ksDeleteObj(_auxLine4);
+                doc.ksDeleteObj(_auxLine5);
+                doc.ksDeleteObj(_auxLine6);
             }
-        }//Bug переделать шапку накладки(именно линии)
+        }
 
         public static void Econom45()
         {
@@ -3482,7 +3524,7 @@ namespace Steps.NET
 
                 }
             }
-        }
+        }//построение эллипса
 
         public static void Econom47()
         {
@@ -3747,13 +3789,13 @@ namespace Steps.NET
             }
         }
 
-        public static void Econom54()
-        {
-        }
+        //public static void Econom54()
+        //{
+        //}
 
-        public static void Econom55()
-        {
-        }
+        //public static void Econom55()
+        //{
+        //}
 
         public static void Econom56()
         {
@@ -3819,13 +3861,13 @@ namespace Steps.NET
             }
         }
 
-        public static void Econom57()
-        {
-        }
+        //public static void Econom57()
+        //{
+        //}
 
-        public static void Econom58()
-        {
-        }
+        //public static void Econom58()
+        //{
+        //}
 
         public static void Econom59()
         {
@@ -3851,9 +3893,9 @@ namespace Steps.NET
             }
         }
 
-        public static void Econom60()
-        {
-        }
+        //public static void Econom60()
+        //{
+        //}
 
         public static void Econom61()
         {
@@ -3952,6 +3994,9 @@ namespace Steps.NET
         public static void Econom62()
         {
             doc = (ksDocument2D)kompas.Document2D();
+            mat = (ksMathematic2D)kompas.GetMathematic2D();
+            ksDynamicArray arr = (ksDynamicArray)kompas.GetDynamicArray(ldefin2d.POINT_ARR);
+            ksMathPointParam par = (ksMathPointParam)kompas.GetParamStruct((short)StructType2DEnum.ko_MathPointParam);
             DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
                 out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
                 out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
@@ -3970,25 +4015,100 @@ namespace Steps.NET
                 {
                     Zagotovka(par1);
                     int _gradus1 = 250; double _radian1 = _gradus1 * Math.PI / 180;
-
-
-                    doc.ksLineSeg(300, par1.height / 2, (par1.height)/2 + 300, par1.height / 2, 1);
-                    reference _line1 = doc.ksLineSeg(300, par1.height / 2, (par1.height)/2 + 300, par1.height / 2, 1);
-                    reference _line2 = doc.ksLineSeg(300, par1.height / 2, (par1.height)/2 + 300, par1.height / 2, 1);
-                    doc.ksRotateObj(_line1,(par1.height) / 4 + 300, par1.height / 2, 60);
-                    doc.ksRotateObj(_line2, (par1.height) / 4 + 300, par1.height / 2, 120);
+                    reference grp = doc.ksNewGroup(0);
+                    reference _FLine = doc.ksLineSeg(300, par1.height / 2, (par1.height)/2 + 300, par1.height / 2, 1);
                     reference _cir = doc.ksCircle((par1.height) / 4 + 300, par1.height / 2, (par1.height) / 4, 1);
-                    doc.ksLine((par1.height) / 4 + 300, par1.height / 2, 50);
+                    reference _Oline1 = doc.ksCopyObj(_FLine, 300, par1.height / 2, (par1.height) / 4+300, par1.height / 2, 0, 60);
+                    reference _Oline2 = doc.ksCopyObj(_FLine, 300, par1.height / 2, (par1.height) / 4+300, par1.height / 2, 0, 120);
+                    reference _Oline3 = doc.ksCopyObj(_FLine, 300, par1.height / 2, (par1.height) / 4+300, par1.height / 2, 0, 240);
+                    reference _Oline4 = doc.ksCopyObj(_FLine, 300, par1.height / 2, (par1.height) / 4+300, par1.height / 2, 0, 300);
+                    reference _Oline5 = doc.ksCopyObj(_FLine, 300, par1.height / 2, (par1.height) / 4 + 300, par1.height / 2, 0, 0);
+                    reference _Oline6 = doc.ksCopyObj(_FLine, 300, par1.height / 2, (par1.height) / 4 + 300, par1.height / 2, 0, 180);
+                    mat.ksIntersectCurvCurv(_cir, _Oline1, arr);
+                    GetPoint(arr, par);                    
+                    double px60 = par.x;
+                    double py60 = par.y;
+                    mat.ksIntersectCurvCurv(_cir, _Oline2, arr);
+                    GetPoint(arr, par);
+                    double px120 = par.x;
+                    double py120 = par.y;
+                    mat.ksIntersectCurvCurv(_cir, _Oline3, arr);
+                    GetPoint(arr, par);
+                    double px240 = par.x;
+                    double py240 = par.y;
+                    mat.ksIntersectCurvCurv(_cir, _Oline4, arr);
+                    GetPoint(arr, par);
+                    double px300 = par.x;
+                    double py300 = par.y;
+                    mat.ksIntersectCurvCurv(_cir, _Oline5, arr);
+                    GetPoint(arr, par);
+                    double px0 = par.x;
+                    double py0 = par.y;
+                    mat.ksIntersectCurvCurv(_cir, _Oline6, arr);
+                    GetPoint(arr, par);
+                    double px180 = par.x;
+                    double py180 = par.y;
+                    doc.ksLineSeg(px240, py240, px60, py60, 1);
+                    doc.ksLineSeg(px300, py300, px120, py120, 1);
+                    reference _auxline1 = doc.ksCopyObj(_FLine, 300, par1.height / 2, (par1.height) / 4 + 300, par1.height / 2, 0,50);
+                    reference _auxline2 = doc.ksCopyObj(_FLine, 300, par1.height / 2, (par1.height) / 4 + 300, par1.height / 2, 0, 110);
+                    reference _auxline3 = doc.ksCopyObj(_FLine, 300, par1.height / 2, (par1.height) / 4 + 300, par1.height / 2, 0, 170);
+                    reference _auxline4 = doc.ksCopyObj(_FLine, 300, par1.height / 2, (par1.height) / 4 + 300, par1.height / 2, 0, 230);
+                    reference _auxline5 = doc.ksCopyObj(_FLine, 300, par1.height / 2, (par1.height) / 4 + 300, par1.height / 2, 0, 290);
+                    reference _auxline6 = doc.ksCopyObj(_FLine, 300, par1.height / 2, (par1.height) / 4 + 300, par1.height / 2, 0, 350);
+                    mat.ksIntersectCurvCurv(_cir, _auxline1, arr);
+                    GetPoint(arr, par);
+                    double px50 = par.x;
+                    double py50 = par.y;
+                    mat.ksIntersectCurvCurv(_cir, _auxline2, arr);
+                    GetPoint(arr, par);
+                    double px110 = par.x;
+                    double py110 = par.y;
+                    mat.ksIntersectCurvCurv(_cir, _auxline3, arr);
+                    GetPoint(arr, par);
+                    double px170 = par.x;
+                    double py170 = par.y;
+                    mat.ksIntersectCurvCurv(_cir, _auxline4, arr);
+                    GetPoint(arr, par);
+                    double px230 = par.x;
+                    double py230 = par.y;
+                    mat.ksIntersectCurvCurv(_cir, _auxline5, arr);
+                    GetPoint(arr, par);
+                    double px290 = par.x;
+                    double py290 = par.y;
+                    mat.ksIntersectCurvCurv(_cir, _auxline6, arr);
+                    GetPoint(arr, par);
+                    double px350 = par.x;
+                    double py350 = par.y;
+                    doc.ksArcByPoint((par1.height) / 4 + 300, par1.height / 2, (par1.height) / 4, px0, py0, px50, py50,
+                        1, 1);
+                    doc.ksArcByPoint((par1.height) / 4 + 300, par1.height / 2, (par1.height) / 4, px60, py60, px110, py110,
+                        1, 1);
+                    doc.ksArcByPoint((par1.height) / 4 + 300, par1.height / 2, (par1.height) / 4, px120, py120, px170, py170,
+                        1, 1);
+                    doc.ksArcByPoint((par1.height) / 4 + 300, par1.height / 2, (par1.height) / 4, px180, py180, px230, py230,
+                        1, 1);
+                    doc.ksArcByPoint((par1.height) / 4 + 300, par1.height / 2, (par1.height) / 4, px240, py240, px290, py290,
+                        1, 1);
+                    doc.ksArcByPoint((par1.height) / 4 + 300, par1.height / 2, (par1.height) / 4, px300, py300, px350, py350,
+                        1, 1);
                     
-                    //doc.ksArcByPoint((par1.height) / 4 + 300, par1.height / 2, (par1.height) / 4, 300, (par1.height) / 2,
-                    //    ((par1.height) / 4)*Math.Cos(_radian1), ((par1.height) / 4) * Math.Sin(_radian1), 1, 1);
 
-                    //xc, yc-координаты центра дуги,
-                    //rad -радиус дуги,
-                    //x1, y1 -координаты начальной точки дуги,
-                    //x2, y2-координаты конечной точки дуги,
-                    //direction-направление отрисовки дуги:1 - против часовой стрелки,-1 - по часовой стрелке,
-                    //style-стиль линии.
+                    doc.ksDeleteObj(_Oline1);
+                    doc.ksDeleteObj(_Oline2);
+                    doc.ksDeleteObj(_Oline3);
+                    doc.ksDeleteObj(_Oline4);
+                    doc.ksDeleteObj(_Oline5);
+                    doc.ksDeleteObj(_Oline6);
+                    doc.ksDeleteObj(_cir);
+                    doc.ksDeleteObj(_auxline1);
+                    doc.ksDeleteObj(_auxline2);
+                    doc.ksDeleteObj(_auxline3);
+                    doc.ksDeleteObj(_auxline4);
+                    doc.ksDeleteObj(_auxline5);
+                    doc.ksDeleteObj(_auxline6);
+                    doc.ksEndGroup();
+                    doc.ksSymmetryObj(grp, par1.width / 2, par1.height / 2, par1.width / 2, par1.height / 2 - 1, "1");
                 }
             }
         }//Пример поворота обьекта(на примере линии)Bug отрезать окружность и добавить симметрию (СМОТРИ МОДЕЛЬ 20)
@@ -4031,13 +4151,13 @@ namespace Steps.NET
             }
         }
 
-        public static void Econom64()
-        {
-        }
+        //public static void Econom64()
+        //{
+        //}
 
-        public static void Econom65()
-        {
-        }
+        //public static void Econom65()
+        //{
+        //}
 
         public static void Econom66()
         {
@@ -4473,17 +4593,17 @@ namespace Steps.NET
         }
         
 
-        public static void Econom70()
-        {
-        }
+        //public static void Econom70()
+        //{
+        //}
 
-        public static void Econom71()
-        {
-        }
+        //public static void Econom71()
+        //{
+        //}
 
-        public static void Econom72()
-        {
-        }
+        //public static void Econom72()
+        //{
+        //}
 
         public static void Econom73()
         {
@@ -4530,17 +4650,17 @@ namespace Steps.NET
             }
         }
 
-        public static void Econom74()
-        {
-        }
+        //public static void Econom74()
+        //{
+        //}
 
-        public static void Econom75()
-        {
-        }
+        //public static void Econom75()
+        //{
+        //}
 
-        public static void Econom76()
-        {
-        }
+        //public static void Econom76()
+        //{
+        //}
 
         public static void Econom77()
         {
@@ -4727,13 +4847,13 @@ namespace Steps.NET
             }
         }
 
-        public static void Econom80()
-        {
-        }
+        //public static void Econom80()
+        //{
+        //}
 
-        public static void Econom81()
-        {
-        }
+        //public static void Econom81()
+        //{
+        //}
 
         public static void Econom82()
         {
@@ -4825,7 +4945,7 @@ namespace Steps.NET
 
         #region =======================V классика=======================
 
-        public static void Vclassic1()
+        /*public static void Vclassic1()
         {
         }
 
@@ -5316,7 +5436,7 @@ namespace Steps.NET
         public static void Vclassic123()
         {
         }
-
+        */
         #endregion
 
         #region ----------------------Facade-----------------------
@@ -5922,9 +6042,7 @@ namespace Steps.NET
                 }
             }
         }
-        public static void Zmeika()
-        {
-        }
+    
         public static void DuetLeft()
         {
             doc = (ksDocument2D)kompas.Document2D();
@@ -7146,33 +7264,7 @@ namespace Steps.NET
                 }
             }
         }
-        public static void Piramida3D()
-        {
-        }
-        public static void Style2Dmini()
-        {
-        }
-        public static void Versal()
-        {
-        }
-        public static void Scarlet()
-        {
-        }
-        public static void Reshetka()
-        {
-        }
-        public static void Grafskii()
-        {
-        }
-        public static void FigurnayaKlassika()
-        {
-        }
-        public static void Granada()
-        {
-        }
-        public static void Astoria()
-        {
-        }
+        
         public static void KvadratSPryamimUglom()
         {
             doc = (ksDocument2D)kompas.Document2D();
@@ -7543,9 +7635,7 @@ namespace Steps.NET
                 }
             }
         }
-        public static void KvadratSPramimUglomSlozhnii()
-        {
-        }
+
         #endregion
 
         [return: MarshalAs(UnmanagedType.BStr)]
