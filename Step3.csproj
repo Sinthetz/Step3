@@ -26,8 +26,9 @@
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <OldToolsVersion>2.0</OldToolsVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>..\</OutputPath>
@@ -53,6 +54,7 @@
     <ErrorReport>prompt</ErrorReport>
     <PlatformTarget>x86</PlatformTarget>
     <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>..\</OutputPath>
@@ -77,6 +79,7 @@
     <DebugType>none</DebugType>
     <ErrorReport>prompt</ErrorReport>
     <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
@@ -109,6 +112,7 @@
     <Reference Include="System.Data">
       <Name>System.Data</Name>
     </Reference>
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing">
       <Name>System.Drawing</Name>
     </Reference>
@@ -125,6 +129,12 @@
     </Compile>
     <Compile Include="Automation.Designer.cs">
       <DependentUpon>Automation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="bwsform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="bwsform.Designer.cs">
+      <DependentUpon>bwsform.cs</DependentUpon>
     </Compile>
     <Compile Include="Facade.cs">
       <SubType>Form</SubType>
@@ -147,6 +157,9 @@
     <EmbeddedResource Include="Automation.resx">
       <DependentUpon>Automation.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="bwsform.resx">
+      <DependentUpon>bwsform.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Facade.resx">
       <DependentUpon>Facade.cs</DependentUpon>
     </EmbeddedResource>
@@ -157,6 +170,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="gnome-fs-loading-icon_9815.ico" />
+    <None Include="Resources\teal-and-black-stock-gradient-teal-black-by-clip-art-PPT.jpeg" />
     <None Include="Resources\Hd0AJ.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

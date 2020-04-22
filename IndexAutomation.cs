@@ -20,6 +20,7 @@ using static Steps.NET.Automation;
 	using Application = System.Windows.Forms.Application;
 	using reference = System.Int32;
 using static Steps.NET.Facade;
+using static Steps.NET.bwsform;
 
 
 
@@ -85,8 +86,8 @@ namespace Steps.NET
         {
             par1.x = 0; //начальные точки ...заготовка в 0( изменять только из за отступов +32/+16 и тд)
             par1.y = 0;
-            par1.height = Visota; 
-            par1.width = Shirina; //Важно!!! рисунок масштабируется от размера заговки которую задает пользователь
+            par1.height = Shirina; 
+            par1.width = Visota; //Важно!!! рисунок масштабируется от размера заговки которую задает пользователь
             par1.style = 6;
             doc.ksRectangle(par1);
         }
@@ -7664,6 +7665,10 @@ namespace Steps.NET
                     command = 211;
                     break;
                 case 3:
+                    result = "BWS";
+                    command = 212;
+                    break;
+                case 4:
                     command = -1;
                     itemType = 213; // "ENDMENU"
                     break;
@@ -7691,6 +7696,9 @@ namespace Steps.NET
                     break;
                 case 211:
                     Instancef.ShowDialog(); //главный запуск приложения(для отдельного окна со всеми настройками)
+                    break;
+                case 212:
+                    Instancebws.ShowDialog(); //главный запуск приложения(для отдельного окна со всеми настройками)
                     break;
             }
         }
