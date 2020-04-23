@@ -37,6 +37,14 @@ namespace Steps.NET
         public static float Shirina { get; set; }
         public static float IndentX { get; set; }
         public static float IndentY { get; set; }
+        public static float IndentX1 { get; set; }
+        public static float IndentY1 { get; set; }
+        public static float IndentX2 { get; set; }
+        public static float IndentY2 { get; set; }
+        public static float IndentX3 { get; set; }
+        public static float IndentY3 { get; set; }
+        public static float IndentX4 { get; set; }
+        public static float IndentY4 { get; set; }
         private static void GetPoint(ksDynamicArray arr, ksMathPointParam par)//создание математических точек (POINT_ARR)
         {
             for (int i = 0; i < arr.ksGetArrayCount(); i++)
@@ -7637,6 +7645,69 @@ namespace Steps.NET
             }
         }
 
+        #endregion
+
+        #region ----------------------BWS-----------------------
+        
+        public static void KvadratBWS()
+        {
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    //создание заготовки
+                    model1.x = IndentX; //отступы рисунка на заготовке
+                    model1.y = IndentY;
+                    model1.height = par1.height - IndentY * 2;
+                    model1.width = par1.width - IndentX * 2;
+                    model1.style = 1;
+                    doc.ksRectangle(model1);
+
+                    
+                    model2.x = IndentX1;
+                    model2.y = IndentY1;
+                    model2.height = par1.height - IndentY1 * 2;
+                    model2.width = par1.width - IndentX1 * 2;
+                    model2.style = 1;
+                    doc.ksRectangle(model2);
+
+                    model3.x = IndentX2;
+                    model3.y = IndentY2;
+                    model3.height = par1.height - IndentY2 * 2;
+                    model3.width = par1.width - IndentX2 * 2;
+                    model3.style = 1;
+                    doc.ksRectangle(model3);
+
+                    model4.x = IndentX3;
+                    model4.y = IndentY3;
+                    model4.height = par1.height - IndentY3 * 2;
+                    model4.width = par1.width - IndentX3 * 2;
+                    model4.style = 1;
+                    doc.ksRectangle(model4);
+
+                    model5.x = IndentX4;
+                    model5.y = IndentY4;
+                    model5.height = par1.height - IndentY4 * 2;
+                    model5.width = par1.width - IndentX4 * 2;
+                    model5.style = 1;
+                    doc.ksRectangle(model5);
+
+                }
+            }
+        }
         #endregion
 
         [return: MarshalAs(UnmanagedType.BStr)]

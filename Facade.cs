@@ -50,8 +50,8 @@ namespace Steps.NET
         public delegate void ComboFuncDelFacade();
         private void button1_Click(object sender, EventArgs e)
         {
-            Step3.Visota = Convert.ToInt32(textBox2.Text);
-            Step3.Shirina = Convert.ToInt32(textBox1.Text);
+            Step3.Visota = Convert.ToInt32(textBox1.Text);
+            Step3.Shirina = Convert.ToInt32(textBox2.Text);
             Step3.IndentX = Convert.ToInt32(textBox3.Text);
             Step3.IndentY = Convert.ToInt32(textBox4.Text);
 

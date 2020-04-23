@@ -94,22 +94,24 @@ namespace Steps.NET
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.checkBox7 = new System.Windows.Forms.CheckBox();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
@@ -117,7 +119,12 @@ namespace Steps.NET
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.textBox13 = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -173,12 +180,14 @@ namespace Steps.NET
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.ItemHeight = 32;
             this.comboBox1.Items.AddRange(new object[] {
-            "Квадрат Универсальный"});
+            "Квадрат(1-5)",
+            "Универсальный (несколько рисунков накладываются на один реализовать с помощью ком" +
+                "бобоксов)"});
             this.comboBox1.Location = new System.Drawing.Point(28, 22);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(320, 40);
             this.comboBox1.TabIndex = 4;
-            this.comboBox1.Text = "Выбрать фасад...";
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // textBox1
             // 
@@ -191,6 +200,8 @@ namespace Steps.NET
             this.textBox1.TabIndex = 5;
             this.textBox1.Text = "716";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // textBox2
             // 
@@ -203,6 +214,8 @@ namespace Steps.NET
             this.textBox2.TabIndex = 6;
             this.textBox2.Text = "396";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             // 
             // textBox3
             // 
@@ -215,6 +228,8 @@ namespace Steps.NET
             this.textBox3.TabIndex = 7;
             this.textBox3.Text = "60";
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox3_KeyPress);
             // 
             // textBox4
             // 
@@ -227,28 +242,34 @@ namespace Steps.NET
             this.textBox4.TabIndex = 8;
             this.textBox4.Text = "60";
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox4_KeyPress);
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBox1.Location = new System.Drawing.Point(23, 34);
+            this.checkBox1.Location = new System.Drawing.Point(23, 29);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(114, 23);
             this.checkBox1.TabIndex = 9;
             this.checkBox1.Text = "Квадрат 2";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.Visible = false;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
             this.checkBox2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBox2.Location = new System.Drawing.Point(23, 96);
+            this.checkBox2.Location = new System.Drawing.Point(23, 94);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(114, 23);
             this.checkBox2.TabIndex = 10;
             this.checkBox2.Text = "Квадрат 3";
             this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.Visible = false;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // checkBox3
             // 
@@ -260,6 +281,8 @@ namespace Steps.NET
             this.checkBox3.TabIndex = 11;
             this.checkBox3.Text = "Квадрат 4";
             this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.Visible = false;
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
             // checkBox4
             // 
@@ -271,23 +294,29 @@ namespace Steps.NET
             this.checkBox4.TabIndex = 12;
             this.checkBox4.Text = "Квадрат 5";
             this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBox4.Visible = false;
+            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.DarkOrange;
+            this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Consolas", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.button1.Location = new System.Drawing.Point(379, 315);
+            this.button1.Location = new System.Drawing.Point(354, 358);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(254, 58);
+            this.button1.Size = new System.Drawing.Size(390, 58);
             this.button1.TabIndex = 13;
             this.button1.Text = ">ПОСТРОИТЬ<";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.groupBox1.Controls.Add(this.textBox14);
+            this.groupBox1.Controls.Add(this.checkBox7);
             this.groupBox1.Controls.Add(this.textBox12);
             this.groupBox1.Controls.Add(this.textBox11);
             this.groupBox1.Controls.Add(this.textBox10);
@@ -295,91 +324,153 @@ namespace Steps.NET
             this.groupBox1.Controls.Add(this.textBox8);
             this.groupBox1.Controls.Add(this.textBox7);
             this.groupBox1.Controls.Add(this.textBox6);
-            this.groupBox1.Controls.Add(this.textBox5);
             this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.textBox5);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.checkBox4);
             this.groupBox1.Controls.Add(this.checkBox3);
-            this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Controls.Add(this.checkBox2);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.checkBox1);
+            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.ForeColor = System.Drawing.Color.DarkOrange;
             this.groupBox1.Location = new System.Drawing.Point(356, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(388, 297);
+            this.groupBox1.Size = new System.Drawing.Size(388, 340);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Дополнительные параметры";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // label5
+            // textBox14
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(154, 29);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(107, 19);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "Отступ по X";
+            this.textBox14.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.textBox14.Enabled = false;
+            this.textBox14.ForeColor = System.Drawing.Color.DarkOrange;
+            this.textBox14.Location = new System.Drawing.Point(267, 300);
+            this.textBox14.Name = "textBox14";
+            this.textBox14.Size = new System.Drawing.Size(100, 27);
+            this.textBox14.TabIndex = 31;
+            this.textBox14.Text = "10";
+            this.textBox14.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox14.Visible = false;
+            this.textBox14.TextChanged += new System.EventHandler(this.textBox14_TextChanged);
             // 
-            // label6
+            // checkBox7
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(154, 58);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(107, 19);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "Отступ по Y";
+            this.checkBox7.AutoSize = true;
+            this.checkBox7.Location = new System.Drawing.Point(23, 304);
+            this.checkBox7.Name = "checkBox7";
+            this.checkBox7.Size = new System.Drawing.Size(159, 23);
+            this.checkBox7.TabIndex = 30;
+            this.checkBox7.Text = "Скруглить углы";
+            this.checkBox7.UseVisualStyleBackColor = true;
+            this.checkBox7.Visible = false;
+            this.checkBox7.CheckedChanged += new System.EventHandler(this.checkBox7_CheckedChanged);
             // 
-            // label7
+            // textBox12
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(154, 96);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(107, 19);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "Отступ по X";
+            this.textBox12.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.textBox12.Enabled = false;
+            this.textBox12.ForeColor = System.Drawing.Color.DarkOrange;
+            this.textBox12.Location = new System.Drawing.Point(267, 254);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(100, 27);
+            this.textBox12.TabIndex = 29;
+            this.textBox12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox12.Visible = false;
+            this.textBox12.TextChanged += new System.EventHandler(this.textBox12_TextChanged);
+            this.textBox12.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox12_KeyPress);
             // 
-            // label8
+            // textBox11
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(154, 124);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(107, 19);
-            this.label8.TabIndex = 17;
-            this.label8.Text = "Отступ по Y";
+            this.textBox11.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.textBox11.Enabled = false;
+            this.textBox11.ForeColor = System.Drawing.Color.DarkOrange;
+            this.textBox11.Location = new System.Drawing.Point(267, 225);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(100, 27);
+            this.textBox11.TabIndex = 28;
+            this.textBox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox11.Visible = false;
+            this.textBox11.TextChanged += new System.EventHandler(this.textBox11_TextChanged);
+            this.textBox11.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox11_KeyPress);
             // 
-            // label9
+            // textBox10
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(154, 162);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(107, 19);
-            this.label9.TabIndex = 18;
-            this.label9.Text = "Отступ по X";
+            this.textBox10.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.textBox10.Enabled = false;
+            this.textBox10.ForeColor = System.Drawing.Color.DarkOrange;
+            this.textBox10.Location = new System.Drawing.Point(267, 188);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(100, 27);
+            this.textBox10.TabIndex = 27;
+            this.textBox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox10.Visible = false;
+            this.textBox10.TextChanged += new System.EventHandler(this.textBox10_TextChanged);
+            this.textBox10.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox10_KeyPress);
             // 
-            // label10
+            // textBox9
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(154, 191);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(107, 19);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "Отступ по Y";
+            this.textBox9.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.textBox9.Enabled = false;
+            this.textBox9.ForeColor = System.Drawing.Color.DarkOrange;
+            this.textBox9.Location = new System.Drawing.Point(267, 159);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(100, 27);
+            this.textBox9.TabIndex = 26;
+            this.textBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox9.Visible = false;
+            this.textBox9.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
+            this.textBox9.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox9_KeyPress);
             // 
-            // label11
+            // textBox8
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(154, 228);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(107, 19);
-            this.label11.TabIndex = 20;
-            this.label11.Text = "Отступ по X";
+            this.textBox8.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.textBox8.Enabled = false;
+            this.textBox8.ForeColor = System.Drawing.Color.DarkOrange;
+            this.textBox8.Location = new System.Drawing.Point(267, 121);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(100, 27);
+            this.textBox8.TabIndex = 25;
+            this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox8.Visible = false;
+            this.textBox8.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
+            this.textBox8.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox8_KeyPress);
+            // 
+            // textBox7
+            // 
+            this.textBox7.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.textBox7.Enabled = false;
+            this.textBox7.ForeColor = System.Drawing.Color.DarkOrange;
+            this.textBox7.Location = new System.Drawing.Point(267, 92);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(100, 27);
+            this.textBox7.TabIndex = 24;
+            this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox7.Visible = false;
+            this.textBox7.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
+            this.textBox7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox7_KeyPress);
+            // 
+            // textBox6
+            // 
+            this.textBox6.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.textBox6.Enabled = false;
+            this.textBox6.ForeColor = System.Drawing.Color.DarkOrange;
+            this.textBox6.Location = new System.Drawing.Point(267, 56);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(100, 27);
+            this.textBox6.TabIndex = 23;
+            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox6.Visible = false;
+            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
+            this.textBox6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox6_KeyPress);
             // 
             // label12
             // 
@@ -389,78 +480,91 @@ namespace Steps.NET
             this.label12.Size = new System.Drawing.Size(107, 19);
             this.label12.TabIndex = 21;
             this.label12.Text = "Отступ по Y";
+            this.label12.Visible = false;
             // 
             // textBox5
             // 
             this.textBox5.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.textBox5.Location = new System.Drawing.Point(267, 26);
+            this.textBox5.Enabled = false;
+            this.textBox5.ForeColor = System.Drawing.Color.DarkOrange;
+            this.textBox5.Location = new System.Drawing.Point(267, 27);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(100, 27);
             this.textBox5.TabIndex = 22;
             this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox5.Visible = false;
+            this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
+            this.textBox5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox5_KeyPress);
             // 
-            // textBox6
+            // label11
             // 
-            this.textBox6.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.textBox6.Location = new System.Drawing.Point(267, 55);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 27);
-            this.textBox6.TabIndex = 23;
-            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(154, 228);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(107, 19);
+            this.label11.TabIndex = 20;
+            this.label11.Text = "Отступ по X";
+            this.label11.Visible = false;
             // 
-            // textBox7
+            // label10
             // 
-            this.textBox7.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.textBox7.Location = new System.Drawing.Point(267, 92);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 27);
-            this.textBox7.TabIndex = 24;
-            this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(154, 191);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(107, 19);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "Отступ по Y";
+            this.label10.Visible = false;
             // 
-            // textBox8
+            // label9
             // 
-            this.textBox8.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.textBox8.Location = new System.Drawing.Point(267, 121);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(100, 27);
-            this.textBox8.TabIndex = 25;
-            this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(154, 162);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(107, 19);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "Отступ по X";
+            this.label9.Visible = false;
             // 
-            // textBox9
+            // label8
             // 
-            this.textBox9.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.textBox9.Location = new System.Drawing.Point(267, 159);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(100, 27);
-            this.textBox9.TabIndex = 26;
-            this.textBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(154, 124);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(107, 19);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "Отступ по Y";
+            this.label8.Visible = false;
             // 
-            // textBox10
+            // label7
             // 
-            this.textBox10.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.textBox10.Location = new System.Drawing.Point(267, 188);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(100, 27);
-            this.textBox10.TabIndex = 27;
-            this.textBox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(154, 96);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(107, 19);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Отступ по X";
+            this.label7.Visible = false;
             // 
-            // textBox11
+            // label6
             // 
-            this.textBox11.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.textBox11.Location = new System.Drawing.Point(267, 225);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(100, 27);
-            this.textBox11.TabIndex = 28;
-            this.textBox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(154, 59);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(107, 19);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Отступ по Y";
+            this.label6.Visible = false;
             // 
-            // textBox12
+            // label5
             // 
-            this.textBox12.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.textBox12.Location = new System.Drawing.Point(267, 254);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(100, 27);
-            this.textBox12.TabIndex = 29;
-            this.textBox12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(154, 30);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(107, 19);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Отступ по X";
+            this.label5.Visible = false;
             // 
             // checkBox5
             // 
@@ -484,7 +588,7 @@ namespace Steps.NET
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(12, 379);
+            this.progressBar1.Location = new System.Drawing.Point(11, 422);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(985, 31);
             this.progressBar1.TabIndex = 17;
@@ -501,6 +605,7 @@ namespace Steps.NET
             this.button2.TabIndex = 18;
             this.button2.Text = "Запомнить размеры";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -508,12 +613,13 @@ namespace Steps.NET
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button3.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.button3.Location = new System.Drawing.Point(29, 320);
+            this.button3.Location = new System.Drawing.Point(29, 352);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(163, 46);
+            this.button3.Size = new System.Drawing.Size(163, 58);
             this.button3.TabIndex = 19;
             this.button3.Text = "Построить все";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // textBox13
             // 
@@ -522,14 +628,46 @@ namespace Steps.NET
             this.textBox13.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBox13.Font = new System.Drawing.Font("Tahoma", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox13.ForeColor = System.Drawing.Color.Black;
-            this.textBox13.Location = new System.Drawing.Point(232, 236);
+            this.textBox13.Location = new System.Drawing.Point(198, 236);
             this.textBox13.Multiline = true;
             this.textBox13.Name = "textBox13";
             this.textBox13.ReadOnly = true;
-            this.textBox13.Size = new System.Drawing.Size(116, 72);
+            this.textBox13.Size = new System.Drawing.Size(150, 72);
             this.textBox13.TabIndex = 20;
             this.textBox13.Text = "0";
             this.textBox13.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(6, 15);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(232, 334);
+            this.pictureBox1.TabIndex = 21;
+            this.pictureBox1.TabStop = false;
+            // 
+            // listBox1
+            // 
+            this.listBox1.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.listBox1.ForeColor = System.Drawing.Color.DarkOrange;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(198, 316);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(150, 95);
+            this.listBox1.TabIndex = 22;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.Color.CadetBlue;
+            this.groupBox2.Controls.Add(this.pictureBox1);
+            this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox2.ForeColor = System.Drawing.Color.Black;
+            this.groupBox2.Location = new System.Drawing.Point(750, 61);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(244, 355);
+            this.groupBox2.TabIndex = 23;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Превью";
             // 
             // bwsform
             // 
@@ -537,7 +675,9 @@ namespace Steps.NET
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.ClientSize = new System.Drawing.Size(1008, 422);
+            this.ClientSize = new System.Drawing.Size(1006, 465);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.textBox13);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -562,6 +702,8 @@ namespace Steps.NET
             this.Text = "BWS";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -607,5 +749,10 @@ namespace Steps.NET
         private Button button2;
         private Button button3;
         private TextBox textBox13;
+        private PictureBox pictureBox1;
+        private ListBox listBox1;
+        private TextBox textBox14;
+        private CheckBox checkBox7;
+        private GroupBox groupBox2;
     }
 }
