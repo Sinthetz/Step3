@@ -6,6 +6,8 @@
 #endif
 
 using System;
+
+using System.Windows;
 using Microsoft.Win32;
 using System.Reflection;
 using System.Drawing;
@@ -21,6 +23,7 @@ using static Steps.NET.Automation;
 	using reference = System.Int32;
 using static Steps.NET.Facade;
 using static Steps.NET.bwsform;
+using static Steps.NET.MainWindow;
 
 
 
@@ -7676,7 +7679,141 @@ namespace Steps.NET
                     model1.style = 1;
                     doc.ksRectangle(model1);
 
+                    model2.x = IndentX1;
+                    model2.y = IndentY1;
+                    model2.height = par1.height - IndentY1 * 2;
+                    model2.width = par1.width - IndentX1 * 2;
+                    model2.style = 1;
+                    doc.ksRectangle(model2);
+                }
+            }
+        }
+        public static void KvadratBWS2()
+        {
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    //создание заготовки
+                    model1.x = IndentX; //отступы рисунка на заготовке
+                    model1.y = IndentY;
+                    model1.height = par1.height - IndentY * 2;
+                    model1.width = par1.width - IndentX * 2;
+                    model1.style = 1;
+                    doc.ksRectangle(model1);
+
+
+                    model2.x = IndentX1;
+                    model2.y = IndentY1;
+                    model2.height = par1.height - IndentY1 * 2;
+                    model2.width = par1.width - IndentX1 * 2;
+                    model2.style = 1;
+                    doc.ksRectangle(model2);
+
+                    model3.x = IndentX2;
+                    model3.y = IndentY2;
+                    model3.height = par1.height - IndentY2 * 2;
+                    model3.width = par1.width - IndentX2 * 2;
+                    model3.style = 1;
+                    doc.ksRectangle(model3);
+
+
+
+                }
+            }
+        }
+        public static void KvadratBWS3()
+        {
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    //создание заготовки
+                    model1.x = IndentX; //отступы рисунка на заготовке
+                    model1.y = IndentY;
+                    model1.height = par1.height - IndentY * 2;
+                    model1.width = par1.width - IndentX * 2;
+                    model1.style = 1;
+                    doc.ksRectangle(model1);
                     
+
+                    model2.x = IndentX1;
+                    model2.y = IndentY1;
+                    model2.height = par1.height - IndentY1 * 2;
+                    model2.width = par1.width - IndentX1 * 2;
+                    model2.style = 1;
+                    doc.ksRectangle(model2);
+
+                    model3.x = IndentX2;
+                    model3.y = IndentY2;
+                    model3.height = par1.height - IndentY2 * 2;
+                    model3.width = par1.width - IndentX2 * 2;
+                    model3.style = 1;
+                    doc.ksRectangle(model3);
+
+                    model4.x = IndentX3;
+                    model4.y = IndentY3;
+                    model4.height = par1.height - IndentY3 * 2;
+                    model4.width = par1.width - IndentX3 * 2;
+                    model4.style = 1;
+                    doc.ksRectangle(model4);
+                }
+            }
+        }
+        public static void KvadratBWS4()
+        {
+            doc = (ksDocument2D)kompas.Document2D();
+            DocRecPar(out ksDocumentParam docPar, out ksDocumentParam docPar1, out ksRectangleParam par1,
+                out ksRectangleParam model1, out ksRectangleParam model2, out ksRectangleParam model3,
+                out ksRectangleParam model4, out ksRectangleParam model5, out ksRectangleParam model6,
+                out ksRectangleParam model7, out ksRectangleParam model8, out ksRectangleParam model9,
+                out ksRectangleParam model10, out ksRectangleParam model11, out ksRectangleParam model12,
+                out ksRectangleParam model13, out ksRectangleParam model14, out ksRectangleParam model15,
+                out ksRectangleParam model16, out ksRectangleParam model17, out ksRectangleParam model18,
+                out ksRectangleParam model19, out ksRectangleParam model20, out ksRectangleParam model21,
+                out ksMathPointParam Point1, out ksMathPointParam Point2);
+            if ((docPar != null) & (docPar1 != null))
+            {
+                docPar.regime = 0;
+                docPar.type = (short)DocType.lt_DocFragment;
+                doc.ksCreateDocument(docPar);
+                {
+                    Zagotovka(par1);
+                    //создание заготовки
+                    model1.x = IndentX; //отступы рисунка на заготовке
+                    model1.y = IndentY;
+                    model1.height = par1.height - IndentY * 2;
+                    model1.width = par1.width - IndentX * 2;
+                    model1.style = 1;
+                    doc.ksRectangle(model1);
+
+
                     model2.x = IndentX1;
                     model2.y = IndentY1;
                     model2.height = par1.height - IndentY1 * 2;
@@ -7740,8 +7877,12 @@ namespace Steps.NET
                     command = 212;
                     break;
                 case 4:
+                    result = "WPFBWS";
+                    command = 213;
+                    break;
+                case 5:
                     command = -1;
-                    itemType = 213; // "ENDMENU"
+                    itemType = 214; // "ENDMENU"
                     break;
             }
             return result; 
@@ -7760,6 +7901,7 @@ namespace Steps.NET
                 doc = (Document2D) kompas.ActiveDocument2D();
             if (doc == null) return;
             
+
             switch (command)
             {
                 case 210:
@@ -7770,6 +7912,9 @@ namespace Steps.NET
                     break;
                 case 212:
                     Instancebws.ShowDialog(); //главный запуск приложения(для отдельного окна со всеми настройками)
+                    break;
+                case 213:
+                    Instanceq.ShowDialog();                  
                     break;
             }
         }
@@ -7812,7 +7957,7 @@ namespace Steps.NET
             }
             catch (Exception ex)
             {
-                MessageBox.Show(string.Format("При регистрации класса для COM-Interop произошла ошибка:\n{0}", ex));
+                System.Windows.Forms.MessageBox.Show(string.Format("При регистрации класса для COM-Interop произошла ошибка:\n{0}", ex));
             }
         }
 

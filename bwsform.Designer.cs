@@ -180,9 +180,13 @@ namespace Steps.NET
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.ItemHeight = 32;
             this.comboBox1.Items.AddRange(new object[] {
-            "Квадрат(1-5)",
+            "Квадрат2",
+            "Квадрат3",
+            "Квадрат4",
+            "Квадрат5",
             "Универсальный (несколько рисунков накладываются на один реализовать с помощью ком" +
-                "бобоксов)"});
+                "бобоксов)",
+            "Квадрат(1-5)"});
             this.comboBox1.Location = new System.Drawing.Point(28, 22);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(320, 40);
@@ -257,6 +261,7 @@ namespace Steps.NET
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.Visible = false;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkBox1.Click += new System.EventHandler(this.checkBox1_Click);
             // 
             // checkBox2
             // 
@@ -383,6 +388,7 @@ namespace Steps.NET
             this.textBox12.Name = "textBox12";
             this.textBox12.Size = new System.Drawing.Size(100, 27);
             this.textBox12.TabIndex = 29;
+            this.textBox12.Text = "0";
             this.textBox12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox12.Visible = false;
             this.textBox12.TextChanged += new System.EventHandler(this.textBox12_TextChanged);
@@ -397,6 +403,7 @@ namespace Steps.NET
             this.textBox11.Name = "textBox11";
             this.textBox11.Size = new System.Drawing.Size(100, 27);
             this.textBox11.TabIndex = 28;
+            this.textBox11.Text = "0";
             this.textBox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox11.Visible = false;
             this.textBox11.TextChanged += new System.EventHandler(this.textBox11_TextChanged);
@@ -411,6 +418,7 @@ namespace Steps.NET
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(100, 27);
             this.textBox10.TabIndex = 27;
+            this.textBox10.Text = "0";
             this.textBox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox10.Visible = false;
             this.textBox10.TextChanged += new System.EventHandler(this.textBox10_TextChanged);
@@ -425,6 +433,7 @@ namespace Steps.NET
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(100, 27);
             this.textBox9.TabIndex = 26;
+            this.textBox9.Text = "0";
             this.textBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox9.Visible = false;
             this.textBox9.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
@@ -439,6 +448,7 @@ namespace Steps.NET
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(100, 27);
             this.textBox8.TabIndex = 25;
+            this.textBox8.Text = "0";
             this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox8.Visible = false;
             this.textBox8.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
@@ -453,6 +463,7 @@ namespace Steps.NET
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(100, 27);
             this.textBox7.TabIndex = 24;
+            this.textBox7.Text = "0";
             this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox7.Visible = false;
             this.textBox7.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
@@ -467,6 +478,7 @@ namespace Steps.NET
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(100, 27);
             this.textBox6.TabIndex = 23;
+            this.textBox6.Text = "0";
             this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox6.Visible = false;
             this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
@@ -491,6 +503,7 @@ namespace Steps.NET
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(100, 27);
             this.textBox5.TabIndex = 22;
+            this.textBox5.Text = "0";
             this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox5.Visible = false;
             this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
@@ -613,7 +626,7 @@ namespace Steps.NET
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button3.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.button3.Location = new System.Drawing.Point(29, 352);
+            this.button3.Location = new System.Drawing.Point(29, 357);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(163, 58);
             this.button3.TabIndex = 19;
@@ -650,7 +663,7 @@ namespace Steps.NET
             this.listBox1.BackColor = System.Drawing.Color.DarkSlateGray;
             this.listBox1.ForeColor = System.Drawing.Color.DarkOrange;
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(198, 316);
+            this.listBox1.Location = new System.Drawing.Point(198, 321);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(150, 95);
             this.listBox1.TabIndex = 22;

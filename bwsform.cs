@@ -101,7 +101,7 @@ namespace Steps.NET
 
             var cfuncdel = new ComboFuncDelBWS[] //работа комбобокса при выборе элемента срабатывает метод
             {
-                Step3.KvadratBWS
+                Step3.KvadratBWS,Step3.KvadratBWS2,Step3.KvadratBWS3,Step3.KvadratBWS4,
             };
 
             if (comboBox1.SelectedIndex >= 0)
@@ -122,6 +122,81 @@ namespace Steps.NET
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBox1.SelectedIndex == 0)
+            {
+                checkBox1.Visible = true;
+                checkBox2.Visible = false;
+                checkBox3.Visible = false;
+                checkBox4.Visible = false;
+                checkBox7.Visible = true;
+                label5.Visible = true;
+                label6.Visible = true;
+                label7.Visible = false;
+                label8.Visible = false;
+                label9.Visible = false;
+                label10.Visible = false;
+                label11.Visible = false;
+                label12.Visible = false;
+                textBox5.Visible = true;
+                textBox6.Visible = true;
+                textBox7.Visible = false;
+                textBox8.Visible = false;
+                textBox9.Visible = false;
+                textBox10.Visible = false;
+                textBox11.Visible = false;
+                textBox12.Visible = false;
+                textBox14.Visible = true;
+            }
+            else if (comboBox1.SelectedIndex == 1)
+            {
+                checkBox1.Visible = true;
+                checkBox2.Visible = true;
+                checkBox3.Visible = false;
+                checkBox4.Visible = false;
+                checkBox7.Visible = true;
+                label5.Visible = true;
+                label6.Visible = true;
+                label7.Visible = true;
+                label8.Visible = true;
+                label9.Visible = false;
+                label10.Visible = false;
+                label11.Visible = false;
+                label12.Visible = false;
+                textBox5.Visible = true;
+                textBox6.Visible = true;
+                textBox7.Visible = true;
+                textBox8.Visible = true;
+                textBox9.Visible = false;
+                textBox10.Visible = false;
+                textBox11.Visible = false;
+                textBox12.Visible = false;
+                textBox14.Visible = true;
+            }
+            else if (comboBox1.SelectedIndex == 2)
+            {
+                checkBox1.Visible = true;
+                checkBox2.Visible = true;
+                checkBox3.Visible = true;
+                checkBox4.Visible = false;
+                checkBox7.Visible = true;
+                label5.Visible = true;
+                label6.Visible = true;
+                label7.Visible = true;
+                label8.Visible = true;
+                label9.Visible = true;
+                label10.Visible = true;
+                label11.Visible = false;
+                label12.Visible = false;
+                textBox5.Visible = true;
+                textBox6.Visible = true;
+                textBox7.Visible = true;
+                textBox8.Visible = true;
+                textBox9.Visible = true;
+                textBox10.Visible = true;
+                textBox11.Visible = false;
+                textBox12.Visible = false;
+                textBox14.Visible = true;
+            }
+            else if (comboBox1.SelectedIndex == 3)
             {
                 checkBox1.Visible = true;
                 checkBox2.Visible = true;
@@ -184,18 +259,7 @@ namespace Steps.NET
         }
         public void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox1.Checked == false)
-            {
-
-                textBox5.Enabled = false;
-                textBox6.Enabled = false;
-            }
-            else
-            {
-                
-                textBox5.Enabled = true;
-                textBox6.Enabled = true;
-            }
+            
 
 
         }
@@ -546,14 +610,22 @@ namespace Steps.NET
 
 
 
-
-
-
-
-
-
         #endregion
 
+        public void checkBox1_Click(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == false)
+            {
 
+                textBox5.Enabled = false;
+                textBox6.Enabled = false;
+            }
+            else
+            {
+
+                textBox5.Enabled = true;
+                textBox6.Enabled = true;
+            }
+        }
     }
 }
