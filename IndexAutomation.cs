@@ -16,6 +16,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using System.Xml;
+using System.Linq;
 using KAPITypes;
 using Kompas6Constants;
 using static Steps.NET.Automation;
@@ -7894,7 +7895,7 @@ namespace Steps.NET
         {
             kompas = (KompasObject) kompas_;
             if (kompas == null) return;
-            if (command >= 1) /*опредляется что при выборе создасться документ(иначе причется создавать фрагмент самому,
+            if (command >= 1) /*опредляется что при выборе создастся документ(иначе причется создавать фрагмент самому,
                 а затем использовать функцию)....решение давать переменную или просто определить диапазон кол-ва накладок*/
                 doc = (Document2D) kompas.Document2D();
             else

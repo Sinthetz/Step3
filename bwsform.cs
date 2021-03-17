@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace Steps.NET
 {
@@ -111,10 +112,7 @@ namespace Steps.NET
 
             Close();
         }
-        private void button2_Click(object sender, EventArgs e)
-        {
 
-        }
         private void button3_Click(object sender, EventArgs e)
         {
 
@@ -626,6 +624,67 @@ namespace Steps.NET
                 textBox5.Enabled = true;
                 textBox6.Enabled = true;
             }
+        }
+        
+        private void textBox13_TextChanged(object sender, EventArgs e)//счетчик количества размеров, созданных для просчитывания
+        {
+            
+            
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            textBox13.Text = Convert.ToString(Convert.ToInt32(textBox13.Text) + 1);
+            Step3.Visota = Convert.ToInt32(textBox2.Text);
+            Step3.Shirina = Convert.ToInt32(textBox1.Text);
+            string sRazmer = Convert.ToString($"{Step3.Shirina}x{Step3.Visota}");
+            listBox1.Items.Add(sRazmer);
+
+            /*float[,] razmer = { { Step3.Shirina }, { Step3.Visota } };// двумерный массив 
+
+            int rows = razmer.GetUpperBound(0) + 1;//           
+            int columns = razmer.Length / rows;    //разделение на строки и столбцы
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    
+                    //listBox1.Items.Add(razmer[i, j].ToString($"{Step3.Shirina}x{Step3.Visota}"));//отсортировать при помощи linq или заносить все в текстбокс и тп или через файл
+                    //{Step3.Visota}x{Step3.Shirina}  или {razmer[0, 0]} x {razmer[1, 0]}
+
+                }
+
+
+            }*/
+
+            //listBox1.Items.Add(Step3.Visota.ToString());
+            //listBox1.Items.Add(Step3.Shirina.ToString());
+
+            /*float[] razmer = { Step3.Shirina, Step3.Visota };
+            for (int i = 0; i < razmer.Length; i++)
+            {
+                
+            }*/
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e) //кнопка очистить все
+        {
+            listBox1.Items.Clear();
+            textBox13.Text = "0";
+            
+        }
+
+        private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            listBox1.Items.Remove(listBox1.SelectedItem);
+            
+            //textBox13.Text
         }
     }
 }
