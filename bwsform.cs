@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Linq;
+using System.IO;
+using System.Collections;
 
 namespace Steps.NET
 {
@@ -113,10 +115,7 @@ namespace Steps.NET
             Close();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
 
-        }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBox1.SelectedIndex == 0)
@@ -637,34 +636,11 @@ namespace Steps.NET
             Step3.Visota = Convert.ToInt32(textBox2.Text);
             Step3.Shirina = Convert.ToInt32(textBox1.Text);
             string sRazmer = Convert.ToString($"{Step3.Shirina}x{Step3.Visota}");
+            
             listBox1.Items.Add(sRazmer);
+            listBox2.Items.Add(Step3.Visota.ToString());
+            listBox3.Items.Add(Step3.Shirina.ToString());
 
-            /*float[,] razmer = { { Step3.Shirina }, { Step3.Visota } };// двумерный массив 
-
-            int rows = razmer.GetUpperBound(0) + 1;//           
-            int columns = razmer.Length / rows;    //разделение на строки и столбцы
-
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j < columns; j++)
-                {
-                    
-                    //listBox1.Items.Add(razmer[i, j].ToString($"{Step3.Shirina}x{Step3.Visota}"));//отсортировать при помощи linq или заносить все в текстбокс и тп или через файл
-                    //{Step3.Visota}x{Step3.Shirina}  или {razmer[0, 0]} x {razmer[1, 0]}
-
-                }
-
-
-            }*/
-
-            //listBox1.Items.Add(Step3.Visota.ToString());
-            //listBox1.Items.Add(Step3.Shirina.ToString());
-
-            /*float[] razmer = { Step3.Shirina, Step3.Visota };
-            for (int i = 0; i < razmer.Length; i++)
-            {
-                
-            }*/
 
         }
 
@@ -680,11 +656,55 @@ namespace Steps.NET
             
         }
 
-        private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e) //метод удаления из листбокса по двойному клику
         {
             listBox1.Items.Remove(listBox1.SelectedItem);
+
+            textBox13.Text = Convert.ToString(Convert.ToInt32(textBox13.Text) - 1);
+        }
+
+        private void button3_Click(object sender, EventArgs e) //реализация кнопки построить все
+        {
+            Step3.IndentX = Convert.ToInt32(textBox3.Text);
+            Step3.IndentY = Convert.ToInt32(textBox4.Text);
+            Step3.IndentX1 = Convert.ToInt32(textBox5.Text);
+            Step3.IndentY1 = Convert.ToInt32(textBox6.Text);
+            Step3.IndentX2 = Convert.ToInt32(textBox7.Text);
+            Step3.IndentY2 = Convert.ToInt32(textBox8.Text);
+            Step3.IndentX3 = Convert.ToInt32(textBox9.Text);
+            Step3.IndentY3 = Convert.ToInt32(textBox10.Text);
+            Step3.IndentX4 = Convert.ToInt32(textBox11.Text);
+            Step3.IndentY4 = Convert.ToInt32(textBox12.Text);
+            Step3.Visota = Convert.ToInt32(listBox2.Items.ToString());
+            Step3.Shirina = Convert.ToInt32(listBox3.Items.ToString());
             
-            //textBox13.Text
+
+            //Convert.ToInt32(listBox1.SelectedItem.ToString());
+            //textBox15.Text = Convert.ToString(listBox1.Items[0]);
+
+            var cfuncdel = new ComboFuncDelBWS[] 
+            {
+                Step3.KvadratBWS,Step3.KvadratBWS2,Step3.KvadratBWS3,Step3.KvadratBWS4,
+            };
+
+            if (comboBox1.SelectedIndex >= 0)
+            {
+                cfuncdel[comboBox1.SelectedIndex]();
+            }
+
+            
+
+            Close();
+        }
+
+        private void textBox15_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

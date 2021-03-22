@@ -158,6 +158,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Automation.resx">
@@ -176,6 +181,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="gnome-fs-loading-icon_9815.ico" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Resources\teal-and-black-stock-gradient-teal-black-by-clip-art-PPT.jpeg" />
     <None Include="Resources\Hd0AJ.png" />
   </ItemGroup>
