@@ -14,7 +14,7 @@ using KAPITypes;
 using KompasAPI7;
 namespace Steps.NET
 {
-    partial class bwsform
+    partial class Bwsform
     {
         /// <summary>
         /// Required designer variable.
@@ -26,14 +26,14 @@ namespace Steps.NET
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
 
-        private static bwsform instancebws;
+        private static Bwsform instancebws;
 
-        public static bwsform Instancebws
+        public static Bwsform Instancebws
         {
             get
             {
                 if (instancebws == null)
-                    instancebws = new bwsform();
+                    instancebws = new Bwsform();
                 return instancebws;
 
             }
@@ -79,7 +79,7 @@ namespace Steps.NET
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(bwsform));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Bwsform));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -834,7 +834,7 @@ namespace Steps.NET
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.Name = "bwsform";
+            this.Name = "Bwsform";
             this.Text = "BWS";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

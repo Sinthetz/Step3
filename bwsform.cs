@@ -1,22 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Linq;
-using System.IO;
-using System.Collections;
+using System.Globalization;
 
 namespace Steps.NET
 {
-    public partial class bwsform : Form
+    public partial class Bwsform : Form
     {
-
-        public bwsform()
+        private Bwsform()
         {
             InitializeComponent();
             
@@ -86,7 +76,7 @@ namespace Steps.NET
         }
 
 
-        public delegate void ComboFuncDelBWS();
+        private delegate void ComboFuncDelBws();
         private void button1_Click(object sender, EventArgs e)
         {
             Step3.Visota = Convert.ToInt32(textBox2.Text);
@@ -102,9 +92,9 @@ namespace Steps.NET
             Step3.IndentX4 = Convert.ToInt32(textBox11.Text);
             Step3.IndentY4 = Convert.ToInt32(textBox12.Text);
 
-            var cfuncdel = new ComboFuncDelBWS[] //работа комбобокса при выборе элемента срабатывает метод
+            var cfuncdel = new ComboFuncDelBws[] //работа комбобокса при выборе элемента срабатывает метод
             {
-                Step3.KvadratBWS,Step3.KvadratBWS2,Step3.KvadratBWS3,Step3.KvadratBWS4,
+                Step3.KvadratBws,Step3.KvadratBws2,Step3.KvadratBws3,Step3.KvadratBws4,
             };
 
             if (comboBox1.SelectedIndex >= 0)
@@ -304,21 +294,14 @@ namespace Steps.NET
             }
         }
 
-        private void checkBox7_CheckedChanged(object sender, EventArgs e) 
+        private void checkBox7_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox4.Checked == false)
-            {
-                textBox14.Enabled = false;
-            }
-            else
-            {
-                textBox14.Enabled = true;
-            }
+            textBox14.Enabled = checkBox4.Checked;
         }
 
         private void textBox5_TextChanged(object sender, EventArgs e)
         {
-            if (textBox5.Text.Length == 0 && checkBox1.Checked == true) //кнопка не будет активна если в полях текстбокса ничего нет
+            if (textBox5.Text.Length == 0 && checkBox1.Checked) //кнопка не будет активна если в полях текстбокса ничего нет
             {
                 button1.Enabled = false;
                 button2.Enabled = false;
@@ -334,7 +317,7 @@ namespace Steps.NET
 
         private void textBox6_TextChanged(object sender, EventArgs e)
         {
-            if (textBox6.Text.Length == 0 && checkBox1.Checked == true) //кнопка не будет активна если в полях текстбокса ничего нет
+            if (textBox6.Text.Length == 0 && checkBox1.Checked) 
             {
                 button1.Enabled = false;
                 button2.Enabled = false;
@@ -350,7 +333,7 @@ namespace Steps.NET
 
         private void textBox7_TextChanged(object sender, EventArgs e)
         {
-            if (textBox7.Text.Length == 0 && checkBox2.Checked == true) //кнопка не будет активна если в полях текстбокса ничего нет
+            if (textBox7.Text.Length == 0 && checkBox2.Checked) 
             {
                 button1.Enabled = false;
                 button2.Enabled = false;
@@ -366,7 +349,7 @@ namespace Steps.NET
 
         private void textBox8_TextChanged(object sender, EventArgs e)
         {
-            if (textBox8.Text.Length == 0 && checkBox2.Checked == true) //кнопка не будет активна если в полях текстбокса ничего нет
+            if (textBox8.Text.Length == 0 && checkBox2.Checked) 
             {
                 button1.Enabled = false;
                 button2.Enabled = false;
@@ -382,7 +365,7 @@ namespace Steps.NET
 
         private void textBox9_TextChanged(object sender, EventArgs e)
         {
-            if (textBox9.Text.Length == 0 && checkBox3.Checked == true) //кнопка не будет активна если в полях текстбокса ничего нет
+            if (textBox9.Text.Length == 0 && checkBox3.Checked) 
             {
                 button1.Enabled = false;
                 button2.Enabled = false;
@@ -398,7 +381,7 @@ namespace Steps.NET
 
         private void textBox10_TextChanged(object sender, EventArgs e)
         {
-            if (textBox10.Text.Length == 0 && checkBox3.Checked == true) //кнопка не будет активна если в полях текстбокса ничего нет
+            if (textBox10.Text.Length == 0 && checkBox3.Checked) 
             {
                 button1.Enabled = false;
                 button2.Enabled = false;
@@ -414,7 +397,7 @@ namespace Steps.NET
 
         private void textBox11_TextChanged(object sender, EventArgs e)
         {
-            if (textBox11.Text.Length == 0 && checkBox4.Checked == true) //кнопка не будет активна если в полях текстбокса ничего нет
+            if (textBox11.Text.Length == 0 && checkBox4.Checked) 
             {
                 button1.Enabled = false;
                 button2.Enabled = false;
@@ -430,7 +413,7 @@ namespace Steps.NET
 
         private void textBox12_TextChanged(object sender, EventArgs e)
         {
-            if (textBox12.Text.Length == 0 && checkBox4.Checked == true) //кнопка не будет активна если в полях текстбокса ничего нет
+            if (textBox12.Text.Length == 0 && checkBox4.Checked) 
             {
                 button1.Enabled = false;
                 button2.Enabled = false;
@@ -445,7 +428,7 @@ namespace Steps.NET
         }
         private void textBox14_TextChanged(object sender, EventArgs e)
         {
-            if (textBox14.Text.Length == 0 && checkBox7.Checked == true) //кнопка не будет активна если в полях текстбокса ничего нет
+            if (textBox14.Text.Length == 0 && checkBox7.Checked) 
             {
                 button1.Enabled = false;
                 button2.Enabled = false;
@@ -609,7 +592,7 @@ namespace Steps.NET
 
         #endregion
 
-        public void checkBox1_Click(object sender, EventArgs e)
+        private void checkBox1_Click(object sender, EventArgs e)
         {
             if (checkBox1.Checked == false)
             {
@@ -632,14 +615,14 @@ namespace Steps.NET
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            textBox13.Text = Convert.ToString(Convert.ToInt32(textBox13.Text) + 1);
-            Step3.Visota = Convert.ToInt32(textBox2.Text);
-            Step3.Shirina = Convert.ToInt32(textBox1.Text);
-            string sRazmer = Convert.ToString($"{Step3.Shirina}x{Step3.Visota}");
+            textBox13.Text = Convert.ToString(value: Convert.ToInt32(value: textBox13.Text) + 1);
+            Step3.Visota = Convert.ToInt32(value: textBox2.Text);
+            Step3.Shirina = Convert.ToInt32(value: textBox1.Text);
+            var sRazmer = Convert.ToString(value: $"{Step3.Shirina}x{Step3.Visota}");
             
-            listBox1.Items.Add(sRazmer);
-            listBox2.Items.Add(Step3.Visota.ToString());
-            listBox3.Items.Add(Step3.Shirina.ToString());
+            listBox1.Items.Add(item: sRazmer);
+            listBox2.Items.Add(item: Step3.Visota.ToString(CultureInfo.InvariantCulture));
+            listBox3.Items.Add(item: Step3.Shirina.ToString(CultureInfo.InvariantCulture));
 
 
         }
@@ -682,9 +665,9 @@ namespace Steps.NET
             //Convert.ToInt32(listBox1.SelectedItem.ToString());
             //textBox15.Text = Convert.ToString(listBox1.Items[0]);
 
-            var cfuncdel = new ComboFuncDelBWS[] 
+            var cfuncdel = new ComboFuncDelBws[] 
             {
-                Step3.KvadratBWS,Step3.KvadratBWS2,Step3.KvadratBWS3,Step3.KvadratBWS4,
+                Step3.KvadratBws,Step3.KvadratBws2,Step3.KvadratBws3,Step3.KvadratBws4,
             };
 
             if (comboBox1.SelectedIndex >= 0)

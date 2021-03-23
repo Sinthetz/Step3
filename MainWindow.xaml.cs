@@ -25,54 +25,29 @@ namespace Steps.NET
         {
             InitializeComponent();
         }
-        public delegate void ComboFuncDelBWS();
+
+        private delegate void ComboFuncDelBws();
         private void Button1_Click(object sender, RoutedEventArgs e)
         {
             
 
-            var cfuncdel = new ComboFuncDelBWS[] //работа комбобокса при выборе элемента срабатывает метод
+            var cfuncdel = new ComboFuncDelBws[] //работа комбобокса при выборе элемента срабатывает метод
             {
-                Step3.KvadratBWS
+                Step3.KvadratBws
             };
 
             
         }
-        private static MainWindow instanceq;
+        private static MainWindow _instanceq;
 
         public static MainWindow Instanceq
         {
-            get
-            {
-                if (instanceq == null)
-                    instanceq = new MainWindow();
-                return instanceq;
-                
-            }
+            get { return _instanceq ?? (_instanceq = new MainWindow()); }
             
         }
-        private KompasObject kompasObject;
-        public KompasObject KompasObject
-        {
-            get
-            {
-                return kompasObject;
-            }
-            set
-            {
-                kompasObject = value;
-            }
-        }
-        private ksDocument2D document2d;
-        public ksDocument2D Document2D
-        {
-            get
-            {
-                return document2d;
-            }
-            set
-            {
-                document2d = value;
-            }
-        }
+
+        public KompasObject KompasObject { get; set; }
+
+        public ksDocument2D Document2D { get; set; }
     }
 }
